@@ -27,7 +27,9 @@ The application is currently in a very early stage of development, which is why 
 ## Our Sponsors
 
 <p align="center">
+
 <a href="https://www.easyname.at/de"><img src="https://static.easyname.com/images/svg/singles/logos/easyname/easyname_logo_default.svg"></a>
+<p></p>
 <a href="https://nikolausstiftung.at/"><img src="https://nikolausstiftung.at/wp-content/uploads/2020/01/stnikolausstiftung-logo.png"></a>
 </p>
 
