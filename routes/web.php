@@ -14,9 +14,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('landing');
+    return inertia("App");
 });
 
+// Route::get('/login', function () {
+   // return Inertia\Inertia::render("Login");
+// });
+
+// Route::prefix('auth')->group(function () {
+    // Route::get('index', [App\Http\Controllers\AuthController::class, 'index']);
+    // Route::get('login', [App\Http\Controllers\AuthController::class, 'login'])->name('login');
+// });
+
+Route::get('index', [App\Http\Controllers\AuthController::class, 'index']);
+Route::get('login', [App\Http\Controllers\AuthController::class, 'login'])->name('login');
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return Inertia\Inertia::render('Dashboard');
+    return inertia('Dashboard');
 })->name('dashboard');

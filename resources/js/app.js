@@ -1,6 +1,7 @@
 require('./bootstrap');
 
 import Vue from 'vue';
+import VueRouter from 'vue-router'
 
 import { InertiaApp } from '@inertiajs/inertia-vue';
 import { InertiaForm } from 'laravel-jetstream';
@@ -10,8 +11,11 @@ Vue.mixin({ methods: { route } });
 Vue.use(InertiaApp);
 Vue.use(InertiaForm);
 Vue.use(PortalVue);
+Vue.use(VueRouter);
 
-Vue.prototype.$route = (...args) => route(...args).url()
+// const routes = [
+    // {path: 'login', component: Login}
+// ];
 
 const app = document.getElementById('app');
 
