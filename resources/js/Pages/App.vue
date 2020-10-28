@@ -1,7 +1,7 @@
 <template>
   <div>
 
-    <inertia-link :href="route('login')">Login</inertia-link>
+    <inertia-link :href="route('dashboard')">Login</inertia-link>
 
     <div class="p-6 sm:px-20 bg-white border-b border-gray-200">
 
@@ -178,5 +178,20 @@
 </template>
 
 <script>
-export default {};
+export default {
+    data: () => {
+        return {
+            user: null
+        };
+    },
+    async mounted() {
+        await this.index();
+    },
+    methods: {
+        async index() {
+            const {data} = await axios.get("/index");
+            this.user = data.user;
+        }
+    }
+};
 </script>

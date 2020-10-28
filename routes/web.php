@@ -28,6 +28,7 @@ Route::get('/', function () {
 
 Route::get('index', [App\Http\Controllers\AuthController::class, 'index']);
 Route::get('login', [App\Http\Controllers\AuthController::class, 'login'])->name('login');
+Route::get('register', [App\Http\Controllers\AuthController::class, 'register'])->name('register');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return inertia('Dashboard');

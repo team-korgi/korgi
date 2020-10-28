@@ -1,34 +1,11 @@
 <template>
   <div class="w-full max-w-xs container mx-auto">
-    <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    <form @submit.prevent="submit" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
       <div class="mb-4">
-        <label
-          class="block text-gray-700 text-sm font-bold mb-2"
-          for="username"
-        >
-          Username
-        </label>
-        <input
-          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          id="username"
-          type="text"
-          placeholder="Username"
-        />
+          <Input v-model="username" placeholder="Username" label="Username" type="text" :error="error.username"/>
       </div>
       <div class="mb-6">
-        <label
-          class="block text-gray-700 text-sm font-bold mb-2"
-          for="password"
-        >
-          Password
-        </label>
-        <input
-          class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-          id="password"
-          type="password"
-          placeholder="******************"
-        />
-        <p class="text-red-500 text-xs italic">Please choose a password.</p>
+          <Input v-model="password" placeholder="Password" label="Password" type="password" :error="error.password"/>
       </div>
       <div class="flex items-center justify-between">
         <button
@@ -52,5 +29,23 @@
 </template>
 
 <script>
-export default {};
+import Input from "./Input"
+export default {
+    name: "Login",
+    components: {Input},
+    data: () => {
+        return {
+            username: "",
+            password: "",
+            error: {}
+        };
+    },
+    methods: {
+        submit() {
+            this.error = {};
+            if (!this.username.trim()) this.error.username = "Username required";
+            if (!!this.error) return;
+        }
+    }
+};
 </script>
