@@ -26,6 +26,10 @@ const app = document.getElementById('app');
 
 //TODO aus der Datenbank holen
 function getUUID() {
+    return generateUUID();
+}
+
+function generateUUID() {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
         let r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
         return v.toString(16);
@@ -45,6 +49,10 @@ function getSubscribeKey() {
 //TODO aus der Datenbank holen
 function getUsername() {
     return "Alex";
+}
+
+function getUrlFromName(name) {
+    return name.toLowerCase().replace(' ', '-');
 }
 
 //TODO aus der Datenbank holen
@@ -117,6 +125,31 @@ const store = new Vuex.Store({
         },
         addMessage(state, payload) {
             Vue.set(state.groups[payload.message.message.group].channels[payload.message.message.chat].messages, payload.message.timetoken, payload.message);
+        },
+        addGroup(state, payload) {
+            //TODO push to server
+
+            let newGroup = {
+                name: payload.name,
+                url: getUrlFromName(payload.name),
+                admins: [state.user],
+                channels: {
+                    "allgemein": {
+                        name: "Allgemein",
+                        url: "allgemein",
+                        uuid: generateUUID(),
+                        messages: {}
+                    },
+                    "wichtig": {
+                        name: "Wichtig",
+                        url: "wichtig",
+                        uuid: generateUUID(),
+                        messages: {}
+                    }
+                }
+            }
+
+            Vue.set(state.groups, getUrlFromName(payload.name), newGroup)
         }
     },
     getters: {

@@ -1,7 +1,7 @@
 <template>
   <div id="group">
     <div id="group-header">
-      <h1>{{group.name}}</h1>
+      <h1 class="headline">{{group.name}}</h1>
       <div id="chat-selection">
         <router-link :to="{ name: 'chat', params: { url: url, type: 'allgemein' }}">Allgemein</router-link>
         <router-link :to="{ name: 'chat', params: { url: url, type: 'wichtig' }}">Wichtig</router-link>

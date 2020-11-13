@@ -51,7 +51,6 @@ export default {
     },
     sendFile(file) {
       // TODO Upload File
-      console.log(file)
       this.$store.commit('publish', {
         message: file.name,
         channel: this.chat.uuid,

@@ -45,7 +45,7 @@ export default {
 #dialog-window {
   background-color: white;
   width: 30vw;
-  padding: 1.5% 2.5% 1.5% 2.5%;
+  padding: 2.5%;
   border-radius: 3em;
   display: flex;
   flex-direction: column;
@@ -59,5 +59,13 @@ export default {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+}
+
+button {
+    flex-grow: 1;
+    height: 2rem;
+    font-size: 1rem;
+    color: white;
+    background-color: #FFA88E;
 }
 </style>

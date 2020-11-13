@@ -34,4 +34,9 @@ export default {
 
     font-family: 'Montserrat', sans-serif;
 }
+
+.headline {
+    font-size: 1.8rem;
+    font-weight: 700;
+}
 </style>
