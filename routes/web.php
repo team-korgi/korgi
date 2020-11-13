@@ -17,14 +17,25 @@ Route::get('/', function () {
     return inertia("App");
 });
 
-// Route::get('/login', function () {
-   // return Inertia\Inertia::render("Login");
-// });
+Route::get('/guppen', function () {
+    return inertia("App");
+});
 
-// Route::prefix('auth')->group(function () {
-    // Route::get('index', [App\Http\Controllers\AuthController::class, 'index']);
-    // Route::get('login', [App\Http\Controllers\AuthController::class, 'login'])->name('login');
-// });
+Route::get('/termine', function () {
+    return inertia("App");
+});
+
+Route::get('/einstellungen', function () {
+    return inertia("App");
+});
+
+Route::get('/guppen/{url}/allgemein', function () {
+    return inertia("App");
+});
+
+Route::get('/guppen/{url}/wichtig', function () {
+    return inertia("App");
+});
 
 Route::get('index', [App\Http\Controllers\AuthController::class, 'index']);
 Route::get('login', [App\Http\Controllers\AuthController::class, 'login'])->name('login');
