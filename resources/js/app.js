@@ -24,6 +24,7 @@ Vue.use(VueRouter);
 
 const app = document.getElementById('app');
 
+//TODO aus der Datenbank holen
 function getUUID() {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
         let r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
@@ -31,53 +32,59 @@ function getUUID() {
     });
 }
 
+//TODO aus der Datenbank holen
 function getPublishKey() {
     return 'pub-c-3b6e9ed9-1191-4e64-a5b8-c835f42b776f';
 }
 
+//TODO aus der Datenbank holen
 function getSubscribeKey() {
     return 'sub-c-d87417d8-157a-11eb-a3e5-1aef4acbe547';
 }
 
+//TODO aus der Datenbank holen
 function getUsername() {
     return "Alex";
 }
 
+//TODO aus der Datenbank holen
 function getGroups() {
     return {
         "gruppe-1": {
             name: "Gruppe 1",
             url: "gruppe-1",
+            admins: [],
             channels: {
                 "allgemein": {
                     name: "Allgemein",
                     url: "allgemein",
                     uuid: "2532ef1c-4c1b-4a8a-8975-43149bca27e9",
-                    messages: []
+                    messages: {}
                 },
                 "wichtig": {
                     name: "Wichtig",
                     url: "wichtig",
                     uuid: "091c147f-c2ca-4232-ade9-3c9fb242d2aa",
-                    messages: []
+                    messages: {}
                 }
             }
         },
         "gruppe-2": {
             name: "Gruppe 2",
             url: "gruppe-2",
+            admins: [],
             channels: {
                 "allgemein": {
                     name: "Allgemein",
                     url: "allgemein",
                     uuid: "78ac78a6-54bd-46b2-8b4c-be073717e94c",
-                    messages: []
+                    messages: {}
                 },
                 "wichtig": {
                     name: "Wichtig",
                     url: "wichtig",
                     uuid: "6c8716bb-84c2-47e5-83fd-d0c19fa61189",
-                    messages: []
+                    messages: {}
                 }
             }
         },
@@ -109,7 +116,7 @@ const store = new Vuex.Store({
             );
         },
         addMessage(state, payload) {
-            state.groups[payload.message.message.group].channels[payload.message.message.chat].messages.push(payload.message);
+            Vue.set(state.groups[payload.message.message.group].channels[payload.message.message.chat].messages, payload.message.timetoken, payload.message);
         }
     },
     getters: {

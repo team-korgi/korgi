@@ -1,18 +1,20 @@
 <template>
   <div id="group-view">
-    <h1>Gruppenübersicht</h1>
+      <div class="group-view-header">
+          <h1>Gruppenübersicht</h1>
+      </div>
     <div id="groups">
-      <router-link :to="{ name: 'chat', params: { url: group.url, type: 'allgemein' }}" v-for="group in groups" :key="group.url">
-        {{ group.name }}
-      </router-link>
+      <group-card v-for="group in groups" :group="group" :key="group.url"/>
     </div>
   </div>
 </template>
 
 <script>
+import GroupCard from "@/Pages/group-card";
 export default {
   name: "group-view",
-  computed: {
+    components: {GroupCard},
+    computed: {
     groups: function () {
       return this.$store.getters.getGroups;
     }
@@ -22,7 +24,17 @@ export default {
 
 <style scoped>
 #group-view {
-  padding: 2%;
   width: 100%;
+}
+
+.group-view-header {
+    padding: 2%;
+}
+
+#groups {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
 }
 </style>

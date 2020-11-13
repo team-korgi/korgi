@@ -1,7 +1,7 @@
 <template>
   <div id="chat">
     <div id="messages">
-      <message v-for="message in chat.messages" :key="message.timestamp" :message="message"/>
+      <message v-for="message in Object.values(chat.messages)" :key="message.timestamp" :message="message"/>
     </div>
     <div id="input-group">
       <dialog-window v-show="isDialogOpen" @close="toggleDialog" @submit="sendFile">
