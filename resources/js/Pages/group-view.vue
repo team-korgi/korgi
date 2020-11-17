@@ -5,7 +5,7 @@
         </dialog-window>
 
         <div class="group-view-header">
-            <h1 class="headline">Gruppenübersicht</h1>
+            <h1 class="title">Gruppenübersicht</h1>
         </div>
         <div id="groups">
             <group-card v-for="group in groups" :group="group" :key="group.url"/>

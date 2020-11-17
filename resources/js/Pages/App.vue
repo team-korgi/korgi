@@ -36,7 +36,100 @@ export default {
 }
 
 .headline {
+    color: #707070;
     font-size: 1.8rem;
     font-weight: 700;
+}
+
+.title {
+    color: #FFCB8E;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.round-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.5rem;
+    color: white;
+    border-radius: 1.5rem;
+    outline: 0;
+}
+
+.btn {
+    flex-grow: 1;
+    height: 3rem;
+    font-size: 1rem;
+    color: white;
+    font-weight: 600;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 1.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+
+
+}
+
+.btn i {
+    font-size: 1.5rem;
+}
+
+.input {
+    font-size: 1rem;
+    outline: 0;
+    border-radius: 1.5rem;
+    color: #707070;
+    font-weight: 600;
+
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    height: 3rem;
+    background-color: #E1E1E1;
+}
+
+.input::placeholder {
+    color: #707070;
+}
+
+.warn-background {
+    background-color: #FC6B6B;
+    transition: 0.2s ease;
+}
+
+.primary-background {
+    background-color: #FFA88E;
+    transition: 0.2s ease;
+}
+
+.secondary-background {
+    background-color: #FFCB8E;
+    transition: 0.2s ease;
+}
+
+.warn-background:hover {
+    background-color: #ef5252;
+}
+
+.primary-background:hover {
+    background-color: #ff8f6e;
+}
+
+.secondary-background:hover {
+    background-color: #ffb561;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
 }
 </style>

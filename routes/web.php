@@ -17,7 +17,7 @@ Route::get('/', function () {
     return inertia("App");
 });
 
-Route::get('/guppen', function () {
+Route::get('/gruppen', function () {
     return inertia("App");
 });
 
@@ -29,11 +29,11 @@ Route::get('/einstellungen', function () {
     return inertia("App");
 });
 
-Route::get('/guppen/{url}/allgemein', function () {
+Route::get('/gruppen/{url}/allgemein', function () {
     return inertia("App");
 });
 
-Route::get('/guppen/{url}/wichtig', function () {
+Route::get('/gruppen/{url}/wichtig', function () {
     return inertia("App");
 });
 

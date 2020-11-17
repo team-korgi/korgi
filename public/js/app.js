@@ -5208,6 +5208,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "add-group-dialog",
   data: function data() {
@@ -5240,6 +5241,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _message__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./message */ "./resources/js/Pages/message.vue");
 /* harmony import */ var _dialog_window__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dialog-window */ "./resources/js/Pages/dialog-window.vue");
 /* harmony import */ var _send_file_dialog__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./send-file-dialog */ "./resources/js/Pages/send-file-dialog.vue");
+//
+//
+//
+//
 //
 //
 //
@@ -5478,6 +5483,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "group",
   props: {
@@ -5486,6 +5498,18 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     group: function group() {
       return this.$store.getters.getGroup(this.url);
+    }
+  },
+  methods: {
+    generalIsCurrentChat: function generalIsCurrentChat() {
+      if (this.$route.params.type === "allgemein") {
+        return "chat-link-current";
+      }
+    },
+    importantIsCurrentChat: function importantIsCurrentChat() {
+      if (this.$route.params.type === "wichtig") {
+        return "chat-link-current";
+      }
     }
   }
 });
@@ -5569,6 +5593,28 @@ __webpack_require__.r(__webpack_exports__);
     return {
       name: "Jakob"
     };
+  },
+  methods: {
+    groupsIsCurrent: function groupsIsCurrent() {
+      if (this.$route.fullPath.match("/gruppen.*")) {
+        return "navigation-item-active";
+      }
+    },
+    eventsIsCurrent: function eventsIsCurrent() {
+      if (this.$route.fullPath === "/termine") {
+        return "navigation-item-active";
+      }
+    },
+    settingsIsCurrent: function settingsIsCurrent() {
+      if (this.$route.fullPath === "/einstellungen") {
+        return "navigation-item-active";
+      }
+    },
+    tutorialIsCurrent: function tutorialIsCurrent() {
+      if (this.$route.fullPath === "/tutorial") {
+        return "navigation-item-active";
+      }
+    }
   }
 });
 
@@ -5605,6 +5651,13 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -5665,7 +5718,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Montserrat&display=swap);", ""]);
 
 // module
-exports.push([module.i, "* {\n  box-sizing: border-box;\n  margin: 0;\n  padding: 0;\n}\n#app {\n  display: flex;\n  flex-direction: row;\n  width: 100vw;\n  height: 100vh;\n  font-family: 'Montserrat', sans-serif;\n}\n.headline {\n  font-size: 1.8rem;\n  font-weight: 700;\n}\n", ""]);
+exports.push([module.i, "* {\n  box-sizing: border-box;\n  margin: 0;\n  padding: 0;\n}\n#app {\n  display: flex;\n  flex-direction: row;\n  width: 100vw;\n  height: 100vh;\n  font-family: 'Montserrat', sans-serif;\n}\n.headline {\n  color: #707070;\n  font-size: 1.8rem;\n  font-weight: 700;\n}\n.title {\n  color: #FFCB8E;\n  font-size: 1.8rem;\n  font-weight: 700;\n}\n.round-btn {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  width: 3rem;\n  height: 3rem;\n  font-size: 1.5rem;\n  color: white;\n  border-radius: 1.5rem;\n  outline: 0;\n}\n.btn {\n  flex-grow: 1;\n  height: 3rem;\n  font-size: 1rem;\n  color: white;\n  font-weight: 600;\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  cursor: pointer;\n  border-radius: 1.5rem;\n  padding-left: 1.5rem;\n  padding-right: 1.5rem;\n}\n.btn i {\n  font-size: 1.5rem;\n}\n.input {\n  font-size: 1rem;\n  outline: 0;\n  border-radius: 1.5rem;\n  color: #707070;\n  font-weight: 600;\n  padding-left: 1.5rem;\n  padding-right: 1.5rem;\n  height: 3rem;\n  background-color: #E1E1E1;\n}\n.input::-moz-placeholder {\n  color: #707070;\n}\n.input:-ms-input-placeholder {\n  color: #707070;\n}\n.input::placeholder {\n  color: #707070;\n}\n.warn-background {\n  background-color: #FC6B6B;\n  transition: 0.2s ease;\n}\n.primary-background {\n  background-color: #FFA88E;\n  transition: 0.2s ease;\n}\n.secondary-background {\n  background-color: #FFCB8E;\n  transition: 0.2s ease;\n}\n.warn-background:hover {\n  background-color: #ef5252;\n}\n.primary-background:hover {\n  background-color: #ff8f6e;\n}\n.secondary-background:hover {\n  background-color: #ffb561;\n}\n.row {\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  justify-content: flex-start;\n}\n", ""]);
 
 // exports
 
@@ -5684,7 +5737,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#dialog-window[data-v-35d28e8b] {\n  background-color: white;\n  width: 30vw;\n  padding: 2.5%;\n  border-radius: 3em;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: space-between;\n}\n#buttons[data-v-35d28e8b] {\n  width: 100%;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  justify-content: space-between;\n}\n.button[data-v-35d28e8b] {\n  flex-grow: 1;\n  height: 3rem;\n  font-size: 1.2rem;\n  color: white;\n  font-weight: 600;\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  cursor: pointer;\n  border-radius: 1.5rem;\n  padding-left: 1.5rem;\n  padding-right: 1.5rem;\n  transition: 0.2s ease;\n}\n.button[data-v-35d28e8b]:hover {\n  filter: brightness(90%);\n}\ni[data-v-35d28e8b] {\n  font-size: 1.5rem;\n}\n.cancel[data-v-35d28e8b] {\n  background-color: #FC6B6B;\n  margin-right: 20%;\n}\n.title[data-v-35d28e8b] {\n  font-weight: 700;\n  font-size: 1.5rem;\n}\n.input[data-v-35d28e8b] {\n  height: 3rem;\n  width: 100%;\n  font-size: 1.2rem;\n  font-weight: 600;\n  color: white;\n  border-radius: 1.5rem;\n  margin-top: 10%;\n  margin-bottom: 10%;\n  padding-left: 1.5rem;\n  padding-right: 1.5rem;\n  outline: 0;\n  background-color: #E1E1E1;\n}\n[data-v-35d28e8b]::-moz-placeholder {\n  color: white;\n}\n[data-v-35d28e8b]:-ms-input-placeholder {\n  color: white;\n}\n[data-v-35d28e8b]::placeholder {\n  color: white;\n}\n.accept[data-v-35d28e8b] {\n  background-color: #FFCB8E;\n}\n", ""]);
+exports.push([module.i, "#dialog-window[data-v-35d28e8b] {\n  background-color: white;\n  width: 30vw;\n  padding: 2.5%;\n  border-radius: 3em;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: space-between;\n}\n#buttons[data-v-35d28e8b] {\n  width: 100%;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  justify-content: space-between;\n}\n#add-group-dialog-input[data-v-35d28e8b] {\n  margin-top: 10%;\n  margin-bottom: 10%;\n  width: 100%;\n}\n\n", ""]);
 
 // exports
 
@@ -5703,7 +5756,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#chat[data-v-4d9d8b3e] {\n  flex-grow: 1;\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n}\n#messages[data-v-4d9d8b3e] {\n  display: flex;\n  flex-direction: column;\n  flex-grow: 1;\n  padding: 2%;\n}\n#message-input[data-v-4d9d8b3e] {\n  flex-grow: 1;\n}\n#input-group[data-v-4d9d8b3e] {\n  padding: 2% 4% 2% 4%;\n  box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.75);\n  -webkit-box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.75);\n  -moz-box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.75);\n}\n", ""]);
+exports.push([module.i, "#chat[data-v-4d9d8b3e] {\n  flex-grow: 1;\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n}\n#messages[data-v-4d9d8b3e] {\n  display: flex;\n  flex-direction: column;\n  flex-grow: 1;\n  padding: 2%;\n}\n#message-input[data-v-4d9d8b3e] {\n  margin-left: 2%;\n  margin-right: 2%;\n  flex-grow: 1;\n}\n#input-group[data-v-4d9d8b3e] {\n  display: flex;\n  padding: 1% 2% 1% 2%;\n  box-shadow: 1px 0 15px 3px rgba(92, 86, 86, 0.75);\n  -webkit-box-shadow: 1px 0 15px 3px rgba(92, 86, 86, 0.75);\n  -moz-box-shadow: 1px 0 15px 3px rgba(92, 86, 86, 0.75);\n}\n", ""]);
 
 // exports
 
@@ -5760,7 +5813,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".group-card[data-v-4f2dce32] {\n  cursor: pointer;\n  width: 15vw;\n  height: 15vw;\n  border: #FFA88E solid 3px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: space-around;\n  border-radius: 1rem;\n  box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.75);\n  -webkit-box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.75);\n  -moz-box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.75);\n  transition: 0.2s ease;\n  margin: 2%;\n}\n.group-card[data-v-4f2dce32]:hover {\n  transform: scale(1.05);\n}\n.group-card-icon[data-v-4f2dce32] {\n  width: 50%;\n  height: 50%;\n  background-color: #FFA88E;\n  color: white;\n  font-size: 3rem;\n  font-weight: 600;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  border-radius: 100%;\n}\n.group-card-name[data-v-4f2dce32] {\n  font-size: 1.5rem;\n  font-weight: 400;\n}\n", ""]);
+exports.push([module.i, ".group-card[data-v-4f2dce32] {\n  cursor: pointer;\n  width: 15vw;\n  height: 15vw;\n  border: #FFA88E solid 3px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: space-around;\n  border-radius: 1.5rem;\n  box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.75);\n  -webkit-box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.75);\n  -moz-box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.75);\n  transition: 0.2s ease;\n  margin: 2%;\n}\n.group-card[data-v-4f2dce32]:hover {\n  transform: scale(1.05);\n}\n.group-card-icon[data-v-4f2dce32] {\n  width: 50%;\n  height: 50%;\n  background-color: #FFA88E;\n  color: white;\n  font-size: 3rem;\n  font-weight: 600;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  border-radius: 100%;\n}\n.group-card-name[data-v-4f2dce32] {\n  font-size: 1.5rem;\n  font-weight: 700;\n  color: #707070;\n}\n", ""]);
 
 // exports
 
@@ -5798,7 +5851,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#group[data-v-d2be0174] {\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n}\n#group-header[data-v-d2be0174] {\n  display: flex;\n  flex-direction: column;\n  box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.75);\n  -webkit-box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.75);\n  -moz-box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.75);\n  padding: 2%;\n}\n#chat-selection[data-v-d2be0174] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n}\n", ""]);
+exports.push([module.i, "#group[data-v-d2be0174] {\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n}\n#group-header[data-v-d2be0174] {\n  display: flex;\n  flex-direction: column;\n  box-shadow: 1px 0px 15px 3px rgba(92, 86, 86, 0.75);\n  -webkit-box-shadow: 1px 0px 15px 3px rgba(92, 86, 86, 0.75);\n  -moz-box-shadow: 1px 0px 15px 3px rgba(92, 86, 86, 0.75);\n  padding: 2%;\n}\n#chat-selection[data-v-d2be0174] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n}\n.chat-link[data-v-d2be0174] {\n  font-size: 1.2rem;\n  color: #707070;\n  font-weight: 600;\n  margin-left: 0.5rem;\n  margin-right: 0.5rem;\n  transition: 0.2s ease;\n}\n.chat-link[data-v-d2be0174]:hover {\n  color: #FFCB8E;\n}\n.chat-link[data-v-d2be0174]::after {\n  content: '';\n  width: 0;\n  height: 2px;\n  display: block;\n  background-color: #FFCB8E;\n  transition: 0.2s ease;\n  border-radius: 1px;\n  margin-left: 50%;\n}\n.chat-link-current[data-v-d2be0174]::after {\n  width: 100%;\n  margin-left: 0;\n}\n", ""]);
 
 // exports
 
@@ -5836,7 +5889,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#navigation[data-v-79cf1a5d] {\n  display: flex;\n  flex-direction: column;\n  align-content: flex-start;\n  justify-content: space-between;\n  z-index: 20;\n  width: 20vw;\n  height: 100%;\n  padding: 1%;\n  background-color: #FFA88E;\n}\n.navigation-item[data-v-79cf1a5d] {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  margin-top: 1em;\n  margin-bottom: 1em;\n}\n#bottom[data-v-79cf1a5d] {\n  display: flex;\n  flex-direction: column;\n}\r\n", ""]);
+exports.push([module.i, "#navigation[data-v-79cf1a5d] {\n  display: flex;\n  flex-direction: column;\n  align-content: flex-start;\n  justify-content: space-between;\n  z-index: 20;\n  width: 20vw;\n  height: 100%;\n  background-color: #FFA88E;\n}\n.navigation-item[data-v-79cf1a5d] {\n  padding: 5%;\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  color: white;\n  font-size: 1.2rem;\n  font-weight: 600;\n  margin-top: 1em;\n  margin-bottom: 1em;\n  background-color: #FFA88E;\n  transition: 0.2s ease;\n  margin: 0;\n}\n.navigation-item i[data-v-79cf1a5d] {\n  width: 1.2rem;\n  font-size: 1.5rem;\n}\n.navigation-item[data-v-79cf1a5d]:hover {\n  background-color: #ff8f6e;\n}\n.navigation-item-active[data-v-79cf1a5d] {\n  background-color: #ff8f6e;\n}\n#bottom[data-v-79cf1a5d] {\n  display: flex;\n  flex-direction: column;\n}\n", ""]);
 
 // exports
 
@@ -5855,7 +5908,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".new-group-card[data-v-bbc12f98] {\n  cursor: pointer;\n  width: 15vw;\n  height: 15vw;\n  border: #FFA88E dashed 3px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  border-radius: 1rem;\n  box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.75);\n  -webkit-box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.75);\n  -moz-box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.75);\n  transition: 0.2s ease;\n  margin: 2%;\n}\n.new-group-card[data-v-bbc12f98]:hover {\n  transform: scale(1.05);\n}\n.new-group-card-icon[data-v-bbc12f98] {\n  color: #FFA88E;\n  font-size: 3rem;\n  font-weight: 600;\n}\n.new-group-card-text[data-v-bbc12f98] {\n  font-size: 1.2rem;\n  font-weight: 400;\n  color: #FFA88E;\n}\n", ""]);
+exports.push([module.i, ".new-group-card[data-v-bbc12f98] {\n  cursor: pointer;\n  width: 15vw;\n  height: 15vw;\n  border: #FFCB8E dashed 3px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  border-radius: 1.5rem;\n  box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.75);\n  -webkit-box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.75);\n  -moz-box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.75);\n  transition: 0.2s ease;\n  margin: 2%;\n}\n.new-group-card[data-v-bbc12f98]:hover {\n  transform: scale(1.05);\n}\n.new-group-card-icon[data-v-bbc12f98] {\n  color: #FFCB8E;\n  font-size: 3rem;\n  font-weight: 600;\n}\n.new-group-card-text[data-v-bbc12f98] {\n  font-size: 1.2rem;\n  font-weight: 700;\n  color: #FFCB8E;\n}\n", ""]);
 
 // exports
 
@@ -5874,7 +5927,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#send-file-input[data-v-096b8906] {\n  border-radius: 2em;\n  background-color: lightgray;\n  border: gray dashed 5px;\n  height: 40vh;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  width: 100%;\n  margin-top: 2em;\n  margin-bottom: 2em;\n}\n#dialog-window[data-v-096b8906] {\n  background-color: white;\n  width: 30vw;\n  padding: 2.5%;\n  border-radius: 3em;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: space-between;\n}\n#buttons[data-v-096b8906] {\n  width: 100%;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  justify-content: space-between;\n}\nbutton[data-v-096b8906] {\n  flex-grow: 1;\n  height: 2rem;\n  font-size: 1rem;\n  color: white;\n  background-color: #FFA88E;\n}\n", ""]);
+exports.push([module.i, "#send-file-input[data-v-096b8906] {\n  border-radius: 2em;\n  background-color: lightgray;\n  border: gray dashed 5px;\n  height: 40vh;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  width: 100%;\n  margin-top: 2em;\n  margin-bottom: 2em;\n}\n#dialog-window[data-v-096b8906] {\n  background-color: white;\n  width: 30vw;\n  padding: 2.5%;\n  border-radius: 3em;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: space-between;\n}\n#buttons[data-v-096b8906] {\n  display: flex;\n  width: 100%;\n  flex-direction: row;\n  align-items: center;\n  justify-content: space-between;\n}\nbutton[data-v-096b8906] {\n  flex-grow: 1;\n  height: 2rem;\n  font-size: 1rem;\n  color: white;\n  background-color: #FFA88E;\n}\n", ""]);
 
 // exports
 
@@ -31626,7 +31679,7 @@ var render = function() {
       ],
       staticClass: "input",
       attrs: {
-        id: "add-group-input",
+        id: "add-group-dialog-input",
         type: "text",
         placeholder: "Gruppenname"
       },
@@ -31645,7 +31698,8 @@ var render = function() {
       _c(
         "div",
         {
-          staticClass: "button cancel",
+          staticClass: "btn warn-background",
+          staticStyle: { "flex-grow": "1" },
           on: {
             click: function($event) {
               return _vm.$parent.$emit("close")
@@ -31658,10 +31712,13 @@ var render = function() {
         ]
       ),
       _vm._v(" "),
+      _c("div", { staticStyle: { "flex-grow": "1" } }),
+      _vm._v(" "),
       _c(
         "div",
         {
-          staticClass: "button accept",
+          staticClass: "btn secondary-background",
+          staticStyle: { "flex-grow": "1" },
           attrs: { disabled: !_vm.name },
           on: { click: _vm.addGroup }
         },
@@ -31729,9 +31786,14 @@ var render = function() {
           1
         ),
         _vm._v(" "),
-        _c("button", { on: { click: _vm.toggleDialog } }, [
-          _vm._v("Dialog öffnen")
-        ]),
+        _c(
+          "div",
+          {
+            staticClass: "round-btn warn-background",
+            on: { click: _vm.toggleDialog }
+          },
+          [_c("i", { staticClass: "fas fa-paperclip" })]
+        ),
         _vm._v(" "),
         _c("input", {
           directives: [
@@ -31742,6 +31804,7 @@ var render = function() {
               expression: "message"
             }
           ],
+          staticClass: "input",
           attrs: {
             id: "message-input",
             type: "text",
@@ -31768,12 +31831,13 @@ var render = function() {
         }),
         _vm._v(" "),
         _c(
-          "button",
+          "div",
           {
+            staticClass: "round-btn secondary-background",
             attrs: { disabled: !_vm.message.length },
             on: { click: _vm.publish }
           },
-          [_vm._v("Senden!")]
+          [_c("i", { staticClass: "fas fa-paper-plane" })]
         )
       ],
       1
@@ -31958,7 +32022,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "group-view-header" }, [
-      _c("h1", { staticClass: "headline" }, [_vm._v("Gruppenübersicht")])
+      _c("h1", { staticClass: "title" }, [_vm._v("Gruppenübersicht")])
     ])
   }
 ]
@@ -31988,7 +32052,27 @@ var render = function() {
     { attrs: { id: "group" } },
     [
       _c("div", { attrs: { id: "group-header" } }, [
-        _c("h1", { staticClass: "headline" }, [_vm._v(_vm._s(_vm.group.name))]),
+        _c(
+          "div",
+          { staticClass: "row" },
+          [
+            _c(
+              "router-link",
+              {
+                staticClass: "round-btn secondary-background",
+                attrs: { to: "/gruppen" }
+              },
+              [_c("i", { staticClass: "fas fa-arrow-left" })]
+            ),
+            _vm._v(" "),
+            _c(
+              "h1",
+              { staticClass: "headline", staticStyle: { "margin-left": "2%" } },
+              [_vm._v(_vm._s(_vm.group.name))]
+            )
+          ],
+          1
+        ),
         _vm._v(" "),
         _c(
           "div",
@@ -31997,6 +32081,8 @@ var render = function() {
             _c(
               "router-link",
               {
+                staticClass: "chat-link",
+                class: _vm.generalIsCurrentChat(),
                 attrs: {
                   to: {
                     name: "chat",
@@ -32004,12 +32090,14 @@ var render = function() {
                   }
                 }
               },
-              [_vm._v("Allgemein")]
+              [_vm._v("\n                Allgemein\n            ")]
             ),
             _vm._v(" "),
             _c(
               "router-link",
               {
+                staticClass: "chat-link",
+                class: _vm.importantIsCurrentChat(),
                 attrs: {
                   to: {
                     name: "chat",
@@ -32017,7 +32105,7 @@ var render = function() {
                   }
                 }
               },
-              [_vm._v("Wichtig")]
+              [_vm._v("\n                Wichtig\n            ")]
             )
           ],
           1
@@ -32096,7 +32184,11 @@ var render = function() {
       [
         _c(
           "router-link",
-          { staticClass: "navigation-item", attrs: { to: { name: "groups" } } },
+          {
+            staticClass: "navigation-item",
+            class: _vm.groupsIsCurrent(),
+            attrs: { to: { name: "groups" } }
+          },
           [
             _c("p", [_vm._v("Gruppenübersicht")]),
             _vm._v(" "),
@@ -32106,43 +32198,49 @@ var render = function() {
         _vm._v(" "),
         _c(
           "router-link",
-          { staticClass: "navigation-item", attrs: { to: "/termine" } },
+          {
+            staticClass: "navigation-item",
+            class: _vm.eventsIsCurrent(),
+            attrs: { to: "/termine" }
+          },
           [
             _c("p", [_vm._v("Termine")]),
             _vm._v(" "),
-            _c("i", { staticClass: "fas fa-th-large" })
+            _c("i", { staticClass: "far fa-calendar-alt" })
           ]
         ),
         _vm._v(" "),
         _c(
           "router-link",
-          { staticClass: "navigation-item", attrs: { to: "/einstellungen" } },
+          {
+            staticClass: "navigation-item",
+            class: _vm.settingsIsCurrent(),
+            attrs: { to: "/einstellungen" }
+          },
           [
             _c("p", [_vm._v("Einstellungen")]),
             _vm._v(" "),
-            _c("i", { staticClass: "fas fa-th-large" })
+            _c("i", { staticClass: "fas fa-cog" })
           ]
         ),
         _vm._v(" "),
-        _vm._m(0)
+        _c(
+          "div",
+          { staticClass: "navigation-item", class: _vm.tutorialIsCurrent() },
+          [
+            _c("p", [_vm._v("Tutorial starten")]),
+            _vm._v(" "),
+            _c("i", { staticClass: "far fa-question-circle" })
+          ]
+        )
       ],
       1
     ),
     _vm._v(" "),
-    _vm._m(1)
+    _vm._m(0)
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "navigation-item" }, [
-      _c("p", [_vm._v("Tutorial starten")]),
-      _vm._v(" "),
-      _c("i", { staticClass: "fas fa-th-large" })
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -32219,7 +32317,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "dialog-window" } }, [
-    _c("h2", [_vm._v("Datei senden")]),
+    _c("h2", { staticClass: "title" }, [_vm._v("Datei senden")]),
     _vm._v(" "),
     _c("input", {
       attrs: { id: "send-file-input", type: "file" },
@@ -32228,20 +32326,30 @@ var render = function() {
     _vm._v(" "),
     _c("div", { attrs: { id: "buttons" } }, [
       _c(
-        "button",
+        "div",
         {
+          staticClass: "btn warn-background",
+          staticStyle: { "flex-grow": "1" },
           on: {
             click: function($event) {
               return _vm.$parent.$emit("close")
             }
           }
         },
-        [_vm._v("Abbrechen")]
+        [
+          _c("p", [_vm._v("Abbrechen")]),
+          _vm._v(" "),
+          _c("i", { staticClass: "fas fa-times" })
+        ]
       ),
       _vm._v(" "),
+      _c("div", { staticStyle: { "flex-grow": "1" } }),
+      _vm._v(" "),
       _c(
-        "button",
+        "div",
         {
+          staticClass: "btn secondary-background",
+          staticStyle: { "flex-grow": "1" },
           attrs: { disabled: !_vm.file },
           on: {
             click: function($event) {
@@ -32249,7 +32357,11 @@ var render = function() {
             }
           }
         },
-        [_vm._v("Senden")]
+        [
+          _c("p", [_vm._v("Senden")]),
+          _vm._v(" "),
+          _c("i", { staticClass: "fas fa-paper-plane" })
+        ]
       )
     ])
   ])

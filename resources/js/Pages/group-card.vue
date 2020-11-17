@@ -30,7 +30,7 @@ export default {
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    border-radius: 1rem;
+    border-radius: 1.5rem;
 
     box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.75);
     -webkit-box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.75);
@@ -62,6 +62,7 @@ export default {
 
 .group-card-name {
     font-size: 1.5rem;
-    font-weight: 400;
+    font-weight: 700;
+    color: #707070;
 }
 </style>

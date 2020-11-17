@@ -17,12 +17,12 @@ export default {
 
     width: 15vw;
     height: 15vw;
-    border: #FFA88E dashed 3px;
+    border: #FFCB8E dashed 3px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border-radius: 1rem;
+    border-radius: 1.5rem;
 
     box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.75);
     -webkit-box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.75);
@@ -38,14 +38,14 @@ export default {
 }
 
 .new-group-card-icon {
-    color: #FFA88E;
+    color: #FFCB8E;
     font-size: 3rem;
     font-weight: 600;
 }
 
 .new-group-card-text {
     font-size: 1.2rem;
-    font-weight: 400;
-    color: #FFA88E;
+    font-weight: 700;
+    color: #FFCB8E;
 }
 </style>
