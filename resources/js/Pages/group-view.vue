@@ -1,7 +1,8 @@
 <template>
     <div id="group-view">
-        <dialog-window v-show="isAddGroupDialogOpen" @close="toggleAddGroupDialog" @submit="addGroup">
-            <add-group-dialog></add-group-dialog>
+
+        <dialog-window :bus="groupInputBus" title="Gruppe erstellen!" @submit="createGroup">
+            <dialog-content-create-group :bus="groupInputBus"/>
         </dialog-window>
 
         <div class="group-view-header">
@@ -9,7 +10,7 @@
         </div>
         <div id="groups">
             <group-card v-for="group in groups" :group="group" :key="group.url"/>
-            <new-group-card @click="toggleAddGroupDialog"/>
+            <new-group-card @click="groupInputBus.$emit('open')"/>
         </div>
     </div>
 </template>
@@ -18,14 +19,15 @@
 import GroupCard from "@/Pages/group-card";
 import NewGroupCard from "@/Pages/new-group-card";
 import DialogWindow from "@/Pages/dialog-window";
-import AddGroupDialog from "@/Pages/add-group-dialog";
+import Vue from "vue";
+import DialogContentCreateGroup from "@/Pages/dialog-content-create-group";
 
 export default {
     name: "group-view",
-    components: {AddGroupDialog, DialogWindow, NewGroupCard, GroupCard},
+    components: {DialogContentCreateGroup, DialogWindow, NewGroupCard, GroupCard},
     data() {
         return {
-            isAddGroupDialogOpen: false
+            groupInputBus: new Vue()
         }
     },
     computed: {
@@ -34,12 +36,8 @@ export default {
         }
     },
     methods: {
-        toggleAddGroupDialog() {
-            this.isAddGroupDialogOpen = !this.isAddGroupDialogOpen;
-        },
-        addGroup(name) {
+        createGroup(name) {
             this.$store.commit('addGroup', {name: name})
-            this.toggleAddGroupDialog()
         }
     }
 }

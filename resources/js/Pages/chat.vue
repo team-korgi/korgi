@@ -4,10 +4,11 @@
             <message v-for="message in Object.values(chat.messages)" :key="message.timestamp" :message="message"/>
         </div>
         <div id="input-group">
-            <dialog-window v-show="isDialogOpen" @close="toggleDialog" @submit="sendFile">
-                <send-file-dialog></send-file-dialog>
+            <dialog-window :bus="fileInputBus" title="Datei senden!" @submit="sendFile">
+                <dialog-content-send-file :bus="fileInputBus"/>
             </dialog-window>
-            <div class="round-btn warn-background" v-on:click="toggleDialog">
+
+            <div class="round-btn warn-background" v-on:click="fileInputBus.$emit('open')">
                 <i class="fas fa-paperclip"/>
             </div>
             <input class="input" id="message-input" type="text" v-model="message" @keypress.enter="publish" placeholder="Nachricht">
@@ -19,13 +20,15 @@
 </template>
 
 <script>
+import Vue from 'vue';
+
 import Message from "./message";
 import DialogWindow from "./dialog-window";
-import SendFileDialog from "./send-file-dialog";
+import DialogContentSendFile from "./dialog-content-send-file";
 
 export default {
     name: "chat",
-    components: {Message, DialogWindow, SendFileDialog},
+    components: {Message, DialogWindow, DialogContentSendFile},
     props: {
         type: String,
         url: String
@@ -33,7 +36,7 @@ export default {
     data() {
         return {
             message: "",
-            isDialogOpen: false
+            fileInputBus: new Vue()
         };
     },
     computed: {

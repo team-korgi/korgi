@@ -61,6 +61,7 @@ export default {
 }
 
 .btn {
+    width: 100%;
     flex-grow: 1;
     height: 3rem;
     font-size: 1rem;
@@ -74,8 +75,6 @@ export default {
     border-radius: 1.5rem;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
-
-
 }
 
 .btn i {
@@ -114,6 +113,11 @@ export default {
     transition: 0.2s ease;
 }
 
+.secondary-background.disabled {
+    cursor: default;
+    filter: saturate(0.3);
+}
+
 .warn-background:hover {
     background-color: #ef5252;
 }
@@ -126,10 +130,7 @@ export default {
     background-color: #ffb561;
 }
 
-.row {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
+.secondary-background.disabled:hover {
+    background-color: #FFCB8E;
 }
 </style>

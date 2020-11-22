@@ -20,20 +20,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c6b7b351-0dd0-44c1-b4e9-bbfaad6d7dff" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/korgi.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/korgi.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/Pages/dialog-content-create-group.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/Pages/dialog-content-send-file.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/Pages/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/add-group-dialog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/add-group-dialog.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/Pages/add-group-dialog.vue" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/Pages/chat.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/chat.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/group-card.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/group-card.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/Pages/dialog-window.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/dialog-window.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/Pages/group-view.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/group-view.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/Pages/group.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/group.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/navigation.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/navigation.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/new-group-card.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/new-group-card.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/send-file-dialog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/send-file-dialog.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/Pages/send-file-dialog.vue" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,6 +187,9 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\JetBrains\Projects\Diplomarbeit\korgi\resources\js\Pages" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\JetBrains\Projects\Diplomarbeit\korgi" />
     </key>
@@ -211,7 +211,10 @@
       <workItem from="1605276205351" duration="12218000" />
       <workItem from="1605362228175" duration="132000" />
       <workItem from="1605529709976" duration="599000" />
-      <workItem from="1605612865807" duration="9633000" />
+      <workItem from="1605612865807" duration="11005000" />
+      <workItem from="1605628465277" duration="203000" />
+      <workItem from="1605816190783" duration="10515000" />
+      <workItem from="1606069050174" duration="5837000" />
     </task>
     <servers />
   </component>
@@ -234,14 +237,26 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="552" y="178" key="#Deployment" timestamp="1605628592214">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="178" key="#Deployment/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605628592214" />
+    <state x="536" y="165" key="#SSH_Configurations" timestamp="1605628589967">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="536" y="165" key="#SSH_Configurations/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605628589967" />
     <state x="254" y="313" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1605277764194">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="254" y="313" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605277764194" />
-    <state x="260" y="278" key="FileChooserDialogImpl" timestamp="1605277749922">
+    <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1606074530601">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="260" y="278" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605277749922" />
+    <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1606074530601" />
+    <state x="618" y="311" key="FileChooserDialogImpl" timestamp="1605628659341">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="618" y="311" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605628659341" />
     <state x="0" y="0" key="FileDocumentManager.FileCacheConflict" timestamp="1605278724181">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -266,9 +281,13 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="777" y="429" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605288456173" />
-    <state x="668" y="95" width="583" height="849" key="find.popup" timestamp="1605283538846">
+    <state x="668" y="95" width="583" height="849" key="find.popup" timestamp="1605826509460">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="668" y="95" width="583" height="849" key="find.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605283538846" />
+    <state x="668" y="95" width="583" height="849" key="find.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605826509460" />
+    <state x="616" y="240" key="run.anything.popup" timestamp="1606070098177">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1606070098177" />
   </component>
 </project>

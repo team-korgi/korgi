@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig authType="PASSWORD" host="59.typo3.htl3r.com" id="da79c4a2-c6ed-4a58-993e-1ef92a315fc3" port="2259" nameFormat="DESCRIPTIVE" username="medt" />
+    </configs>
+  </component>
+</project>

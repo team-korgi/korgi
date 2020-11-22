@@ -75,6 +75,13 @@ export default {
     transition: 0.2s ease;
 }
 
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
 .chat-link:hover {
     color: #FFCB8E;
 }
