@@ -1,5 +1,5 @@
 <template>
-  <div class="message" v-bind:class="changeAlignment()">{{message.message.user}}: {{message.message.text}}</div>
+  <div class="message" v-bind:class="changeAlignment()">{{message.message.user.username}}: {{message.message.text}}</div>
 </template>
 
 <script>

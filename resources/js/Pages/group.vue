@@ -6,15 +6,15 @@
                 <h1 style="margin-left: 2%" class="headline">{{ group.name }}</h1>
             </div>
             <div id="chat-selection">
-                <router-link class="chat-link" :class="generalIsCurrentChat()" :to="{ name: 'chat', params: { url: url, type: 'allgemein' }}">
+                <router-link class="chat-link left" :class="generalIsCurrentChat()" :to="{ name: 'chat', params: { url: url, type: 'allgemein' }}">
                     Allgemein
                 </router-link>
-                <router-link class="chat-link" :class="importantIsCurrentChat()" :to="{ name: 'chat', params: { url: url, type: 'wichtig' }}">
+                <router-link class="chat-link right" :class="importantIsCurrentChat()" :to="{ name: 'chat', params: { url: url, type: 'wichtig' }}">
                     Wichtig
                 </router-link>
             </div>
         </div>
-        <router-view/>
+        <router-view :admins="group.admins"/>
     </div>
 </template>
 
@@ -57,7 +57,7 @@ export default {
     box-shadow: 1px 0px 15px 3px rgba(92, 86, 86, 0.75);
     -webkit-box-shadow: 1px 0px 15px 3px rgba(92, 86, 86, 0.75);
     -moz-box-shadow: 1px 0px 15px 3px rgba(92, 86, 86, 0.75);
-    padding: 2%;
+    padding: 2% 2% 0 2%;
 }
 
 #chat-selection {
@@ -67,11 +67,11 @@ export default {
 }
 
 .chat-link {
+    width: 6em;
+    text-align: center;
     font-size: 1.2rem;
     color: #707070;
     font-weight: 600;
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
     transition: 0.2s ease;
 }
 
@@ -83,22 +83,38 @@ export default {
 }
 
 .chat-link:hover {
-    color: #FFCB8E;
+    color: #FFA88E;
 }
 
 .chat-link::after {
     content: '';
     width: 0;
-    height: 2px;
+    height: 4px;
     display: block;
-    background-color: #FFCB8E;
+    background-color: #FFA88E;
     transition: 0.2s ease;
-    border-radius: 1px;
-    margin-left: 50%;
 }
 
-.chat-link-current::after {
+.chat-link.left::after {
+    margin-left: 100%;
+}
+
+.chat-link.right::after {
+    margin-left: 0;
+}
+
+.chat-link-current {
+    color: #FFA88E;
+}
+
+.chat-link-current.left::after {
     width: 100%;
     margin-left: 0;
 }
+
+.chat-link-current.right::after {
+    width: 100%;
+    margin-left: 0;
+}
+
 </style>

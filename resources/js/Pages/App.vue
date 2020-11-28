@@ -1,5 +1,7 @@
 <template>
     <div id="app">
+<!--        <date-picker :multiple="true"></date-picker>-->
+<!--        <date-picker :multiple="false"></date-picker>-->
         <navigation/>
         <router-view/>
     </div>
@@ -7,10 +9,12 @@
 
 <script>
 import Navigation from "./navigation"
+import DatePicker from "@/Pages/date-picker";
 
 export default {
     name: 'App',
     components: {
+        DatePicker,
         Navigation
     }
 }
@@ -51,6 +55,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 
     width: 3rem;
     height: 3rem;
@@ -58,6 +63,12 @@ export default {
     color: white;
     border-radius: 1.5rem;
     outline: 0;
+}
+
+.round-btn.mini {
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 0.75rem;
 }
 
 .btn {
@@ -98,6 +109,11 @@ export default {
     color: #707070;
 }
 
+.input.disabled {
+    cursor: default;
+    pointer-events: none;
+}
+
 .warn-background {
     background-color: #FC6B6B;
     transition: 0.2s ease;
@@ -113,7 +129,20 @@ export default {
     transition: 0.2s ease;
 }
 
+.warn-background.disabled {
+    pointer-events: none;
+    cursor: default;
+    filter: saturate(0.3);
+}
+
+.primary-background.disabled {
+    pointer-events: none;
+    cursor: default;
+    filter: saturate(0.3);
+}
+
 .secondary-background.disabled {
+    pointer-events: none;
     cursor: default;
     filter: saturate(0.3);
 }
@@ -128,9 +157,5 @@ export default {
 
 .secondary-background:hover {
     background-color: #ffb561;
-}
-
-.secondary-background.disabled:hover {
-    background-color: #FFCB8E;
 }
 </style>

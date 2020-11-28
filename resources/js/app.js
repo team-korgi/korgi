@@ -25,8 +25,14 @@ Vue.use(VueRouter);
 const app = document.getElementById('app');
 
 //TODO aus der Datenbank holen
+//unnötig, sobald uui vom Server kommt
+let uuid;
+
 function getUUID() {
-    return generateUUID();
+    if (!uuid) {
+        uuid = generateUUID()
+    }
+    return uuid;
 }
 
 function generateUUID() {
@@ -62,6 +68,7 @@ function getGroups() {
             name: "Gruppe 1",
             url: "gruppe-1",
             admins: [],
+            events: [],
             channels: {
                 "allgemein": {
                     name: "Allgemein",
@@ -81,6 +88,7 @@ function getGroups() {
             name: "Gruppe 2",
             url: "gruppe-2",
             admins: [],
+            events: [],
             channels: {
                 "allgemein": {
                     name: "Allgemein",
@@ -106,11 +114,14 @@ const store = new Vuex.Store({
             subscribeKey: getSubscribeKey(),
             uuid: getUUID()
         }),
-        user: getUsername(),
+        user: {
+            username: getUsername(),
+            uuid: getUUID()
+        },
         groups: getGroups()
     },
     mutations: {
-        publish(state, payload) {
+        publishMessage(state, payload) {
             state.pubnub.publish(
                 {
                     channel: payload.channel,
@@ -118,7 +129,58 @@ const store = new Vuex.Store({
                         'text': payload.message,
                         'user': state.user,
                         'group': payload.group,
-                        'chat': payload.chat
+                        'chat': payload.chat,
+                        'messageType': 'message'
+                    }
+                }
+            );
+        },
+        publishFile(state, payload) {
+            state.pubnub.publish(
+                {
+                    channel: payload.channel,
+                    message: {
+                        'text': payload.message,
+                        'user': state.user,
+                        'group': payload.group,
+                        'chat': payload.chat,
+                        'url': payload.url,
+                        'messageType': 'file'
+                    }
+                }
+            );
+        },
+        publishDateAnnouncement(state, payload) {
+            state.pubnub.publish(
+                {
+                    channel: payload.channel,
+                    message: {
+                        'text': payload.message,
+                        'date': payload.date,
+                        'user': state.user,
+                        'group': payload.group,
+                        'chat': payload.chat,
+                        'messageType': 'dateAnnouncement'
+                    }
+                }
+            );
+            store.commit('addEvent', {
+                subject: payload.message,
+                date: payload.date,
+                group: payload.group
+            })
+        },
+        publishDateVoting(state, payload) {
+            state.pubnub.publish(
+                {
+                    channel: payload.channel,
+                    message: {
+                        'text': payload.message,
+                        'options': payload.dates,
+                        'user': state.user,
+                        'group': payload.group,
+                        'chat': payload.chat,
+                        'messageType': 'dateVoting'
                     }
                 }
             );
@@ -126,9 +188,16 @@ const store = new Vuex.Store({
         addMessage(state, payload) {
             Vue.set(state.groups[payload.message.message.group].channels[payload.message.message.chat].messages, payload.message.timetoken, payload.message);
         },
-        addGroup(state, payload) {
-            //TODO push to server
+        addEvent(state, payload) {
+            let newEvent = {
+                subject: payload.subject,
+                date: payload.date
+            }
 
+            state.groups[payload.group].events.push(newEvent);
+        },
+        addGroup(state, payload) {
+            // TODO push to server
             let newGroup = {
                 name: payload.name,
                 url: getUrlFromName(payload.name),
@@ -153,6 +222,9 @@ const store = new Vuex.Store({
         }
     },
     getters: {
+        getUser: state => {
+            return state.user;
+        },
         getGroups: state => {
             return state.groups;
         },
@@ -175,6 +247,25 @@ const store = new Vuex.Store({
             });
 
             return r;
+        },
+        getEvents: state => {
+            let events = [];
+
+            Object.values(state.groups).forEach(group => {
+                group.events.forEach(event => {
+                    events.push(event);
+                })
+            })
+
+            return events.sort((e1, e2) => {
+                if (e1.date.getTime() > e2.date.getTime()) {
+                    return 1
+                }
+                if (e1.date.getTime() === e2.date.getTime()) {
+                    return 0
+                }
+                return -1;
+            })
         }
     }
 });

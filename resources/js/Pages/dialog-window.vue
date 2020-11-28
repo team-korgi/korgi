@@ -38,7 +38,7 @@ export default {
         this.bus.$on('open', this.open);
         this.bus.$on('close', this.close);
         this.bus.$on('validate', this.validate);
-        this.bus.$on('save', this.save);
+        this.bus.$on('submit', this.submit);
     },
     methods: {
         open() {
@@ -49,7 +49,7 @@ export default {
             this.isOpen = false;
         },
         validate(content) {
-            if (content) {
+            if (content && !(Object.values(content).includes("") || Object.values(content).includes(undefined)) ) {
                 this.isValid = true;
                 this.content = content;
             } else {
@@ -57,8 +57,10 @@ export default {
             }
         },
         submit() {
-            this.$emit('submit', this.content)
-            this.close();
+            if (this.isValid) {
+                this.$emit('submit', this.content)
+                this.close();
+            }
         },
     }
 }
