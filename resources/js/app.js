@@ -189,6 +189,8 @@ const store = new Vuex.Store({
             Vue.set(state.groups[payload.message.message.group].channels[payload.message.message.chat].messages, payload.message.timetoken, payload.message);
         },
         addEvent(state, payload) {
+            // TODO push to server
+
             let newEvent = {
                 subject: payload.subject,
                 date: payload.date

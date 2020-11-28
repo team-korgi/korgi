@@ -1,7 +1,7 @@
 <template>
     <div id="chat">
         <div id="messages">
-            <message v-for="message in Object.values(channel.messages)" :key="message.timestamp" :message="message"/>
+            <chat-element v-for="message in Object.values(channel.messages)" :key="message.timestamp" :message="message"/>
         </div>
         <div id="input-group">
             <dialog-window :bus="fileInputBus" title="Datei senden!" @submit="publishFile">
@@ -36,15 +36,15 @@
 <script>
 import Vue from 'vue';
 
-import Message from "./message";
 import DialogWindow from "./dialog-window";
 import DialogContentSendFile from "./dialog-content-send-file";
 import DialogContentEventAnnouncement from "./dialog-content-event-announcement";
 import DatePicker from "@/Pages/date-picker";
+import ChatElement from "@/Pages/chat-element";
 
 export default {
     name: "chat",
-    components: {DatePicker, Message, DialogWindow, DialogContentSendFile, DialogContentEventAnnouncement},
+    components: {ChatElement, DatePicker, DialogWindow, DialogContentSendFile, DialogContentEventAnnouncement},
     props: {
         type: String,
         url: String
@@ -117,6 +117,7 @@ export default {
 
 <style scoped>
 #chat {
+    background-color: #F3F3F3;
     flex-grow: 1;
     width: 100%;
     display: flex;
