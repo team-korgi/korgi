@@ -9,7 +9,7 @@
 <script>
 import DatePicker from "@/Pages/date-picker";
 export default {
-    name: "dialog-content-date-announcement",
+    name: "dialog-content-event-announcement",
     components: {DatePicker},
     data() {
         return {

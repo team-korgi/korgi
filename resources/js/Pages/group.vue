@@ -14,7 +14,7 @@
                 </router-link>
             </div>
         </div>
-        <router-view :admins="group.admins"/>
+        <router-view/>
     </div>
 </template>
 

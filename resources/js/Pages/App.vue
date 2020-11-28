@@ -73,7 +73,7 @@ export default {
 
 .btn {
     width: 100%;
-    flex-grow: 1;
+    /*flex-grow: 1;*/
     height: 3rem;
     font-size: 1rem;
     color: white;

@@ -150,7 +150,7 @@ const store = new Vuex.Store({
                 }
             );
         },
-        publishDateAnnouncement(state, payload) {
+        publishEventAnnouncement(state, payload) {
             state.pubnub.publish(
                 {
                     channel: payload.channel,
@@ -160,7 +160,7 @@ const store = new Vuex.Store({
                         'user': state.user,
                         'group': payload.group,
                         'chat': payload.chat,
-                        'messageType': 'dateAnnouncement'
+                        'messageType': 'eventAnnouncement'
                     }
                 }
             );
@@ -198,10 +198,12 @@ const store = new Vuex.Store({
         },
         addGroup(state, payload) {
             // TODO push to server
+
             let newGroup = {
                 name: payload.name,
                 url: getUrlFromName(payload.name),
                 admins: [state.user],
+                events: [],
                 channels: {
                     "allgemein": {
                         name: "Allgemein",
@@ -219,6 +221,11 @@ const store = new Vuex.Store({
             }
 
             Vue.set(state.groups, getUrlFromName(payload.name), newGroup)
+
+            store.state.pubnub.subscribe({
+                channels: store.getters.getAllChannelUuids,
+                withPresence: true
+            });
         }
     },
     getters: {
