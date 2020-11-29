@@ -55,12 +55,10 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
 
     width: 3rem;
     height: 3rem;
     font-size: 1.5rem;
-    color: white;
     border-radius: 1.5rem;
     outline: 0;
 }
@@ -76,13 +74,11 @@ export default {
     /*flex-grow: 1;*/
     height: 3rem;
     font-size: 1rem;
-    color: white;
     font-weight: 600;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    cursor: pointer;
     border-radius: 1.5rem;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
@@ -117,16 +113,22 @@ export default {
 .warn-background {
     background-color: #FC6B6B;
     transition: 0.2s ease;
+    cursor: pointer;
+    color: white;
 }
 
 .primary-background {
     background-color: #FFA88E;
     transition: 0.2s ease;
+    cursor: pointer;
+    color: white;
 }
 
 .secondary-background {
     background-color: #FFCB8E;
     transition: 0.2s ease;
+    cursor: pointer;
+    color: white;
 }
 
 .warn-background.disabled {

@@ -67,7 +67,7 @@ function getGroups() {
         "gruppe-1": {
             name: "Gruppe 1",
             url: "gruppe-1",
-            admins: [],
+            hasAdminPermissions: true,
             events: [],
             channels: {
                 "allgemein": {
@@ -87,7 +87,7 @@ function getGroups() {
         "gruppe-2": {
             name: "Gruppe 2",
             url: "gruppe-2",
-            admins: [],
+            hasAdminPermissions: false,
             events: [],
             channels: {
                 "allgemein": {
@@ -141,6 +141,8 @@ const store = new Vuex.Store({
                     channel: payload.channel,
                     message: {
                         'text': payload.message,
+                        'fileName': payload.fileName,
+                        'fileType': payload.fileType,
                         'user': state.user,
                         'group': payload.group,
                         'chat': payload.chat,
@@ -204,7 +206,7 @@ const store = new Vuex.Store({
             let newGroup = {
                 name: payload.name,
                 url: getUrlFromName(payload.name),
-                admins: [state.user],
+                hasAdminPermissions: true,
                 events: [],
                 channels: {
                     "allgemein": {

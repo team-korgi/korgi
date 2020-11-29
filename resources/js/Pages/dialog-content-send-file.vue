@@ -1,24 +1,29 @@
 <template>
     <div class="dialog-content">
-        <input class="send-file-input" type="file" @change="saveContent">
+        <input class="input send-file-message" type="text" placeholder="Nachricht" v-model="message" @input="saveContent">
+        <input id="send-file-input" type="file" @change="saveContent">
     </div>
 </template>
 
 <script>
 export default {
-    name: "new-send-file-dialog",
+    name: "dialog-content-send-file",
     props: {
         bus: Object
     },
     data() {
         return {
-            file: undefined
+            file: undefined,
+            message: ""
         }
     },
     methods: {
-        saveContent(event) {
-            this.file = event.target.files[0];
-            this.bus.$emit('validate', this.file);
+        saveContent() {
+            this.file = document.getElementById("send-file-input").files[0];
+            this.bus.$emit('validate', {
+                file: this.file,
+                message: this.message
+            });
         }
     }
 }
@@ -29,7 +34,7 @@ export default {
     width: 100%;
 }
 
-.send-file-input {
+#send-file-input {
     border-radius: 2rem;
     background-color: lightgray;
     border: gray dashed 5px;
@@ -40,5 +45,10 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.send-file-message {
+    width: 100%;
+    margin-bottom: 10%;
 }
 </style>

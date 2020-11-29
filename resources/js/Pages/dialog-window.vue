@@ -49,6 +49,7 @@ export default {
             this.isOpen = false;
         },
         validate(content) {
+            console.log(content)
             if (content && !(Object.values(content).includes("") || Object.values(content).includes(undefined)) ) {
                 this.isValid = true;
                 this.content = content;
