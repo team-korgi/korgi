@@ -166,6 +166,8 @@ const store = new Vuex.Store({
                     }
                 }
             );
+
+            // Unnötig, wenn groups vom server kommen
             store.commit('addEvent', {
                 subject: payload.message,
                 date: payload.date,

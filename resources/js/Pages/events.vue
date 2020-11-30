@@ -21,6 +21,6 @@ export default {
 
 <style scoped>
 #events {
-    padding: 2%;
+    width: 100%;
 }
 </style>
