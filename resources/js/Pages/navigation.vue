@@ -1,8 +1,8 @@
 <template>
     <div id="navigation">
         <div id="top">
-            <h1>KORGI</h1>
-            <p id="greeting">Willkommen zurück, {{ name }}!</p>
+            <img class="logo" src="../../assets/korgi_yellow_only.svg" alt="KORGI">
+            <p class="greeting">Willkommen zurück, {{ user }}!</p>
             <a>Abmelden</a>
         </div>
         <div id="center">
@@ -24,7 +24,6 @@
             </div>
         </div>
         <div id="bottom">
-            <div></div>
             <a>Impressum</a>
             <a>Datenschutzerklärung</a>
         </div>
@@ -36,7 +35,7 @@ export default {
     name: "navigation",
     data() {
         return {
-            name: "Jakob"
+            user: this.$store.getters.getUser.username
         }
     },
     methods: {
@@ -65,6 +64,10 @@ export default {
 </script>
 
 <style scoped>
+
+.logo {
+    width: 100%;
+}
 
 
 #navigation {
@@ -97,6 +100,14 @@ export default {
     margin: 0;
 }
 
+.greeting {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: white;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
 .navigation-item i {
     width: 1.2rem;
     font-size: 1.5rem;
@@ -106,6 +117,22 @@ export default {
     background-color: #ff8f6e;
 }
 
+#top {
+    display: flex;
+    flex-direction: column;
+    padding: 5%;
+}
+
+#top a {
+    color: white;
+    text-decoration: underline;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+
 .navigation-item-active {
     background-color: #ff8f6e;
 }
@@ -113,5 +140,14 @@ export default {
 #bottom {
     display: flex;
     flex-direction: column;
+    padding: 5%;
+}
+
+#bottom a {
+    margin-top: 5%;
+    color: white;
+    text-decoration: underline;
+    font-size: 1.2rem;
+    font-weight: bold;
 }
 </style>

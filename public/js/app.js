@@ -6080,12 +6080,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "navigation",
   data: function data() {
     return {
-      name: "Jakob"
+      user: this.$store.getters.getUser.username
     };
   },
   methods: {
@@ -6435,7 +6434,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#navigation[data-v-79cf1a5d] {\n  display: flex;\n  flex-direction: column;\n  align-content: flex-start;\n  justify-content: space-between;\n  z-index: 20;\n  width: 20vw;\n  height: 100%;\n  background-color: #FFA88E;\n}\n.navigation-item[data-v-79cf1a5d] {\n  padding: 5%;\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  color: white;\n  font-size: 1.2rem;\n  font-weight: 600;\n  margin-top: 1em;\n  margin-bottom: 1em;\n  background-color: #FFA88E;\n  transition: 0.2s ease;\n  margin: 0;\n}\n.navigation-item i[data-v-79cf1a5d] {\n  width: 1.2rem;\n  font-size: 1.5rem;\n}\n.navigation-item[data-v-79cf1a5d]:hover {\n  background-color: #ff8f6e;\n}\n.navigation-item-active[data-v-79cf1a5d] {\n  background-color: #ff8f6e;\n}\n#bottom[data-v-79cf1a5d] {\n  display: flex;\n  flex-direction: column;\n}\n", ""]);
+exports.push([module.i, ".logo[data-v-79cf1a5d] {\n  width: 100%;\n}\n#navigation[data-v-79cf1a5d] {\n  display: flex;\n  flex-direction: column;\n  align-content: flex-start;\n  justify-content: space-between;\n  z-index: 20;\n  width: 20vw;\n  height: 100%;\n  background-color: #FFA88E;\n}\n.navigation-item[data-v-79cf1a5d] {\n  padding: 5%;\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  color: white;\n  font-size: 1.2rem;\n  font-weight: 600;\n  margin-top: 1em;\n  margin-bottom: 1em;\n  background-color: #FFA88E;\n  transition: 0.2s ease;\n  margin: 0;\n}\n.greeting[data-v-79cf1a5d] {\n  font-size: 1.4rem;\n  font-weight: bold;\n  color: white;\n  margin-top: 5%;\n  margin-bottom: 5%;\n}\n.navigation-item i[data-v-79cf1a5d] {\n  width: 1.2rem;\n  font-size: 1.5rem;\n}\n.navigation-item[data-v-79cf1a5d]:hover {\n  background-color: #ff8f6e;\n}\n#top[data-v-79cf1a5d] {\n  display: flex;\n  flex-direction: column;\n  padding: 5%;\n}\n#top a[data-v-79cf1a5d] {\n  color: white;\n  text-decoration: underline;\n  font-size: 1rem;\n  font-weight: bold;\n  cursor: pointer;\n}\n.navigation-item-active[data-v-79cf1a5d] {\n  background-color: #ff8f6e;\n}\n#bottom[data-v-79cf1a5d] {\n  display: flex;\n  flex-direction: column;\n  padding: 5%;\n}\n#bottom a[data-v-79cf1a5d] {\n  margin-top: 5%;\n  color: white;\n  text-decoration: underline;\n  font-size: 1.2rem;\n  font-weight: bold;\n}\n", ""]);
 
 // exports
 
@@ -33308,10 +33307,16 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "navigation" } }, [
     _c("div", { attrs: { id: "top" } }, [
-      _c("h1", [_vm._v("KORGI")]),
+      _c("img", {
+        staticClass: "logo",
+        attrs: {
+          src: __webpack_require__(/*! ../../assets/korgi_yellow_only.svg */ "./resources/assets/korgi_yellow_only.svg"),
+          alt: "KORGI"
+        }
+      }),
       _vm._v(" "),
-      _c("p", { attrs: { id: "greeting" } }, [
-        _vm._v("Willkommen zurück, " + _vm._s(_vm.name) + "!")
+      _c("p", { staticClass: "greeting" }, [
+        _vm._v("Willkommen zurück, " + _vm._s(_vm.user) + "!")
       ]),
       _vm._v(" "),
       _c("a", [_vm._v("Abmelden")])
@@ -33385,8 +33390,6 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { attrs: { id: "bottom" } }, [
-      _c("div"),
-      _vm._v(" "),
       _c("a", [_vm._v("Impressum")]),
       _vm._v(" "),
       _c("a", [_vm._v("Datenschutzerklärung")])
@@ -49972,6 +49975,17 @@ module.exports = function(module) {
 	return module;
 };
 
+
+/***/ }),
+
+/***/ "./resources/assets/korgi_yellow_only.svg":
+/*!************************************************!*\
+  !*** ./resources/assets/korgi_yellow_only.svg ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/korgi_yellow_only.svg?427b25ad5a410aa49cbe8c6b4a938319";
 
 /***/ }),
 
