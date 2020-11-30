@@ -64,9 +64,9 @@ function getUrlFromName(name) {
 //TODO aus der Datenbank holen
 function getGroups() {
     return {
-        "gruppe-1": {
-            name: "Gruppe 1",
-            url: "gruppe-1",
+        "schmetterlinge": {
+            name: "Schmetterlinge",
+            url: "schmetterlinge",
             hasAdminPermissions: true,
             events: [],
             channels: {
@@ -84,9 +84,9 @@ function getGroups() {
                 }
             }
         },
-        "gruppe-2": {
-            name: "Gruppe 2",
-            url: "gruppe-2",
+        "raupen": {
+            name: "Raupen",
+            url: "raupen",
             hasAdminPermissions: false,
             events: [],
             channels: {
