@@ -141,7 +141,7 @@ export default {
 
 @media (max-width: 576px) {
     .dialog-window {
-        width: 80vw;
+        width: 90vw;
         border-radius: 2rem;
     }
 }

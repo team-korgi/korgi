@@ -66,6 +66,10 @@ export default {
         flex-wrap: nowrap;
         align-items: center;
     }
+
+    .group-view-header {
+        display: none;
+    }
 }
 
 </style>
