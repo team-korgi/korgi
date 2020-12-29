@@ -46,6 +46,7 @@ export default {
 <style scoped>
 #group-view {
     width: 100%;
+    background-color: var(--background-color);
 }
 
 .group-view-header {
@@ -58,4 +59,17 @@ export default {
     flex-wrap: wrap;
     justify-content: flex-start;
 }
+
+@media (max-width: 576px) {
+    #groups {
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: center;
+    }
+
+    .group-view-header {
+        display: none;
+    }
+}
+
 </style>

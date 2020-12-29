@@ -23,6 +23,7 @@
                 <i class="far fa-question-circle"></i>
             </div>
         </div>
+        <div class="btn secondary-background" @click="toggleDarkmode">Toggle Darkmode WIP</div>
         <div id="bottom">
             <a>Impressum</a>
             <a>Datenschutzerklärung</a>
@@ -31,14 +32,19 @@
 </template>
 
 <script>
+import Button from "@/Jetstream/Button";
 export default {
     name: "navigation",
+    components: {Button},
     data() {
         return {
             user: this.$store.getters.getUser.username
         }
     },
     methods: {
+        toggleDarkmode() {
+            this.$store.commit('toggleDarkmode');
+        },
         groupsIsCurrent() {
             if (this.$route.fullPath.match("/gruppen.*")) {
                 return "navigation-item-active";
@@ -150,4 +156,11 @@ export default {
     font-size: 1.2rem;
     font-weight: bold;
 }
+
+@media (max-width: 576px) {
+    #navigation {
+        display: none;
+    }
+}
+
 </style>

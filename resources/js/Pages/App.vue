@@ -16,6 +16,22 @@ export default {
     components: {
         DatePicker,
         Navigation
+    },
+    computed: {
+        darkmode: function() {
+            return this.$store.state.user.settings.darkmode
+        }
+    },
+    watch: {
+        darkmode: function(darkmode) {
+            let root = document.documentElement;
+            let isDarkmode = root.classList.contains('darkmode');
+            if (isDarkmode && !darkmode) {
+                root.classList.remove('darkmode');
+            } else if (!isDarkmode && darkmode) {
+                root.classList.add('darkmode');
+            }
+        }
     }
 }
 </script>
@@ -27,6 +43,39 @@ export default {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    transition: all 0.2s ease;
+}
+
+:root {
+    --primary: #FFA88E;
+    --primary-darker: #ff8f6e;
+
+    --secondary-lighter: #FFDBB1;
+    --secondary: #FFCB8E;
+    --secondary-darker: #ffb561;
+
+    --warn: #FC6B6B;
+    --warn-darker: #ef5252;
+
+    --black: #000000;
+    --dark-grey: #2C2F33;
+    --mid-grey: #E1E1E1;
+    --light-grey: #F3F3F3;
+    --white: #ffffff;
+}
+
+html {
+    --background-color: var(--white);
+    --background-color-alternate: var(--light-grey);
+    --font-color: var(--black);
+    --header-color: var(--dark-grey);
+}
+
+html.darkmode {
+    --background-color: var(--dark-grey);
+    --background-color-alternate: var(--mid-grey);
+    --font-color: var(--white);
+    --header-color: var(--white);
 }
 
 #app {
@@ -82,6 +131,7 @@ export default {
     border-radius: 1.5rem;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
+    user-select: none;
 }
 
 .btn i {
@@ -111,21 +161,21 @@ export default {
 }
 
 .warn-background {
-    background-color: #FC6B6B;
+    background-color: var(--warn);
     transition: 0.2s ease;
     cursor: pointer;
     color: white;
 }
 
 .primary-background {
-    background-color: #FFA88E;
+    background-color: var(--primary);
     transition: 0.2s ease;
     cursor: pointer;
     color: white;
 }
 
 .secondary-background {
-    background-color: #FFCB8E;
+    background-color: var(--secondary);
     transition: 0.2s ease;
     cursor: pointer;
     color: white;
@@ -150,14 +200,14 @@ export default {
 }
 
 .warn-background:hover {
-    background-color: #ef5252;
+    background-color: var(--warn-darker);
 }
 
 .primary-background:hover {
-    background-color: #ff8f6e;
+    background-color: var(--primary-darker);
 }
 
 .secondary-background:hover {
-    background-color: #ffb561;
+    background-color: var(--secondary-darker);
 }
 </style>

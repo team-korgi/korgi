@@ -117,4 +117,10 @@ export default {
     margin-left: 0;
 }
 
+@media (max-width: 576px) {
+    .row {
+        display: none;
+    }
+}
+
 </style>
