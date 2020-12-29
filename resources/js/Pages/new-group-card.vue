@@ -15,6 +15,8 @@ export default {
 .new-group-card {
     cursor: pointer;
 
+    background-color: var(--background-color);
+
     width: 15vw;
     height: 15vw;
     border: #FFCB8E dashed 3px;
