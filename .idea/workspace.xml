@@ -20,15 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c6b7b351-0dd0-44c1-b4e9-bbfaad6d7dff" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/dialog-content-event-announcement.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/dialog-content-event-announcement.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/group-card.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/group-card.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/group-view.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/group-view.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/navigation.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/navigation.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/new-group-card.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/new-group-card.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -239,6 +232,7 @@
       <workItem from="1608627105542" duration="1593000" />
       <workItem from="1609009341258" duration="50000" />
       <workItem from="1609172342735" duration="34000" />
+      <workItem from="1609247373183" duration="131000" />
     </task>
     <servers />
   </component>
