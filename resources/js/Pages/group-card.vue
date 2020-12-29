@@ -34,9 +34,9 @@ export default {
     justify-content: space-around;
     border-radius: 1.5rem;
 
-    box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.75);
-    -webkit-box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.75);
-    -moz-box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.75);
+    box-shadow: 0 0 15px 3px rgba(92,86,86,0.5);
+    -webkit-box-shadow: 0 0 15px 3px rgba(92,86,86,0.5);
+    -moz-box-shadow: 0 0 15px 3px rgba(92,86,86,0.5);
 
     transition: 0.2s ease;
 
