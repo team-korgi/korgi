@@ -27,16 +27,16 @@ export default {
 
     width: 15vw;
     height: 15vw;
-    border: #FFA88E solid 3px;
+    border: #FFA88E solid 4px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
     border-radius: 1.5rem;
 
-    box-shadow: 0 0 15px 3px rgba(92,86,86,0.5);
-    -webkit-box-shadow: 0 0 15px 3px rgba(92,86,86,0.5);
-    -moz-box-shadow: 0 0 15px 3px rgba(92,86,86,0.5);
+    box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.5);
+    -webkit-box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.5);
+    -moz-box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.5);
 
     transition: 0.2s ease;
 
@@ -66,5 +66,28 @@ export default {
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--header-color);
+}
+
+@media (max-width: 576px) {
+    .group-card {
+        width: 90vw;
+        height: 20vw;
+        flex-direction: row;
+        justify-content: flex-start;
+
+        box-shadow: 1px 0px 8px 3px rgba(92,86,86,0.3);
+        -webkit-box-shadow: 1px 0px 8px 3px rgba(92,86,86,0.3);
+        -moz-box-shadow: 1px 0px 8px 3px rgba(92,86,86,0.3);
+
+    }
+    .group-card-icon {
+        width: 16.66%;
+        height: 80%;
+        font-size: 2rem;
+        margin: 10px;
+    }
+    .group-card-name {
+        font-size: 1.3rem;
+    }
 }
 </style>

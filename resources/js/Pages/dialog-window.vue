@@ -138,4 +138,12 @@ export default {
     justify-content: space-between;
     transform: scale(1);
 }
+
+@media (max-width: 576px) {
+    .dialog-window {
+        width: 90vw;
+        border-radius: 2rem;
+    }
+}
+
 </style>

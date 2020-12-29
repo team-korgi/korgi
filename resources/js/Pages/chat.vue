@@ -209,4 +209,14 @@ export default {
 {
     opacity: 0;
 }
+
+@media (max-width: 576px) {
+    #message-input {
+        max-width: 68%; /*Irgendwie dumm, aber sonst funktioniert nix*/
+    }
+    #input-group {
+        padding: 2% 2% 4% 2%; /*Unten mehr, damit bei Handys mit abgerundeten Ecken nix abgeschnitten wird*/
+    }
+}
+
 </style>
