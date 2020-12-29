@@ -59,4 +59,13 @@ export default {
     flex-wrap: wrap;
     justify-content: flex-start;
 }
+
+@media (max-width: 576px) {
+    #groups {
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: center;
+    }
+}
+
 </style>

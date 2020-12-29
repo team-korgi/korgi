@@ -156,4 +156,11 @@ export default {
     font-size: 1.2rem;
     font-weight: bold;
 }
+
+@media (max-width: 576px) {
+    #navigation {
+        display: none;
+    }
+}
+
 </style>
