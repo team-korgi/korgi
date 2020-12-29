@@ -116,11 +116,17 @@ const store = new Vuex.Store({
         }),
         user: {
             username: getUsername(),
-            uuid: getUUID()
+            uuid: getUUID(),
+            settings: {
+                darkmode: false
+            }
         },
         groups: getGroups()
     },
     mutations: {
+        toggleDarkmode(state) {
+            state.user.settings.darkmode = !state.user.settings.darkmode;
+        },
         publishMessage(state, payload) {
             state.pubnub.publish(
                 {

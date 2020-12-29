@@ -46,6 +46,7 @@ export default {
 <style scoped>
 #group-view {
     width: 100%;
+    background-color: var(--background-color);
 }
 
 .group-view-header {

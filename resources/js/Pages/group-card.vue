@@ -23,6 +23,8 @@ export default {
 .group-card {
     cursor: pointer;
 
+    background-color: var(--background-color);
+
     width: 15vw;
     height: 15vw;
     border: #FFA88E solid 3px;
@@ -48,7 +50,7 @@ export default {
 .group-card-icon {
     width: 50%;
     height: 50%;
-    background-color: #FFA88E;
+    background-color: var(--primary);
     color: white;
     font-size: 3rem;
     font-weight: 600;
@@ -63,6 +65,6 @@ export default {
 .group-card-name {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #707070;
+    color: var(--header-color);
 }
 </style>

@@ -3440,6 +3440,23 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     DatePicker: _Pages_date_picker__WEBPACK_IMPORTED_MODULE_1__["default"],
     Navigation: _navigation__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  computed: {
+    darkmode: function darkmode() {
+      return this.$store.state.user.settings.darkmode;
+    }
+  },
+  watch: {
+    darkmode: function darkmode(_darkmode) {
+      var root = document.documentElement;
+      var isDarkmode = root.classList.contains('darkmode');
+
+      if (isDarkmode && !_darkmode) {
+        root.classList.remove('darkmode');
+      } else if (!isDarkmode && _darkmode) {
+        root.classList.add('darkmode');
+      }
+    }
   }
 });
 
@@ -6151,6 +6168,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Jetstream_Button__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Jetstream/Button */ "./resources/js/Jetstream/Button.vue");
 //
 //
 //
@@ -6183,14 +6201,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "navigation",
+  components: {
+    Button: _Jetstream_Button__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   data: function data() {
     return {
       user: this.$store.getters.getUser.username
     };
   },
   methods: {
+    toggleDarkmode: function toggleDarkmode() {
+      this.$store.commit('toggleDarkmode');
+    },
     groupsIsCurrent: function groupsIsCurrent() {
       if (this.$route.fullPath.match("/gruppen.*")) {
         return "navigation-item-active";
@@ -6271,7 +6297,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Montserrat&display=swap);", ""]);
 
 // module
-exports.push([module.i, "* {\n  box-sizing: border-box;\n  margin: 0;\n  padding: 0;\n}\n#app {\n  display: flex;\n  flex-direction: row;\n  width: 100vw;\n  height: 100vh;\n  font-family: 'Montserrat', sans-serif;\n}\n.headline {\n  color: #707070;\n  font-size: 1.8rem;\n  font-weight: 700;\n}\n.title {\n  color: #FFCB8E;\n  font-size: 1.8rem;\n  font-weight: 700;\n}\n.round-btn {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  width: 3rem;\n  height: 3rem;\n  font-size: 1.5rem;\n  border-radius: 1.5rem;\n  outline: 0;\n}\n.round-btn.mini {\n  width: 1.5rem;\n  height: 1.5rem;\n  font-size: 0.75rem;\n}\n.btn {\n  width: 100%;\n  /*flex-grow: 1;*/\n  height: 3rem;\n  font-size: 1rem;\n  font-weight: 600;\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  border-radius: 1.5rem;\n  padding-left: 1.5rem;\n  padding-right: 1.5rem;\n}\n.btn i {\n  font-size: 1.5rem;\n}\n.input {\n  font-size: 1rem;\n  outline: 0;\n  border-radius: 1.5rem;\n  color: #707070;\n  font-weight: 600;\n  padding-left: 1.5rem;\n  padding-right: 1.5rem;\n  height: 3rem;\n  background-color: #E1E1E1;\n}\n.input::-moz-placeholder {\n  color: #707070;\n}\n.input:-ms-input-placeholder {\n  color: #707070;\n}\n.input::placeholder {\n  color: #707070;\n}\n.input.disabled {\n  cursor: default;\n  pointer-events: none;\n}\n.warn-background {\n  background-color: #FC6B6B;\n  transition: 0.2s ease;\n  cursor: pointer;\n  color: white;\n}\n.primary-background {\n  background-color: #FFA88E;\n  transition: 0.2s ease;\n  cursor: pointer;\n  color: white;\n}\n.secondary-background {\n  background-color: #FFCB8E;\n  transition: 0.2s ease;\n  cursor: pointer;\n  color: white;\n}\n.warn-background.disabled {\n  pointer-events: none;\n  cursor: default;\n  filter: saturate(0.3);\n}\n.primary-background.disabled {\n  pointer-events: none;\n  cursor: default;\n  filter: saturate(0.3);\n}\n.secondary-background.disabled {\n  pointer-events: none;\n  cursor: default;\n  filter: saturate(0.3);\n}\n.warn-background:hover {\n  background-color: #ef5252;\n}\n.primary-background:hover {\n  background-color: #ff8f6e;\n}\n.secondary-background:hover {\n  background-color: #ffb561;\n}\n", ""]);
+exports.push([module.i, "* {\n  box-sizing: border-box;\n  margin: 0;\n  padding: 0;\n  transition: all 0.2s ease;\n}\n:root {\n  --primary: #FFA88E;\n  --primary-darker: #ff8f6e;\n  --secondary-lighter: #FFDBB1;\n  --secondary: #FFCB8E;\n  --secondary-darker: #ffb561;\n  --warn: #FC6B6B;\n  --warn-darker: #ef5252;\n  --black: #000000;\n  --dark-grey: #2C2F33;\n  --mid-grey: #E1E1E1;\n  --light-grey: #F3F3F3;\n  --white: #ffffff;\n}\nhtml {\n  --background-color: var(--white);\n  --background-color-alternate: var(--light-grey);\n  --font-color: var(--black);\n  --header-color: var(--dark-grey);\n}\nhtml.darkmode {\n  --background-color: var(--dark-grey);\n  --background-color-alternate: var(--mid-grey);\n  --font-color: var(--white);\n  --header-color: var(--white);\n}\n#app {\n  display: flex;\n  flex-direction: row;\n  width: 100vw;\n  height: 100vh;\n  font-family: 'Montserrat', sans-serif;\n}\n.headline {\n  color: #707070;\n  font-size: 1.8rem;\n  font-weight: 700;\n}\n.title {\n  color: #FFCB8E;\n  font-size: 1.8rem;\n  font-weight: 700;\n}\n.round-btn {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  width: 3rem;\n  height: 3rem;\n  font-size: 1.5rem;\n  border-radius: 1.5rem;\n  outline: 0;\n}\n.round-btn.mini {\n  width: 1.5rem;\n  height: 1.5rem;\n  font-size: 0.75rem;\n}\n.btn {\n  width: 100%;\n  /*flex-grow: 1;*/\n  height: 3rem;\n  font-size: 1rem;\n  font-weight: 600;\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  border-radius: 1.5rem;\n  padding-left: 1.5rem;\n  padding-right: 1.5rem;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.btn i {\n  font-size: 1.5rem;\n}\n.input {\n  font-size: 1rem;\n  outline: 0;\n  border-radius: 1.5rem;\n  color: #707070;\n  font-weight: 600;\n  padding-left: 1.5rem;\n  padding-right: 1.5rem;\n  height: 3rem;\n  background-color: #E1E1E1;\n}\n.input::-moz-placeholder {\n  color: #707070;\n}\n.input:-ms-input-placeholder {\n  color: #707070;\n}\n.input::placeholder {\n  color: #707070;\n}\n.input.disabled {\n  cursor: default;\n  pointer-events: none;\n}\n.warn-background {\n  background-color: var(--warn);\n  transition: 0.2s ease;\n  cursor: pointer;\n  color: white;\n}\n.primary-background {\n  background-color: var(--primary);\n  transition: 0.2s ease;\n  cursor: pointer;\n  color: white;\n}\n.secondary-background {\n  background-color: var(--secondary);\n  transition: 0.2s ease;\n  cursor: pointer;\n  color: white;\n}\n.warn-background.disabled {\n  pointer-events: none;\n  cursor: default;\n  filter: saturate(0.3);\n}\n.primary-background.disabled {\n  pointer-events: none;\n  cursor: default;\n  filter: saturate(0.3);\n}\n.secondary-background.disabled {\n  pointer-events: none;\n  cursor: default;\n  filter: saturate(0.3);\n}\n.warn-background:hover {\n  background-color: var(--warn-darker);\n}\n.primary-background:hover {\n  background-color: var(--primary-darker);\n}\n.secondary-background:hover {\n  background-color: var(--secondary-darker);\n}\n", ""]);
 
 // exports
 
@@ -6480,7 +6506,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".group-card[data-v-4f2dce32] {\n  cursor: pointer;\n  width: 15vw;\n  height: 15vw;\n  border: #FFA88E solid 3px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: space-around;\n  border-radius: 1.5rem;\n  box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.75);\n  -webkit-box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.75);\n  -moz-box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.75);\n  transition: 0.2s ease;\n  margin: 2%;\n}\n.group-card[data-v-4f2dce32]:hover {\n  transform: scale(1.05);\n}\n.group-card-icon[data-v-4f2dce32] {\n  width: 50%;\n  height: 50%;\n  background-color: #FFA88E;\n  color: white;\n  font-size: 3rem;\n  font-weight: 600;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  border-radius: 100%;\n}\n.group-card-name[data-v-4f2dce32] {\n  font-size: 1.5rem;\n  font-weight: 700;\n  color: #707070;\n}\n", ""]);
+exports.push([module.i, ".group-card[data-v-4f2dce32] {\n  cursor: pointer;\n  background-color: var(--background-color);\n  width: 15vw;\n  height: 15vw;\n  border: #FFA88E solid 3px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: space-around;\n  border-radius: 1.5rem;\n  box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.75);\n  -webkit-box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.75);\n  -moz-box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.75);\n  transition: 0.2s ease;\n  margin: 2%;\n}\n.group-card[data-v-4f2dce32]:hover {\n  transform: scale(1.05);\n}\n.group-card-icon[data-v-4f2dce32] {\n  width: 50%;\n  height: 50%;\n  background-color: var(--primary);\n  color: white;\n  font-size: 3rem;\n  font-weight: 600;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  border-radius: 100%;\n}\n.group-card-name[data-v-4f2dce32] {\n  font-size: 1.5rem;\n  font-weight: 700;\n  color: var(--header-color);\n}\n", ""]);
 
 // exports
 
@@ -6499,7 +6525,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#group-view[data-v-202e05fc] {\n  width: 100%;\n}\n.group-view-header[data-v-202e05fc] {\n  padding: 2%;\n}\n#groups[data-v-202e05fc] {\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  justify-content: flex-start;\n}\n", ""]);
+exports.push([module.i, "#group-view[data-v-202e05fc] {\n  width: 100%;\n  background-color: var(--background-color);\n}\n.group-view-header[data-v-202e05fc] {\n  padding: 2%;\n}\n#groups[data-v-202e05fc] {\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  justify-content: flex-start;\n}\n", ""]);
 
 // exports
 
@@ -6594,7 +6620,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".new-group-card[data-v-bbc12f98] {\n  cursor: pointer;\n  width: 15vw;\n  height: 15vw;\n  border: #FFCB8E dashed 3px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  border-radius: 1.5rem;\n  box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.75);\n  -webkit-box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.75);\n  -moz-box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.75);\n  transition: 0.2s ease;\n  margin: 2%;\n}\n.new-group-card[data-v-bbc12f98]:hover {\n  transform: scale(1.05);\n}\n.new-group-card-icon[data-v-bbc12f98] {\n  color: #FFCB8E;\n  font-size: 3rem;\n  font-weight: 600;\n}\n.new-group-card-text[data-v-bbc12f98] {\n  font-size: 1.2rem;\n  font-weight: 700;\n  color: #FFCB8E;\n}\n", ""]);
+exports.push([module.i, ".new-group-card[data-v-bbc12f98] {\n  cursor: pointer;\n  background-color: var(--background-color);\n  width: 15vw;\n  height: 15vw;\n  border: #FFCB8E dashed 3px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  border-radius: 1.5rem;\n  box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.75);\n  -webkit-box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.75);\n  -moz-box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.75);\n  transition: 0.2s ease;\n  margin: 2%;\n}\n.new-group-card[data-v-bbc12f98]:hover {\n  transform: scale(1.05);\n}\n.new-group-card-icon[data-v-bbc12f98] {\n  color: #FFCB8E;\n  font-size: 3rem;\n  font-weight: 600;\n}\n.new-group-card-text[data-v-bbc12f98] {\n  font-size: 1.2rem;\n  font-weight: 700;\n  color: #FFCB8E;\n}\n", ""]);
 
 // exports
 
@@ -32997,7 +33023,10 @@ var render = function() {
         }
       }),
       _vm._v(" "),
-      _c("date-picker", { on: { input: _vm.saveDate } })
+      _c("date-picker", {
+        attrs: { multiple: true },
+        on: { input: _vm.saveDate }
+      })
     ],
     1
   )
@@ -33692,6 +33721,15 @@ var render = function() {
         )
       ],
       1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "btn secondary-background",
+        on: { click: _vm.toggleDarkmode }
+      },
+      [_vm._v("Toggle Darkmode WIP")]
     ),
     _vm._v(" "),
     _vm._m(0)
@@ -54982,11 +55020,17 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
     }),
     user: {
       username: getUsername(),
-      uuid: getUUID()
+      uuid: getUUID(),
+      settings: {
+        darkmode: false
+      }
     },
     groups: getGroups()
   },
   mutations: {
+    toggleDarkmode: function toggleDarkmode(state) {
+      state.user.settings.darkmode = !state.user.settings.darkmode;
+    },
     publishMessage: function publishMessage(state, payload) {
       state.pubnub.publish({
         channel: payload.channel,

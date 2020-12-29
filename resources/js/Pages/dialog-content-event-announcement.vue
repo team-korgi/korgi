@@ -2,7 +2,7 @@
     <div class="dialog-content">
         <input id="subject-input" class="input" type="text" v-model="subject" placeholder="Bezeichnung"
                @input="saveContent" @keypress.enter="bus.$emit('submit')">
-        <date-picker @input="saveDate"/>
+        <date-picker :multiple="true" @input="saveDate"/>
     </div>
 </template>
 
