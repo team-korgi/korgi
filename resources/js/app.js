@@ -5,8 +5,8 @@ import Vuex from 'vuex'
 import VueRouter from 'vue-router'
 import PubNub from 'pubnub'
 
-import { InertiaApp } from '@inertiajs/inertia-vue';
-import { InertiaForm } from 'laravel-jetstream';
+import {InertiaApp} from '@inertiajs/inertia-vue';
+import {InertiaForm} from 'laravel-jetstream';
 import PortalVue from 'portal-vue';
 
 import GroupView from './Pages/group-view'
@@ -15,7 +15,7 @@ import Settings from './Pages/settings'
 import Group from './Pages/group'
 import Chat from './Pages/chat'
 
-Vue.mixin({ methods: { route } });
+Vue.mixin({methods: {route}});
 Vue.use(InertiaApp);
 Vue.use(InertiaForm);
 Vue.use(PortalVue);
@@ -61,6 +61,43 @@ function getUrlFromName(name) {
     return name.toLowerCase().replace(' ', '-');
 }
 
+function getMessagesFromLocalStorage(channel) {
+    return JSON.parse(localStorage.getItem(channel)) || {};
+}
+
+function saveMessagesToLocalStorage(group, chat, channel) {
+    localStorage.setItem(channel, JSON.stringify(store.getters.getChannel(group, chat).messages))
+}
+
+function getAllMissedMessagesFromPubNub() {
+    Object.keys(store.state.groups).forEach(group => {
+        Object.keys(store.state.groups[group].channels).forEach(chat => {
+            let channel = store.getters.getChannel(group, chat)
+            let messages = channel.messages;
+            let messageValues = Object.values(messages);
+            if (messageValues.length > 0) {
+                getMissedMessagesFromPubNub(group, chat, channel.uuid, messageValues[messageValues.length - 1].timetoken);
+                saveMessagesToLocalStorage(group, chat, channel.uuid);
+            }
+        })
+    })
+}
+
+function getMissedMessagesFromPubNub(group, chat, channel, lastMessage) {
+    store.state.pubnub.fetchMessages(
+        {
+            channels: [channel],
+            end: lastMessage,
+            count: 25 // default/max is 25
+        },
+        function (status, response) {
+            Object.values(response.channels)[0].forEach(message => {
+                Vue.set(store.state.groups[group].channels[chat].messages, message.timetoken, message);
+            });
+        }
+    )
+}
+
 //TODO aus der Datenbank holen
 function getGroups() {
     return {
@@ -74,13 +111,13 @@ function getGroups() {
                     name: "Allgemein",
                     url: "allgemein",
                     uuid: "2532ef1c-4c1b-4a8a-8975-43149bca27e9",
-                    messages: {}
+                    messages: getMessagesFromLocalStorage("2532ef1c-4c1b-4a8a-8975-43149bca27e9")
                 },
                 "wichtig": {
                     name: "Wichtig",
                     url: "wichtig",
                     uuid: "091c147f-c2ca-4232-ade9-3c9fb242d2aa",
-                    messages: {}
+                    messages: getMessagesFromLocalStorage("091c147f-c2ca-4232-ade9-3c9fb242d2aa")
                 }
             }
         },
@@ -94,13 +131,13 @@ function getGroups() {
                     name: "Allgemein",
                     url: "allgemein",
                     uuid: "78ac78a6-54bd-46b2-8b4c-be073717e94c",
-                    messages: {}
+                    messages: getMessagesFromLocalStorage("78ac78a6-54bd-46b2-8b4c-be073717e94c")
                 },
                 "wichtig": {
                     name: "Wichtig",
                     url: "wichtig",
                     uuid: "6c8716bb-84c2-47e5-83fd-d0c19fa61189",
-                    messages: {}
+                    messages: getMessagesFromLocalStorage("6c8716bb-84c2-47e5-83fd-d0c19fa61189")
                 }
             }
         },
@@ -197,6 +234,7 @@ const store = new Vuex.Store({
         },
         addMessage(state, payload) {
             Vue.set(state.groups[payload.message.message.group].channels[payload.message.message.chat].messages, payload.message.timetoken, payload.message);
+            saveMessagesToLocalStorage(payload.message.message.group, payload.message.message.chat, payload.message.channel)
         },
         addEvent(state, payload) {
             // TODO push to server
@@ -301,6 +339,8 @@ store.state.pubnub.subscribe({
     channels: store.getters.getAllChannelUuids,
     withPresence: true
 });
+
+getAllMissedMessagesFromPubNub();
 
 const routes = [
     {
