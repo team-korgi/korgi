@@ -1,6 +1,6 @@
 <template>
     <div id="group-view">
-        <navbar :title="Gruppenübersicht"/>
+        <navbar header="Gruppenübersicht"/>
         <dialog-window :bus="groupInputBus" title="Gruppe erstellen!" @submit="createGroup">
             <dialog-content-create-group :bus="groupInputBus"/>
         </dialog-window>

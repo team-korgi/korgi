@@ -6211,7 +6211,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "navbar",
   props: {
-    title: String
+    header: String
   }
 });
 
@@ -33527,7 +33527,7 @@ var render = function() {
     "div",
     { attrs: { id: "group-view" } },
     [
-      _c("navbar", { attrs: { title: _vm.Gruppenübersicht } }),
+      _c("navbar", { attrs: { header: "Gruppenübersicht" } }),
       _vm._v(" "),
       _c(
         "dialog-window",
@@ -33602,7 +33602,7 @@ var render = function() {
     "div",
     { attrs: { id: "group" } },
     [
-      _c("navbar", { attrs: { title: _vm.Gruppenübersicht } }),
+      _c("navbar", { attrs: { header: _vm.group.name } }),
       _vm._v(" "),
       _c("div", { attrs: { id: "group-header" } }, [
         _c(
@@ -33791,7 +33791,7 @@ var render = function() {
       }
     }),
     _vm._v(" "),
-    _c("h2", { staticClass: "title" }, [_vm._v(_vm._s(_vm.title))])
+    _c("h2", { staticClass: "title" }, [_vm._v(_vm._s(_vm.header))])
   ])
 }
 var staticRenderFns = []

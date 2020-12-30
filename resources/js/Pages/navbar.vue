@@ -1,7 +1,7 @@
 <template>
     <div id="navbar">
         <img id="logo" src="../../assets/korgi_red.svg" alt="KORGI">
-        <h2 class="title">{{title}}</h2>
+        <h2 class="title">{{header}}</h2>
     </div>
 </template>
 
@@ -9,7 +9,7 @@
 export default {
     name: "navbar",
     props: {
-        title: String
+        header: String
     }
 }
 </script>

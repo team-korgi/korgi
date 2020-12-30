@@ -1,6 +1,6 @@
 <template>
     <div id="group">
-        <navbar :title="Gruppenübersicht"/>
+        <navbar :header="group.name"/>
         <div id="group-header">
             <div class="row">
                 <router-link to="/gruppen" class="round-btn secondary-background"><i class="fas fa-arrow-left"></i></router-link>
