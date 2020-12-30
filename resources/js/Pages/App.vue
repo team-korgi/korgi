@@ -10,6 +10,7 @@
 <script>
 import Navigation from "./navigation"
 import DatePicker from "@/Pages/date-picker";
+import Navbar from "@/Pages/navbar";
 
 export default {
     name: 'App',

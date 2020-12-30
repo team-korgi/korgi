@@ -78,4 +78,10 @@ export default {
 .right {
     background-color: #FFDBB1;
 }
+
+@media (max-width: 576px) {
+    .message {
+        padding: 2.5%;
+    }
+}
 </style>

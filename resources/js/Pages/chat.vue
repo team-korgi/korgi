@@ -50,10 +50,11 @@ import DialogContentSendFile from "./dialog-content-send-file";
 import DialogContentEventAnnouncement from "./dialog-content-event-announcement";
 import DatePicker from "@/Pages/date-picker";
 import ChatElement from "@/Pages/chat-element";
+import Navbar from "@/Pages/navbar";
 
 export default {
     name: "chat",
-    components: {ChatElement, DatePicker, DialogWindow, DialogContentSendFile, DialogContentEventAnnouncement},
+    components: {Navbar, ChatElement, DatePicker, DialogWindow, DialogContentSendFile, DialogContentEventAnnouncement},
     props: {
         type: String,
         url: String

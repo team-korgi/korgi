@@ -39,7 +39,7 @@ export default {
 
 <style scoped>
 .file-element {
-    max-width: 40%;
+    max-width: 80%;
     background-color: white;
     display: flex;
     flex-direction: column;
@@ -84,5 +84,11 @@ i {
     align-self: flex-end;
     color: #707070;
     font-size: 0.8rem;
+}
+
+@media (max-width: 576px) {
+    .file-element {
+        padding: 2.5%;
+    }
 }
 </style>
