@@ -1,7 +1,7 @@
 <template>
     <div id="navbar">
         <img id="logo" src="../../assets/korgi_red.svg" alt="KORGI">
-        <h2 class="title">{{header}}</h2>
+        <div class="title">{{header}}</div>
     </div>
 </template>
 
@@ -17,7 +17,7 @@ export default {
 <style scoped>
 
 #navbar {
-    padding: 16px;
+    padding: 14px;
     display: none;
     width: 100%;
     height: 20vw;
@@ -25,18 +25,20 @@ export default {
     background-color: var(--primary);
     flex-direction: row;
     justify-content: flex-start;
+    align-items: center;
 }
 
 #logo {
     display: block;
     flex-grow: 0;
-    width: 50px;
+    width: 16%;
+    height: 100%;
 }
 
-h2.title {
+div.title {
     color: white;
     margin-left: 10px;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
 }
 
 @media (max-width: 576px) {

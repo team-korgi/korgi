@@ -51,6 +51,10 @@ export default {
     color: #FFCB8E;
 }
 
+h1 {
+    text-align: center;
+}
+
 @media (max-width: 576px) {
     .new-group-card {
         width: 90vw;

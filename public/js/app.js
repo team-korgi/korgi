@@ -6659,7 +6659,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#navbar[data-v-31e7624e] {\n  padding: 16px;\n  display: none;\n  width: 100%;\n  height: 20vw;\n  z-index: 5;\n  background-color: var(--primary);\n  flex-direction: row;\n  justify-content: flex-start;\n}\n#logo[data-v-31e7624e] {\n  display: block;\n  flex-grow: 0;\n  width: 50px;\n}\nh2.title[data-v-31e7624e] {\n  color: white;\n  margin-left: 10px;\n  font-size: 1.5rem;\n}\n@media (max-width: 576px) {\n#navbar[data-v-31e7624e] {\n    display: flex;\n}\n}\n\n", ""]);
+exports.push([module.i, "#navbar[data-v-31e7624e] {\n  padding: 14px;\n  display: none;\n  width: 100%;\n  height: 20vw;\n  z-index: 5;\n  background-color: var(--primary);\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n#logo[data-v-31e7624e] {\n  display: block;\n  flex-grow: 0;\n  width: 16%;\n  height: 100%;\n}\ndiv.title[data-v-31e7624e] {\n  color: white;\n  margin-left: 10px;\n  font-size: 1.3rem;\n}\n@media (max-width: 576px) {\n#navbar[data-v-31e7624e] {\n    display: flex;\n}\n}\n\n", ""]);
 
 // exports
 
@@ -6697,7 +6697,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".new-group-card[data-v-bbc12f98] {\n  cursor: pointer;\n  background-color: var(--background-color);\n  width: 15vw;\n  height: 15vw;\n  border: #FFCB8E dashed 4px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  border-radius: 1.5rem;\n  box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.5);\n  -webkit-box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.5);\n  -moz-box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.5);\n  transition: 0.2s ease;\n  margin: 2%;\n}\n.new-group-card[data-v-bbc12f98]:hover {\n  transform: scale(1.05);\n}\n.new-group-card-icon[data-v-bbc12f98] {\n  color: #FFCB8E;\n  font-size: 3rem;\n  font-weight: 600;\n}\n.new-group-card-text[data-v-bbc12f98] {\n  font-size: 1.2rem;\n  font-weight: 700;\n  color: #FFCB8E;\n}\n@media (max-width: 576px) {\n.new-group-card[data-v-bbc12f98] {\n    width: 90vw;\n    height: 20vw;\n    flex-direction: row;\n    justify-content: flex-start;\n    box-shadow: 1px 0px 8px 3px rgba(92,86,86,0.3);\n    -webkit-box-shadow: 1px 0px 8px 3px rgba(92,86,86,0.3);\n    -moz-box-shadow: 1px 0px 8px 3px rgba(92,86,86,0.3);\n}\n.new-group-card-icon[data-v-bbc12f98] {\n    width: 17%;\n    height: 80%;\n    font-size: 2rem;\n    margin: 10px;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n}\n}\n\n", ""]);
+exports.push([module.i, ".new-group-card[data-v-bbc12f98] {\n  cursor: pointer;\n  background-color: var(--background-color);\n  width: 15vw;\n  height: 15vw;\n  border: #FFCB8E dashed 4px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  border-radius: 1.5rem;\n  box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.5);\n  -webkit-box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.5);\n  -moz-box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.5);\n  transition: 0.2s ease;\n  margin: 2%;\n}\n.new-group-card[data-v-bbc12f98]:hover {\n  transform: scale(1.05);\n}\n.new-group-card-icon[data-v-bbc12f98] {\n  color: #FFCB8E;\n  font-size: 3rem;\n  font-weight: 600;\n}\n.new-group-card-text[data-v-bbc12f98] {\n  font-size: 1.2rem;\n  font-weight: 700;\n  color: #FFCB8E;\n}\nh1[data-v-bbc12f98] {\n  text-align: center;\n}\n@media (max-width: 576px) {\n.new-group-card[data-v-bbc12f98] {\n    width: 90vw;\n    height: 20vw;\n    flex-direction: row;\n    justify-content: flex-start;\n    box-shadow: 1px 0px 8px 3px rgba(92,86,86,0.3);\n    -webkit-box-shadow: 1px 0px 8px 3px rgba(92,86,86,0.3);\n    -moz-box-shadow: 1px 0px 8px 3px rgba(92,86,86,0.3);\n}\n.new-group-card-icon[data-v-bbc12f98] {\n    width: 17%;\n    height: 80%;\n    font-size: 2rem;\n    margin: 10px;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n}\n}\n\n", ""]);
 
 // exports
 
@@ -33791,7 +33791,7 @@ var render = function() {
       }
     }),
     _vm._v(" "),
-    _c("h2", { staticClass: "title" }, [_vm._v(_vm._s(_vm.header))])
+    _c("div", { staticClass: "title" }, [_vm._v(_vm._s(_vm.header))])
   ])
 }
 var staticRenderFns = []
