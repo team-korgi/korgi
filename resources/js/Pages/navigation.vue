@@ -116,7 +116,7 @@ export default {
     flex-direction: column;
     align-content: flex-start;
     justify-content: space-between;
-    z-index: 20;
+    z-index: 40;
 
     width: 20vw;
     height: 100%;
