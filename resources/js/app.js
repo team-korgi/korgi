@@ -73,29 +73,80 @@ function getAllMissedMessagesFromPubNub() {
     Object.keys(store.state.groups).forEach(group => {
         Object.keys(store.state.groups[group].channels).forEach(chat => {
             let channel = store.getters.getChannel(group, chat)
-            let messages = channel.messages;
-            let messageValues = Object.values(messages);
+            let messageValues = Object.values(channel.messages);
             if (messageValues.length > 0) {
                 getMissedMessagesFromPubNub(group, chat, channel.uuid, messageValues[messageValues.length - 1].timetoken);
-                saveMessagesToLocalStorage(group, chat, channel.uuid);
             }
         })
     })
 }
 
-function getMissedMessagesFromPubNub(group, chat, channel, lastMessage) {
+let messages = [];
+
+function getMissedMessagesFromPubNub(group, chat, channel, endTimetoken, startTimetoken) {
     store.state.pubnub.fetchMessages(
         {
             channels: [channel],
-            end: lastMessage,
+            start: startTimetoken,
+            end: endTimetoken,
             count: 25 // default/max is 25
         },
         function (status, response) {
-            Object.values(response.channels)[0].forEach(message => {
+            let newMessages = Object.values(response.channels)[0];
+
+            messages = messages.concat(newMessages);
+
+            let currentTimetoken = newMessages[0].timetoken;
+
+            if (currentTimetoken !== endTimetoken) {
+                getMissedMessagesFromPubNub(group, chat, channel, endTimetoken, currentTimetoken);
+                return
+            }
+
+            messages.sort((a, b) => {
+                if (parseInt(a.timetoken) > parseInt(b.timetoken)) {
+                    return 1;
+                }
+                if (parseInt(a.timetoken) < parseInt(b.timetoken)) {
+                    return -1;
+                }
+                return 0;
+            })
+
+            messages.forEach(message => {
                 Vue.set(store.state.groups[group].channels[chat].messages, message.timetoken, message);
             });
+
+            saveMessagesToLocalStorage(group, chat, channel);
         }
     )
+
+
+
+
+
+    // store.state.pubnub.fetchMessages(
+    //     {
+    //         channels: [channel],
+    //         start: startTimetoken,
+    //         end: endTimetoken,
+    //         count: 1 // default/max is 25
+    //     },
+    //     function (status, response) {
+    //         let messages = Object.values(response.channels)[0];
+    //         messages.forEach(message => {
+    //             Vue.set(store.state.groups[group].channels[chat].messages, message.timetoken, message);
+    //         });
+    //         console.log(messages)
+    //         console.log(messages[messages.length-1].timetoken);
+    //         console.log(endTimetoken);
+    //         let currentTimetoken = messages[messages.length-1].timetoken;
+    //         if (currentTimetoken !== endTimetoken) {
+    //             getMissedMessagesFromPubNub(group, chat, channel, endTimetoken, currentTimetoken)
+    //         }
+    //         saveMessagesToLocalStorage(group, chat, channel);
+    //     }
+    // )
 }
 
 //TODO aus der Datenbank holen

@@ -5359,7 +5359,14 @@ __webpack_require__.r(__webpack_exports__);
       }
     }
   },
+  created: function created() {
+    setTimeout(this.scrollToBottom, 1);
+  },
   methods: {
+    scrollToBottom: function scrollToBottom() {
+      var messagesElement = document.getElementById('messages');
+      messagesElement.scrollTo(0, messagesElement.scrollHeight);
+    },
     publishMessage: function publishMessage() {
       if (this.message.length) {
         this.$store.commit('publishMessage', {
@@ -5369,6 +5376,7 @@ __webpack_require__.r(__webpack_exports__);
           group: this.url
         });
         this.message = "";
+        this.scrollToBottom();
       }
     },
     publishFile: function publishFile(content) {
@@ -5382,6 +5390,7 @@ __webpack_require__.r(__webpack_exports__);
         fileType: content.file.type,
         fileUrl: ""
       });
+      this.scrollToBottom();
     },
     publishEventAnnouncement: function publishEventAnnouncement(eventAnnouncement) {
       // TODO add event to group in database
@@ -5392,6 +5401,7 @@ __webpack_require__.r(__webpack_exports__);
         group: this.url,
         date: eventAnnouncement.date
       });
+      this.scrollToBottom();
     },
     hasAccess: function hasAccess() {
       if (this.channel.name === 'Wichtig') {
@@ -6335,7 +6345,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#chat[data-v-4d9d8b3e] {\n  background-color: #F3F3F3;\n  flex-grow: 1;\n  width: 100%;\n  height: 100%;\n  display: flex;\n  flex-direction: column;\n  overflow: hidden;\n}\n#messages[data-v-4d9d8b3e] {\n  height: 100%;\n  display: flex;\n  flex-direction: column;\n  flex-grow: 1;\n  padding: 2%;\n  overflow-y: auto;\n}\n#messages[data-v-4d9d8b3e]::-webkit-scrollbar {\n  margin-left: -1rem;\n  width: 1rem;\n}\n#messages[data-v-4d9d8b3e]::-webkit-scrollbar-track {\n  background: transparent;\n  border-radius: 0.5rem;\n}\n#messages[data-v-4d9d8b3e]::-webkit-scrollbar-thumb {\n  background-color: #FFA88E;\n  border-radius: 0.5rem;\n}\n#message-input[data-v-4d9d8b3e] {\n  margin-left: 2%;\n  margin-right: 2%;\n  flex-grow: 1;\n}\n#input-group[data-v-4d9d8b3e] {\n  position: relative;\n  display: flex;\n  padding: 1% 2% 1% 2%;\n  box-shadow: 1px 0 15px 3px rgba(92, 86, 86, 0.75);\n  -webkit-box-shadow: 1px 0 15px 3px rgba(92, 86, 86, 0.75);\n  -moz-box-shadow: 1px 0 15px 3px rgba(92, 86, 86, 0.75);\n}\n.special-messages-container[data-v-4d9d8b3e] {\n  margin-bottom: 2%;\n  background-color: white;\n  padding: 1%;\n  height: 19rem;\n  position: absolute;\n  bottom: 100%;\n  border-radius: 1rem;\n  box-shadow: 1px 0 15px 3px rgba(92, 86, 86, 0.75);\n  -webkit-box-shadow: 1px 0 15px 3px rgba(92, 86, 86, 0.75);\n  -moz-box-shadow: 1px 0 15px 3px rgba(92, 86, 86, 0.75);\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: space-between;\n}\n.fade-enter-active[data-v-4d9d8b3e], .fade-leave-active[data-v-4d9d8b3e] {\n  transition: opacity .2s ease;\n}\n.fade-enter[data-v-4d9d8b3e], .fade-leave-to[data-v-4d9d8b3e] /* .fade-leave-active below version 2.1.8 */\r\n{\n  opacity: 0;\n}\n@media (max-width: 576px) {\n#message-input[data-v-4d9d8b3e] {\n    max-width: 68%; /*Irgendwie dumm, aber sonst funktioniert nix*/\n}\n#input-group[data-v-4d9d8b3e] {\n    padding: 2% 2% 4% 2%; /*Unten mehr, damit bei Handys mit abgerundeten Ecken nix abgeschnitten wird*/\n}\n}\r\n\r\n", ""]);
+exports.push([module.i, "#chat[data-v-4d9d8b3e] {\n  background-color: #F3F3F3;\n  flex-grow: 1;\n  width: 100%;\n  height: 100%;\n  display: flex;\n  flex-direction: column;\n  overflow: hidden;\n}\n#messages[data-v-4d9d8b3e] {\n  height: 100%;\n  display: flex;\n  flex-direction: column;\n  flex-grow: 1;\n  padding: 2%;\n  overflow-y: auto;\n}\n#messages[data-v-4d9d8b3e]::-webkit-scrollbar {\n  margin-left: -1rem;\n  width: 1rem;\n}\n#messages[data-v-4d9d8b3e]::-webkit-scrollbar-track {\n  background: transparent;\n  border-radius: 0.5rem;\n}\n#messages[data-v-4d9d8b3e]::-webkit-scrollbar-thumb {\n  background-color: #FFA88E;\n  border-radius: 0.5rem;\n}\n#message-input[data-v-4d9d8b3e] {\n  margin-left: 2%;\n  margin-right: 2%;\n  flex-grow: 1;\n}\n#input-group[data-v-4d9d8b3e] {\n  position: relative;\n  display: flex;\n  padding: 1% 2% 1% 2%;\n  box-shadow: 1px 0 15px 3px rgba(92, 86, 86, 0.75);\n  -webkit-box-shadow: 1px 0 15px 3px rgba(92, 86, 86, 0.75);\n  -moz-box-shadow: 1px 0 15px 3px rgba(92, 86, 86, 0.75);\n}\n.special-messages-container[data-v-4d9d8b3e] {\n  margin-bottom: 2%;\n  background-color: white;\n  padding: 1%;\n  height: 19rem;\n  position: absolute;\n  bottom: 100%;\n  border-radius: 1rem;\n  box-shadow: 1px 0 15px 3px rgba(92, 86, 86, 0.75);\n  -webkit-box-shadow: 1px 0 15px 3px rgba(92, 86, 86, 0.75);\n  -moz-box-shadow: 1px 0 15px 3px rgba(92, 86, 86, 0.75);\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: space-between;\n}\n.fade-enter-active[data-v-4d9d8b3e], .fade-leave-active[data-v-4d9d8b3e] {\n  transition: opacity .2s ease;\n}\n.fade-enter[data-v-4d9d8b3e], .fade-leave-to[data-v-4d9d8b3e] /* .fade-leave-active below version 2.1.8 */\n{\n  opacity: 0;\n}\n@media (max-width: 576px) {\n#message-input[data-v-4d9d8b3e] {\n    max-width: 68%; /*Irgendwie dumm, aber sonst funktioniert nix*/\n}\n#input-group[data-v-4d9d8b3e] {\n    padding: 2% 2% 4% 2%; /*Unten mehr, damit bei Handys mit abgerundeten Ecken nix abgeschnitten wird*/\n}\n}\n\n", ""]);
 
 // exports
 
@@ -6506,7 +6516,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".group-card[data-v-4f2dce32] {\n  cursor: pointer;\n  background-color: var(--background-color);\n  width: 15vw;\n  height: 15vw;\n  border: #FFA88E solid 4px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: space-around;\n  border-radius: 1.5rem;\n  box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.5);\n  -webkit-box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.5);\n  -moz-box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.5);\n  transition: 0.2s ease;\n  margin: 2%;\n}\n.group-card[data-v-4f2dce32]:hover {\n  transform: scale(1.05);\n}\n.group-card-icon[data-v-4f2dce32] {\n  width: 50%;\n  height: 50%;\n  background-color: var(--primary);\n  color: white;\n  font-size: 3rem;\n  font-weight: 600;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  border-radius: 100%;\n}\n.group-card-name[data-v-4f2dce32] {\n  font-size: 1.5rem;\n  font-weight: 700;\n  color: var(--header-color);\n}\n@media (max-width: 576px) {\n.group-card[data-v-4f2dce32] {\n    width: 90vw;\n    height: 20vw;\n    flex-direction: row;\n    justify-content: flex-start;\n    box-shadow: 1px 0px 8px 3px rgba(92,86,86,0.3);\n    -webkit-box-shadow: 1px 0px 8px 3px rgba(92,86,86,0.3);\n    -moz-box-shadow: 1px 0px 8px 3px rgba(92,86,86,0.3);\n}\n.group-card-icon[data-v-4f2dce32] {\n    width: 16.66%;\n    height: 80%;\n    font-size: 2rem;\n    margin: 10px;\n}\n.group-card-name[data-v-4f2dce32] {\n    font-size: 1.3rem;\n}\n}\r\n", ""]);
+exports.push([module.i, ".group-card[data-v-4f2dce32] {\n  cursor: pointer;\n  background-color: var(--background-color);\n  width: 15vw;\n  height: 15vw;\n  border: #FFA88E solid 4px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: space-around;\n  border-radius: 1.5rem;\n  box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.5);\n  -webkit-box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.5);\n  -moz-box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.5);\n  transition: 0.2s ease;\n  margin: 2%;\n}\n.group-card[data-v-4f2dce32]:hover {\n  transform: scale(1.05);\n}\n.group-card-icon[data-v-4f2dce32] {\n  width: 50%;\n  height: 50%;\n  background-color: var(--primary);\n  color: white;\n  font-size: 3rem;\n  font-weight: 600;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  border-radius: 100%;\n}\n.group-card-name[data-v-4f2dce32] {\n  font-size: 1.5rem;\n  font-weight: 700;\n  color: var(--header-color);\n}\n@media (max-width: 576px) {\n.group-card[data-v-4f2dce32] {\n    width: 90vw;\n    height: 20vw;\n    flex-direction: row;\n    justify-content: flex-start;\n    box-shadow: 1px 0px 8px 3px rgba(92,86,86,0.3);\n    -webkit-box-shadow: 1px 0px 8px 3px rgba(92,86,86,0.3);\n    -moz-box-shadow: 1px 0px 8px 3px rgba(92,86,86,0.3);\n}\n.group-card-icon[data-v-4f2dce32] {\n    width: 16.66%;\n    height: 80%;\n    font-size: 2rem;\n    margin: 10px;\n}\n.group-card-name[data-v-4f2dce32] {\n    font-size: 1.3rem;\n}\n}\n", ""]);
 
 // exports
 
@@ -54977,28 +54987,71 @@ function getAllMissedMessagesFromPubNub() {
   Object.keys(store.state.groups).forEach(function (group) {
     Object.keys(store.state.groups[group].channels).forEach(function (chat) {
       var channel = store.getters.getChannel(group, chat);
-      var messages = channel.messages;
-      var messageValues = Object.values(messages);
+      var messageValues = Object.values(channel.messages);
 
       if (messageValues.length > 0) {
         getMissedMessagesFromPubNub(group, chat, channel.uuid, messageValues[messageValues.length - 1].timetoken);
-        saveMessagesToLocalStorage(group, chat, channel.uuid);
       }
     });
   });
 }
 
-function getMissedMessagesFromPubNub(group, chat, channel, lastMessage) {
+var messages = [];
+
+function getMissedMessagesFromPubNub(group, chat, channel, endTimetoken, startTimetoken) {
   store.state.pubnub.fetchMessages({
     channels: [channel],
-    end: lastMessage,
+    start: startTimetoken,
+    end: endTimetoken,
     count: 25 // default/max is 25
 
   }, function (status, response) {
-    Object.values(response.channels)[0].forEach(function (message) {
+    var newMessages = Object.values(response.channels)[0];
+    messages = messages.concat(newMessages);
+    var currentTimetoken = newMessages[0].timetoken;
+
+    if (currentTimetoken !== endTimetoken) {
+      getMissedMessagesFromPubNub(group, chat, channel, endTimetoken, currentTimetoken);
+      return;
+    }
+
+    messages.sort(function (a, b) {
+      if (parseInt(a.timetoken) > parseInt(b.timetoken)) {
+        return 1;
+      }
+
+      if (parseInt(a.timetoken) < parseInt(b.timetoken)) {
+        return -1;
+      }
+
+      return 0;
+    });
+    messages.forEach(function (message) {
       vue__WEBPACK_IMPORTED_MODULE_0___default.a.set(store.state.groups[group].channels[chat].messages, message.timetoken, message);
     });
-  });
+    saveMessagesToLocalStorage(group, chat, channel);
+  }); // store.state.pubnub.fetchMessages(
+  //     {
+  //         channels: [channel],
+  //         start: startTimetoken,
+  //         end: endTimetoken,
+  //         count: 1 // default/max is 25
+  //     },
+  //     function (status, response) {
+  //         let messages = Object.values(response.channels)[0];
+  //         messages.forEach(message => {
+  //             Vue.set(store.state.groups[group].channels[chat].messages, message.timetoken, message);
+  //         });
+  //         console.log(messages)
+  //         console.log(messages[messages.length-1].timetoken);
+  //         console.log(endTimetoken);
+  //         let currentTimetoken = messages[messages.length-1].timetoken;
+  //         if (currentTimetoken !== endTimetoken) {
+  //             getMissedMessagesFromPubNub(group, chat, channel, endTimetoken, currentTimetoken)
+  //         }
+  //         saveMessagesToLocalStorage(group, chat, channel);
+  //     }
+  // )
 } //TODO aus der Datenbank holen
 
 

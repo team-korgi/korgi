@@ -86,7 +86,14 @@ export default {
             }
         }
     },
+    created() {
+        setTimeout(this.scrollToBottom, 1)
+    },
     methods: {
+        scrollToBottom() {
+            let messagesElement = document.getElementById('messages');
+            messagesElement.scrollTo(0, messagesElement.scrollHeight);
+        },
         publishMessage() {
             if (this.message.length) {
                 this.$store.commit('publishMessage', {
@@ -96,6 +103,7 @@ export default {
                     group: this.url
                 });
                 this.message = "";
+                this.scrollToBottom();
             }
         },
         publishFile(content) {
@@ -109,6 +117,7 @@ export default {
                 fileType: content.file.type,
                 fileUrl: ""
             });
+            this.scrollToBottom();
         },
         publishEventAnnouncement(eventAnnouncement) {
             // TODO add event to group in database
@@ -119,6 +128,7 @@ export default {
                 group: this.url,
                 date: eventAnnouncement.date
             })
+            this.scrollToBottom();
         },
         hasAccess() {
             if (this.channel.name === 'Wichtig') {
