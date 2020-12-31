@@ -1,12 +1,17 @@
 <template>
     <div id="settings">
-        <h1 class="headline">Einstellungen</h1>
     </div>
 </template>
 
 <script>
+import Navbar from "@/Pages/navbar";
 export default {
-    name: "settings"
+    name: "settings",
+    components: {Navbar},
+    created() {
+        this.$store.commit("setCurrentPage", {page: "Einstellungen"});
+        this.$store.commit("setShowArrow", {showArrow: false});
+    },
 }
 </script>
 

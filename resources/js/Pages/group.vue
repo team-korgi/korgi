@@ -19,8 +19,10 @@
 </template>
 
 <script>
+import Navbar from "@/Pages/navbar";
 export default {
     name: "group",
+    components: {Navbar},
     props: {
         url: String
     },
@@ -40,7 +42,11 @@ export default {
                 return "chat-link-current";
             }
         }
-    }
+    },
+    created() {
+        this.$store.commit("setCurrentPage", {page: this.group.name});
+        this.$store.commit("setShowArrow", {showArrow: true});
+    },
 }
 </script>
 
@@ -54,10 +60,11 @@ export default {
 #group-header {
     display: flex;
     flex-direction: column;
-    box-shadow: 1px 0px 15px 3px rgba(92, 86, 86, 0.75);
-    -webkit-box-shadow: 1px 0px 15px 3px rgba(92, 86, 86, 0.75);
-    -moz-box-shadow: 1px 0px 15px 3px rgba(92, 86, 86, 0.75);
+    box-shadow: 1px 0px 8px 3px rgba(92,86,86,0.3);
+    -webkit-box-shadow: 1px 0px 8px 3px rgba(92,86,86,0.3);
+    -moz-box-shadow: 1px 0px 8px 3px rgba(92,86,86,0.3);
     padding: 2% 2% 0 2%;
+    z-index: 30;
 }
 
 #chat-selection {
@@ -120,6 +127,9 @@ export default {
 @media (max-width: 576px) {
     .row {
         display: none;
+    }
+    #group {
+        height: calc(100vh - 20vw);
     }
 }
 

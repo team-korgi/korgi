@@ -50,10 +50,11 @@ import DialogContentSendFile from "./dialog-content-send-file";
 import DialogContentEventAnnouncement from "./dialog-content-event-announcement";
 import DatePicker from "@/Pages/date-picker";
 import ChatElement from "@/Pages/chat-element";
+import Navbar from "@/Pages/navbar";
 
 export default {
     name: "chat",
-    components: {ChatElement, DatePicker, DialogWindow, DialogContentSendFile, DialogContentEventAnnouncement},
+    components: {Navbar, ChatElement, DatePicker, DialogWindow, DialogContentSendFile, DialogContentEventAnnouncement},
     props: {
         type: String,
         url: String
@@ -192,6 +193,7 @@ export default {
     box-shadow: 1px 0 15px 3px rgba(92, 86, 86, 0.75);
     -webkit-box-shadow: 1px 0 15px 3px rgba(92, 86, 86, 0.75);
     -moz-box-shadow: 1px 0 15px 3px rgba(92, 86, 86, 0.75);
+    justify-content: space-between;
 }
 
 .special-messages-container {
@@ -226,6 +228,12 @@ export default {
     }
     #input-group {
         padding: 2% 2% 4% 2%; /*Unten mehr, damit bei Handys mit abgerundeten Ecken nix abgeschnitten wird*/
+    }
+    #messages::-webkit-scrollbar {
+        width: 0.5rem;
+    }
+    .special-messages-container {
+        padding: 4%;
     }
 }
 

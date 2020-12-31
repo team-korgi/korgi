@@ -1,6 +1,6 @@
 <template>
     <div id="group-view">
-
+<!--        <navbar header="Gruppenübersicht"/>-->
         <dialog-window :bus="groupInputBus" title="Gruppe erstellen!" @submit="createGroup">
             <dialog-content-create-group :bus="groupInputBus"/>
         </dialog-window>
@@ -21,14 +21,19 @@ import NewGroupCard from "@/Pages/new-group-card";
 import DialogWindow from "@/Pages/dialog-window";
 import Vue from "vue";
 import DialogContentCreateGroup from "@/Pages/dialog-content-create-group";
+import Navbar from "@/Pages/navbar";
 
 export default {
     name: "group-view",
-    components: {DialogContentCreateGroup, DialogWindow, NewGroupCard, GroupCard},
+    components: {Navbar, DialogContentCreateGroup, DialogWindow, NewGroupCard, GroupCard},
     data() {
         return {
             groupInputBus: new Vue()
         }
+    },
+    created() {
+        this.$store.commit("setCurrentPage", {page: "Gruppenübersicht"});
+        this.$store.commit("setShowArrow", {showArrow: false});
     },
     computed: {
         groups: function () {
@@ -45,6 +50,7 @@ export default {
 
 <style scoped>
 #group-view {
+    height: 100%;
     width: 100%;
     background-color: var(--background-color);
 }
@@ -54,7 +60,9 @@ export default {
 }
 
 #groups {
+    margin-top: 2%;
     display: flex;
+    position: relative;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-start;
@@ -62,6 +70,7 @@ export default {
 
 @media (max-width: 576px) {
     #groups {
+        /*margin-top: 25%;*/
         flex-direction: column;
         flex-wrap: nowrap;
         align-items: center;

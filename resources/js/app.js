@@ -209,9 +209,17 @@ const store = new Vuex.Store({
                 darkmode: false
             }
         },
-        groups: getGroups()
+        groups: getGroups(),
+        currentPage: "",
+        showArrow: false
     },
     mutations: {
+        setShowArrow(state, payload) {
+            state.showArrow = payload.showArrow;
+        },
+        setCurrentPage(state, payload) {
+          state.currentPage = payload.page;
+        },
         toggleDarkmode(state) {
             state.user.settings.darkmode = !state.user.settings.darkmode;
         },
@@ -330,6 +338,12 @@ const store = new Vuex.Store({
         }
     },
     getters: {
+        getShowArrow: state => {
+            return state.showArrow
+        },
+        getPage: state => {
+            return state.currentPage
+        },
         getUser: state => {
             return state.user;
         },

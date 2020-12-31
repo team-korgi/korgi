@@ -35,7 +35,7 @@ export default {
 
 <style scoped>
 .message {
-    max-width: 40%;
+    max-width: 80%;
     background-color: white;
     display: flex;
     flex-direction: column;
@@ -53,7 +53,7 @@ export default {
 }
 
 .text {
-
+    word-break: break-word;
 }
 
 .timetoken {
