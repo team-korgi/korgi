@@ -183,6 +183,7 @@ export default {
     box-shadow: 1px 0 15px 3px rgba(92, 86, 86, 0.75);
     -webkit-box-shadow: 1px 0 15px 3px rgba(92, 86, 86, 0.75);
     -moz-box-shadow: 1px 0 15px 3px rgba(92, 86, 86, 0.75);
+    justify-content: space-between;
 }
 
 .special-messages-container {
@@ -217,6 +218,9 @@ export default {
     }
     #input-group {
         padding: 2% 2% 4% 2%; /*Unten mehr, damit bei Handys mit abgerundeten Ecken nix abgeschnitten wird*/
+    }
+    #messages::-webkit-scrollbar {
+        width: 0.5rem;
     }
 }
 

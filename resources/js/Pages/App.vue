@@ -2,7 +2,8 @@
     <div id="app">
 <!--        <date-picker :multiple="true"></date-picker>-->
 <!--        <date-picker :multiple="false"></date-picker>-->
-        <navigation/>
+        <navbar :bus="bus"/>
+        <navigation :bus="bus"/>
         <router-view/>
     </div>
 </template>
@@ -11,12 +12,22 @@
 import Navigation from "./navigation"
 import DatePicker from "@/Pages/date-picker";
 import Navbar from "@/Pages/navbar";
+import Vue from "vue";
 
 export default {
     name: 'App',
     components: {
+        Navbar,
         DatePicker,
         Navigation
+    },
+    data() {
+        return {
+            bus: new Vue()
+        }
+    },
+    created() {
+        console.log(this.bus + "bla")
     },
     computed: {
         darkmode: function() {
@@ -63,6 +74,7 @@ export default {
     --mid-grey: #E1E1E1;
     --light-grey: #F3F3F3;
     --white: #ffffff;
+    overflow-x: hidden;
 }
 
 html {
@@ -70,6 +82,7 @@ html {
     --background-color-alternate: var(--light-grey);
     --font-color: var(--black);
     --header-color: var(--dark-grey);
+    overflow-x: hidden;
 }
 
 html.darkmode {
@@ -77,16 +90,18 @@ html.darkmode {
     --background-color-alternate: var(--mid-grey);
     --font-color: var(--white);
     --header-color: var(--white);
+    overflow-x: hidden;
 }
 
 #app {
     display: flex;
     flex-direction: row;
 
-    width: 100vw;
+    width: 100%;
     height: 100vh;
 
     font-family: 'Montserrat', sans-serif;
+    overflow: hidden;
 }
 
 .headline {
@@ -210,5 +225,11 @@ html.darkmode {
 
 .secondary-background:hover {
     background-color: var(--secondary-darker);
+}
+
+@media (max-width: 576px) {
+    #app {
+        flex-direction: column;
+    }
 }
 </style>

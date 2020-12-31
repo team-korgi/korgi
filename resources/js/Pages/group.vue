@@ -1,6 +1,5 @@
 <template>
     <div id="group">
-        <navbar :header="group.name"/>
         <div id="group-header">
             <div class="row">
                 <router-link to="/gruppen" class="round-btn secondary-background"><i class="fas fa-arrow-left"></i></router-link>
@@ -43,7 +42,11 @@ export default {
                 return "chat-link-current";
             }
         }
-    }
+    },
+    created() {
+        this.$store.commit("setCurrentPage", {page: this.group.name});
+        this.$store.commit("setShowArrow", {showArrow: true});
+    },
 }
 </script>
 
@@ -123,6 +126,9 @@ export default {
 @media (max-width: 576px) {
     .row {
         display: none;
+    }
+    #group {
+        height: calc(100vh - 20vw);
     }
 }
 

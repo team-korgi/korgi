@@ -32,4 +32,13 @@ export default {
     padding-left: 10%;
     padding-right: 10%;
 }
+
+@media (max-width: 576px) {
+    .chat-element {
+        padding-left: 4%;
+        padding-right: 2%;
+        margin-top: 4px;
+        margin-bottom: 4px;
+    }
+}
 </style>

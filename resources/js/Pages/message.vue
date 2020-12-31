@@ -53,7 +53,7 @@ export default {
 }
 
 .text {
-
+    word-break: break-word;
 }
 
 .timetoken {

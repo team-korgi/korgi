@@ -1,26 +1,37 @@
 <template>
-    <div id="navigation">
+    <div id="navigation" v-bind:class="{'navigation-active': isActive, 'hide': hide}">
         <div id="top">
-            <img class="logo" src="../../assets/korgi_yellow_only.svg" alt="KORGI">
+            <div id="header">
+                <img class="logo" src="../../assets/korgi_yellow_only.svg" alt="KORGI">
+                <a id="burger" href="#" @click="toggleMenu" v-bind:class="{active: isActive}"><span/></a>
+            </div>
             <p class="greeting">Willkommen zurück, {{ user }}!</p>
             <a>Abmelden</a>
         </div>
         <div id="center">
-            <router-link :class="groupsIsCurrent()" :to="{ name: 'groups'}" class="navigation-item">
-                <p>Gruppenübersicht</p>
-                <i class="fas fa-th-large"></i>
-            </router-link>
-            <router-link :class="eventsIsCurrent()" to="/termine" class="navigation-item">
-                <p>Termine</p>
-                <i class="far fa-calendar-alt"></i>
-            </router-link>
-            <router-link :class="settingsIsCurrent()" to="/einstellungen" class="navigation-item">
-                <p>Einstellungen</p>
-                <i class="fas fa-cog"></i>
-            </router-link>
-            <div :class="tutorialIsCurrent()" class="navigation-item">
-                <p>Tutorial starten</p>
-                <i class="far fa-question-circle"></i>
+            <div @click="toggleMenu" v-bind:class="{active: isActive}">
+                <router-link :class="groupsIsCurrent()" :to="{ name: 'groups'}" class="navigation-item">
+                    <p>Gruppenübersicht</p>
+                    <i class="fas fa-th-large"></i>
+                </router-link>
+            </div>
+            <div @click="toggleMenu" v-bind:class="{active: isActive}">
+                <router-link :class="eventsIsCurrent()" to="/termine" class="navigation-item">
+                    <p>Termine</p>
+                    <i class="far fa-calendar-alt"></i>
+                </router-link>
+            </div>
+            <div @click="toggleMenu" v-bind:class="{active: isActive}">
+                <router-link :class="settingsIsCurrent()" to="/einstellungen" class="navigation-item">
+                    <p>Einstellungen</p>
+                    <i class="fas fa-cog"></i>
+                </router-link>
+            </div>
+            <div @click="toggleMenu" v-bind:class="{active: isActive}">
+                <div :class="tutorialIsCurrent()" class="navigation-item">
+                    <p>Tutorial starten</p>
+                    <i class="far fa-question-circle"></i>
+                </div>
             </div>
         </div>
         <div class="btn secondary-background" @click="toggleDarkmode">Toggle Darkmode WIP</div>
@@ -33,12 +44,33 @@
 
 <script>
 import Button from "@/Jetstream/Button";
+
 export default {
     name: "navigation",
     components: {Button},
+    props: {
+        bus: Object
+    },
+    created() {
+        this.bus.$on("toggleMenu", () => {
+            if (this.isActive) {
+                this.isActive = !this.isActive;
+                setTimeout(() => {
+                    this.hide = !this.hide;
+                }, 300)
+            } else {
+                this.hide = !this.hide;
+                setTimeout(() => {
+                    this.isActive = !this.isActive;
+                }, 5)
+            }
+        });
+    },
     data() {
         return {
-            user: this.$store.getters.getUser.username
+            user: this.$store.getters.getUser.username,
+            isActive: false,
+            hide: true
         }
     },
     methods: {
@@ -51,19 +83,22 @@ export default {
             }
         },
         eventsIsCurrent() {
-            if (this.$route.fullPath==="/termine") {
+            if (this.$route.fullPath === "/termine") {
                 return "navigation-item-active";
             }
         },
         settingsIsCurrent() {
-            if (this.$route.fullPath==="/einstellungen") {
+            if (this.$route.fullPath === "/einstellungen") {
                 return "navigation-item-active";
             }
         },
         tutorialIsCurrent() {
-            if (this.$route.fullPath==="/tutorial") {
+            if (this.$route.fullPath === "/tutorial") {
                 return "navigation-item-active";
             }
+        },
+        toggleMenu() {
+            this.bus.$emit("toggleMenu")
         }
     }
 }
@@ -137,8 +172,6 @@ export default {
     cursor: pointer;
 }
 
-
-
 .navigation-item-active {
     background-color: #ff8f6e;
 }
@@ -157,9 +190,88 @@ export default {
     font-weight: bold;
 }
 
+#header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#burger {
+    display: none;
+    cursor: pointer;
+    margin-left: auto;
+    z-index: 30;
+    align-self: center;
+}
+
+#burger span {
+    position: relative;
+    display: block;
+    z-index: 5;
+    width: 30px;
+    height: 4px;
+    background: #ffffff;
+    transition: all 0.2s ease-in-out;
+    border-radius: 3px;
+}
+
+#burger span:before, #burger span:after {
+    position: absolute;
+    background: #ffffff;
+    content: "";
+    width: 30px;
+    height: 4px;
+    transition: all 0.2s ease-in-out;
+    border-radius: 3px;
+}
+
+#burger span:before {
+    top: -8px;
+}
+
+#burger span:after {
+    top: 8px;
+}
+
+#burger.active span {
+    background: transparent;
+}
+
+#burger.active span:before {
+    transform: rotate(45deg) translate(5px, 6px);
+    background: #ffffff;
+}
+
+#burger.active span:after {
+    transform: rotate(-45deg) translate(5px, -6px);
+    background: #ffffff;
+}
+
 @media (max-width: 576px) {
     #navigation {
-        display: none;
+        position: absolute;
+        right: -80vw;
+        width: 80vw;
+
+        box-shadow: 1px 0px 15px 3px rgba(92, 86, 86, 0.5);
+        -webkit-box-shadow: 1px 0px 15px 3px rgba(92, 86, 86, 0.5);
+        -moz-box-shadow: 1px 0px 15px 3px rgba(92, 86, 86, 0.5);
+        transition: 0.3s ease;
+    }
+
+    #navigation.navigation-active {
+        right: 0;
+        transition: 0.3s ease;
+    }
+
+    .logo {
+        width: 70%;
+    }
+    .hide {
+        display: none !important;
+    }
+    #burger {
+        display: inline;
     }
 }
 

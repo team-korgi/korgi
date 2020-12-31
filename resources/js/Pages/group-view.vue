@@ -1,6 +1,6 @@
 <template>
     <div id="group-view">
-        <navbar header="Gruppenübersicht"/>
+<!--        <navbar header="Gruppenübersicht"/>-->
         <dialog-window :bus="groupInputBus" title="Gruppe erstellen!" @submit="createGroup">
             <dialog-content-create-group :bus="groupInputBus"/>
         </dialog-window>
@@ -31,6 +31,10 @@ export default {
             groupInputBus: new Vue()
         }
     },
+    created() {
+        this.$store.commit("setCurrentPage", {page: "Gruppenübersicht"});
+        this.$store.commit("setShowArrow", {showArrow: false});
+    },
     computed: {
         groups: function () {
             return this.$store.getters.getGroups;
@@ -49,7 +53,6 @@ export default {
     height: 100%;
     width: 100%;
     background-color: var(--background-color);
-    position: relative;
 }
 
 .group-view-header {
@@ -57,6 +60,7 @@ export default {
 }
 
 #groups {
+    margin-top: 2%;
     display: flex;
     position: relative;
     flex-direction: row;
