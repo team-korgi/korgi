@@ -222,6 +222,9 @@ export default {
     #messages::-webkit-scrollbar {
         width: 0.5rem;
     }
+    .special-messages-container {
+        padding: 4%;
+    }
 }
 
 </style>
