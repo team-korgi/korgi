@@ -19,7 +19,7 @@ export default {
 
     width: 15vw;
     height: 15vw;
-    border: #FFCB8E dashed 4px;
+    border: #FFCB8E dashed 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -61,6 +61,7 @@ h1 {
         height: 20vw;
         flex-direction: row;
         justify-content: flex-start;
+        border: #FFCB8E dashed 4px;
 
         box-shadow: 1px 0px 8px 3px rgba(92,86,86,0.3);
         -webkit-box-shadow: 1px 0px 8px 3px rgba(92,86,86,0.3);

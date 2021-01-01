@@ -27,7 +27,7 @@ export default {
 
     width: 15vw;
     height: 15vw;
-    border: #FFA88E solid 4px;
+    border: #FFA88E solid 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -78,6 +78,7 @@ export default {
         box-shadow: 1px 0px 8px 3px rgba(92,86,86,0.3);
         -webkit-box-shadow: 1px 0px 8px 3px rgba(92,86,86,0.3);
         -moz-box-shadow: 1px 0px 8px 3px rgba(92,86,86,0.3);
+        border: #FFA88E solid 4px;
 
     }
     .group-card-icon {

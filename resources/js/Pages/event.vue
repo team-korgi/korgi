@@ -43,19 +43,19 @@ export default {
 
 .date-text {
     font-size: 1.5rem;
-    margin: 1%;
+    margin: 1% 2% 1% 2%;
     color: white;
     font-weight: 800;
 }
 
 .subject {
-    margin-left: 1%;
-    margin-top: 1%;
+    margin-left: 2%;
+    margin-top: 2%;
     font-weight: 800;
     font-size: 1.3rem;
 }
 .description {
-    margin: 1%;
+    margin: 2%;
 }
 
 @media (max-width: 576px) {
@@ -63,16 +63,16 @@ export default {
         width: 90%;
     }
     .date-text {
-        margin: 2%;
+        margin: 2% 3% 2% 3%;
         font-size: 1.4rem;
     }
     .subject {
-        margin-left: 2%;
-        margin-top: 2%;
+        margin-left: 3%;
+        margin-top: 3%;
         font-size: 1.2rem;
     }
     .description {
-        margin: 2%;
+        margin: 3%;
     }
 }
 </style>
