@@ -71,6 +71,7 @@ export default {
 
     --black: #000000;
     --dark-grey: #2C2F33;
+    --semi-dark-grey: #505050;
     --mid-grey: #E1E1E1;
     --light-grey: #F3F3F3;
     --white: #ffffff;
@@ -81,14 +82,16 @@ html {
     --background-color: var(--white);
     --background-color-alternate: var(--light-grey);
     --font-color: var(--black);
+    --font-color-alternate: var(--white);
     --header-color: var(--dark-grey);
     overflow-x: hidden;
 }
 
 html.darkmode {
-    --background-color: var(--dark-grey);
-    --background-color-alternate: var(--mid-grey);
+    --background-color: var(--semi-dark-grey);
+    --background-color-alternate: var(--dark-grey);
     --font-color: var(--white);
+    --font-color-alternate: var(--black);
     --header-color: var(--white);
     overflow-x: hidden;
 }

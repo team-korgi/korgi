@@ -75,9 +75,9 @@ export default {
         flex-direction: row;
         justify-content: flex-start;
 
-        box-shadow: 1px 0px 8px 3px rgba(92,86,86,0.3);
-        -webkit-box-shadow: 1px 0px 8px 3px rgba(92,86,86,0.3);
-        -moz-box-shadow: 1px 0px 8px 3px rgba(92,86,86,0.3);
+        box-shadow: 1px 0px 8px 3px rgba(92,86,86,0.1);
+        -webkit-box-shadow: 1px 0px 8px 3px rgba(92,86,86,0.1);
+        -moz-box-shadow: 1px 0px 8px 3px rgba(92,86,86,0.1);
         border: #FFA88E solid 4px;
 
     }

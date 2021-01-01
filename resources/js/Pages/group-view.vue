@@ -51,7 +51,7 @@ export default {
 #group-view {
     height: 100%;
     width: 100%;
-    background-color: var(--background-color);
+    background-color: var(--background-color-alternate);
 }
 
 .group-view-header {

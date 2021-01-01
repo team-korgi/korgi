@@ -25,7 +25,7 @@ export default {
     flex-direction: column;
     width: 60%;
     border-radius: 1rem;
-    background-color: white;
+    background-color: var(--background-color);
 
     box-shadow: 1px 0px 15px 3px rgba(92, 86, 86, 0.3);
     -webkit-box-shadow: 1px 0px 15px 3px rgba(92, 86, 86, 0.3);
@@ -53,9 +53,11 @@ export default {
     margin-top: 2%;
     font-weight: 800;
     font-size: 1.3rem;
+    color: var(--font-color)
 }
 .description {
     margin: 2%;
+    color: var(--font-color)
 }
 
 @media (max-width: 576px) {

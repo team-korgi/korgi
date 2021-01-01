@@ -35,7 +35,7 @@ export default {
 #events {
     height: 100%;
     width: 100%;
-    background-color: var(--background-color);
+    background-color: var(--background-color-alternate);
 }
 
 #events-container {

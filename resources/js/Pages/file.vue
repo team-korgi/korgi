@@ -4,7 +4,7 @@
         <p class="text">{{message.message.text}}</p>
         <div class="file-container primary-background">
             <i class="far fa-file-pdf"></i>
-            <p>{{message.message.fileName}}</p>
+            <p class="text">{{message.message.fileName}}</p>
         </div>
         <div class="timetoken">{{
                 new Date(message.timetoken / 10000).toLocaleTimeString('de', {
@@ -84,6 +84,10 @@ i {
     align-self: flex-end;
     color: #707070;
     font-size: 0.8rem;
+}
+
+.text {
+    word-break: break-word;
 }
 
 @media (max-width: 576px) {
