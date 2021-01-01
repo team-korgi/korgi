@@ -162,6 +162,7 @@ export default {
     display: flex;
     flex-direction: column;
     padding: 5%;
+    padding-right: 3%;
 }
 
 #top a {
@@ -200,8 +201,8 @@ export default {
     display: none;
     cursor: pointer;
     margin-left: auto;
-    z-index: 30;
     align-self: center;
+    padding: 10px;
 }
 
 #burger span {

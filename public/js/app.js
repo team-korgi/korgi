@@ -5377,7 +5377,14 @@ __webpack_require__.r(__webpack_exports__);
       }
     }
   },
+  created: function created() {
+    setTimeout(this.scrollToBottom, 1);
+  },
   methods: {
+    scrollToBottom: function scrollToBottom() {
+      var messagesElement = document.getElementById('messages');
+      messagesElement.scrollTo(0, messagesElement.scrollHeight);
+    },
     publishMessage: function publishMessage() {
       if (this.message.length) {
         this.$store.commit('publishMessage', {
@@ -5387,6 +5394,7 @@ __webpack_require__.r(__webpack_exports__);
           group: this.url
         });
         this.message = "";
+        this.scrollToBottom();
       }
     },
     publishFile: function publishFile(content) {
@@ -5400,6 +5408,7 @@ __webpack_require__.r(__webpack_exports__);
         fileType: content.file.type,
         fileUrl: ""
       });
+      this.scrollToBottom();
     },
     publishEventAnnouncement: function publishEventAnnouncement(eventAnnouncement) {
       // TODO add event to group in database
@@ -5410,6 +5419,7 @@ __webpack_require__.r(__webpack_exports__);
         group: this.url,
         date: eventAnnouncement.date
       });
+      this.scrollToBottom();
     },
     hasAccess: function hasAccess() {
       if (this.channel.name === 'Wichtig') {
@@ -5867,8 +5877,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "event"
+  name: "event",
+  props: {
+    event: Object
+  }
 });
 
 /***/ }),
@@ -5883,6 +5904,13 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Pages_navbar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Pages/navbar */ "./resources/js/Pages/navbar.vue");
+/* harmony import */ var _Pages_event__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Pages/event */ "./resources/js/Pages/event.vue");
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -5893,9 +5921,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "events",
   components: {
+    Event: _Pages_event__WEBPACK_IMPORTED_MODULE_1__["default"],
     Navbar: _Pages_navbar__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   computed: {
@@ -6015,7 +6045,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _Pages_dialog_content_create_group__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Pages/dialog-content-create-group */ "./resources/js/Pages/dialog-content-create-group.vue");
 /* harmony import */ var _Pages_navbar__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Pages/navbar */ "./resources/js/Pages/navbar.vue");
-//
 //
 //
 //
@@ -6475,7 +6504,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Montserrat&display=swap);", ""]);
 
 // module
-exports.push([module.i, "* {\n  box-sizing: border-box;\n  margin: 0;\n  padding: 0;\n  transition: all 0.2s ease;\n}\n:root {\n  --primary: #FFA88E;\n  --primary-darker: #ff8f6e;\n  --secondary-lighter: #FFDBB1;\n  --secondary: #FFCB8E;\n  --secondary-darker: #ffb561;\n  --warn: #FC6B6B;\n  --warn-darker: #ef5252;\n  --black: #000000;\n  --dark-grey: #2C2F33;\n  --mid-grey: #E1E1E1;\n  --light-grey: #F3F3F3;\n  --white: #ffffff;\n  overflow-x: hidden;\n}\nhtml {\n  --background-color: var(--white);\n  --background-color-alternate: var(--light-grey);\n  --font-color: var(--black);\n  --header-color: var(--dark-grey);\n  overflow-x: hidden;\n}\nhtml.darkmode {\n  --background-color: var(--dark-grey);\n  --background-color-alternate: var(--mid-grey);\n  --font-color: var(--white);\n  --header-color: var(--white);\n  overflow-x: hidden;\n}\n#app {\n  display: flex;\n  flex-direction: row;\n  width: 100%;\n  height: 100vh;\n  font-family: 'Montserrat', sans-serif;\n  overflow: hidden;\n}\n.headline {\n  color: #707070;\n  font-size: 1.8rem;\n  font-weight: 700;\n}\n.title {\n  color: #FFCB8E;\n  font-size: 1.8rem;\n  font-weight: 700;\n}\n.round-btn {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  width: 3rem;\n  height: 3rem;\n  font-size: 1.5rem;\n  border-radius: 1.5rem;\n  outline: 0;\n}\n.round-btn.mini {\n  width: 1.5rem;\n  height: 1.5rem;\n  font-size: 0.75rem;\n}\n.btn {\n  width: 100%;\n  /*flex-grow: 1;*/\n  height: 3rem;\n  font-size: 1rem;\n  font-weight: 600;\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  border-radius: 1.5rem;\n  padding-left: 1.5rem;\n  padding-right: 1.5rem;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.btn i {\n  font-size: 1.5rem;\n}\n.input {\n  font-size: 1rem;\n  outline: 0;\n  border-radius: 1.5rem;\n  color: #707070;\n  font-weight: 600;\n  padding-left: 1.5rem;\n  padding-right: 1.5rem;\n  height: 3rem;\n  background-color: #E1E1E1;\n}\n.input::-moz-placeholder {\n  color: #707070;\n}\n.input:-ms-input-placeholder {\n  color: #707070;\n}\n.input::placeholder {\n  color: #707070;\n}\n.input.disabled {\n  cursor: default;\n  pointer-events: none;\n}\n.warn-background {\n  background-color: var(--warn);\n  transition: 0.2s ease;\n  cursor: pointer;\n  color: white;\n}\n.primary-background {\n  background-color: var(--primary);\n  transition: 0.2s ease;\n  cursor: pointer;\n  color: white;\n}\n.secondary-background {\n  background-color: var(--secondary);\n  transition: 0.2s ease;\n  cursor: pointer;\n  color: white;\n}\n.warn-background.disabled {\n  pointer-events: none;\n  cursor: default;\n  filter: saturate(0.3);\n}\n.primary-background.disabled {\n  pointer-events: none;\n  cursor: default;\n  filter: saturate(0.3);\n}\n.secondary-background.disabled {\n  pointer-events: none;\n  cursor: default;\n  filter: saturate(0.3);\n}\n.warn-background:hover {\n  background-color: var(--warn-darker);\n}\n.primary-background:hover {\n  background-color: var(--primary-darker);\n}\n.secondary-background:hover {\n  background-color: var(--secondary-darker);\n}\n@media (max-width: 576px) {\n#app {\n    flex-direction: column;\n}\n}\n", ""]);
+exports.push([module.i, "* {\n  box-sizing: border-box;\n  margin: 0;\n  padding: 0;\n  transition: all 0.2s ease;\n}\n:root {\n  --primary: #FFA88E;\n  --primary-darker: #ff8f6e;\n  --secondary-lighter: #FFDBB1;\n  --secondary: #FFCB8E;\n  --secondary-darker: #ffb561;\n  --warn: #FC6B6B;\n  --warn-darker: #ef5252;\n  --black: #000000;\n  --dark-grey: #2C2F33;\n  --mid-grey: #E1E1E1;\n  --light-grey: #F3F3F3;\n  --white: #ffffff;\n  overflow-x: hidden;\n}\nhtml {\n  --background-color: var(--white);\n  --background-color-alternate: var(--light-grey);\n  --font-color: var(--black);\n  --header-color: var(--dark-grey);\n  overflow-x: hidden;\n}\nhtml.darkmode {\n  --background-color: var(--dark-grey);\n  --background-color-alternate: var(--mid-grey);\n  --font-color: var(--white);\n  --header-color: var(--white);\n  overflow-x: hidden;\n}\n#app {\n  display: flex;\n  flex-direction: row;\n  width: 100%;\n  height: 100vh;\n  font-family: 'Montserrat', sans-serif;\n}\n.headline {\n  color: #707070;\n  font-size: 1.8rem;\n  font-weight: 700;\n}\n.title {\n  color: #FFCB8E;\n  font-size: 3rem;\n  font-weight: 700;\n}\n.round-btn {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  width: 3rem;\n  height: 3rem;\n  font-size: 1.5rem;\n  border-radius: 1.5rem;\n  outline: 0;\n}\n.round-btn.mini {\n  width: 1.5rem;\n  height: 1.5rem;\n  font-size: 0.75rem;\n}\n.btn {\n  width: 100%;\n  /*flex-grow: 1;*/\n  height: 3rem;\n  font-size: 1rem;\n  font-weight: 600;\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  border-radius: 1.5rem;\n  padding-left: 1.5rem;\n  padding-right: 1.5rem;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.btn i {\n  font-size: 1.5rem;\n}\n.input {\n  font-size: 1rem;\n  outline: 0;\n  border-radius: 1.5rem;\n  color: #707070;\n  font-weight: 600;\n  padding-left: 1.5rem;\n  padding-right: 1.5rem;\n  height: 3rem;\n  background-color: #E1E1E1;\n}\n.input::-moz-placeholder {\n  color: #707070;\n}\n.input:-ms-input-placeholder {\n  color: #707070;\n}\n.input::placeholder {\n  color: #707070;\n}\n.input.disabled {\n  cursor: default;\n  pointer-events: none;\n}\n.warn-background {\n  background-color: var(--warn);\n  transition: 0.2s ease;\n  cursor: pointer;\n  color: white;\n}\n.primary-background {\n  background-color: var(--primary);\n  transition: 0.2s ease;\n  cursor: pointer;\n  color: white;\n}\n.secondary-background {\n  background-color: var(--secondary);\n  transition: 0.2s ease;\n  cursor: pointer;\n  color: white;\n}\n.warn-background.disabled {\n  pointer-events: none;\n  cursor: default;\n  filter: saturate(0.3);\n}\n.primary-background.disabled {\n  pointer-events: none;\n  cursor: default;\n  filter: saturate(0.3);\n}\n.secondary-background.disabled {\n  pointer-events: none;\n  cursor: default;\n  filter: saturate(0.3);\n}\n.warn-background:hover {\n  background-color: var(--warn-darker);\n}\n.primary-background:hover {\n  background-color: var(--primary-darker);\n}\n.secondary-background:hover {\n  background-color: var(--secondary-darker);\n}\n@media (max-width: 576px) {\n#app {\n    flex-direction: column;\n}\n}\n", ""]);
 
 // exports
 
@@ -6513,7 +6542,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#chat[data-v-4d9d8b3e] {\n  background-color: #F3F3F3;\n  flex-grow: 1;\n  width: 100%;\n  height: 100%;\n  display: flex;\n  flex-direction: column;\n  overflow: hidden;\n}\n#messages[data-v-4d9d8b3e] {\n  height: 100%;\n  display: flex;\n  flex-direction: column;\n  flex-grow: 1;\n  padding: 2%;\n  overflow-y: auto;\n}\n#messages[data-v-4d9d8b3e]::-webkit-scrollbar {\n  margin-left: -1rem;\n  width: 1rem;\n}\n#messages[data-v-4d9d8b3e]::-webkit-scrollbar-track {\n  background: transparent;\n  border-radius: 0.5rem;\n}\n#messages[data-v-4d9d8b3e]::-webkit-scrollbar-thumb {\n  background-color: #FFA88E;\n  border-radius: 0.5rem;\n}\n#message-input[data-v-4d9d8b3e] {\n  margin-left: 2%;\n  margin-right: 2%;\n  flex-grow: 1;\n}\n#input-group[data-v-4d9d8b3e] {\n  position: relative;\n  display: flex;\n  padding: 1% 2% 1% 2%;\n  box-shadow: 1px 0 15px 3px rgba(92, 86, 86, 0.75);\n  -webkit-box-shadow: 1px 0 15px 3px rgba(92, 86, 86, 0.75);\n  -moz-box-shadow: 1px 0 15px 3px rgba(92, 86, 86, 0.75);\n  justify-content: space-between;\n}\n.special-messages-container[data-v-4d9d8b3e] {\n  margin-bottom: 2%;\n  background-color: white;\n  padding: 1%;\n  height: 19rem;\n  position: absolute;\n  bottom: 100%;\n  border-radius: 1rem;\n  box-shadow: 1px 0 15px 3px rgba(92, 86, 86, 0.75);\n  -webkit-box-shadow: 1px 0 15px 3px rgba(92, 86, 86, 0.75);\n  -moz-box-shadow: 1px 0 15px 3px rgba(92, 86, 86, 0.75);\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: space-between;\n}\n.fade-enter-active[data-v-4d9d8b3e], .fade-leave-active[data-v-4d9d8b3e] {\n  transition: opacity .2s ease;\n}\n.fade-enter[data-v-4d9d8b3e], .fade-leave-to[data-v-4d9d8b3e] /* .fade-leave-active below version 2.1.8 */\n{\n  opacity: 0;\n}\n@media (max-width: 576px) {\n#message-input[data-v-4d9d8b3e] {\n    max-width: 68%; /*Irgendwie dumm, aber sonst funktioniert nix*/\n}\n#input-group[data-v-4d9d8b3e] {\n    padding: 2% 2% 4% 2%; /*Unten mehr, damit bei Handys mit abgerundeten Ecken nix abgeschnitten wird*/\n}\n#messages[data-v-4d9d8b3e]::-webkit-scrollbar {\n    width: 0.5rem;\n}\n.special-messages-container[data-v-4d9d8b3e] {\n    padding: 4%;\n}\n}\n\n", ""]);
+exports.push([module.i, "#chat[data-v-4d9d8b3e] {\n  background-color: #F3F3F3;\n  flex-grow: 1;\n  width: 100%;\n  height: 100%;\n  display: flex;\n  flex-direction: column;\n  overflow: hidden;\n}\n#messages[data-v-4d9d8b3e] {\n  height: 100%;\n  display: flex;\n  flex-direction: column;\n  flex-grow: 1;\n  padding: 2%;\n  overflow-y: auto;\n}\n#messages[data-v-4d9d8b3e]::-webkit-scrollbar {\n  margin-left: -1rem;\n  width: 1rem;\n}\n#messages[data-v-4d9d8b3e]::-webkit-scrollbar-track {\n  background: transparent;\n  border-radius: 0.5rem;\n}\n#messages[data-v-4d9d8b3e]::-webkit-scrollbar-thumb {\n  background-color: #FFA88E;\n  border-radius: 0.5rem;\n}\n#message-input[data-v-4d9d8b3e] {\n  margin-left: 2%;\n  margin-right: 2%;\n  flex-grow: 1;\n}\n#input-group[data-v-4d9d8b3e] {\n  position: relative;\n  display: flex;\n  padding: 1% 2% 1% 2%;\n  box-shadow: 1px 0 15px 3px rgba(92, 86, 86, 0.75);\n  -webkit-box-shadow: 1px 0 15px 3px rgba(92, 86, 86, 0.75);\n  -moz-box-shadow: 1px 0 15px 3px rgba(92, 86, 86, 0.75);\n  justify-content: space-between;\n}\n.special-messages-container[data-v-4d9d8b3e] {\n  margin-bottom: 2%;\n  background-color: white;\n  padding: 1%;\n  height: 19rem;\n  position: absolute;\n  bottom: 100%;\n  border-radius: 1rem;\n  box-shadow: 1px 0 15px 3px rgba(92, 86, 86, 0.75);\n  -webkit-box-shadow: 1px 0 15px 3px rgba(92, 86, 86, 0.75);\n  -moz-box-shadow: 1px 0 15px 3px rgba(92, 86, 86, 0.75);\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: space-between;\n}\n.fade-enter-active[data-v-4d9d8b3e], .fade-leave-active[data-v-4d9d8b3e] {\n  transition: opacity .2s ease;\n}\n.fade-enter[data-v-4d9d8b3e], .fade-leave-to[data-v-4d9d8b3e] /* .fade-leave-active below version 2.1.8 */\r\n{\n  opacity: 0;\n}\n@media (max-width: 576px) {\n#message-input[data-v-4d9d8b3e] {\n    max-width: 68%; /*Irgendwie dumm, aber sonst funktioniert nix*/\n}\n#input-group[data-v-4d9d8b3e] {\n    padding: 2% 2% 4% 2%; /*Unten mehr, damit bei Handys mit abgerundeten Ecken nix abgeschnitten wird*/\n}\n#messages[data-v-4d9d8b3e]::-webkit-scrollbar {\n    width: 0.5rem;\n}\n.special-messages-container[data-v-4d9d8b3e] {\n    padding: 4%;\n}\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -6634,6 +6663,25 @@ exports.push([module.i, ".message[data-v-638bb43a] {\n  width: 80%;\n  backgroun
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Pages/event.vue?vue&type=style&index=0&id=1e36143e&scoped=true&lang=css&":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Pages/event.vue?vue&type=style&index=0&id=1e36143e&scoped=true&lang=css& ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".event[data-v-1e36143e] {\n  display: flex;\n  flex-direction: column;\n  width: 60%;\n  border-radius: 1rem;\n  background-color: white;\n  box-shadow: 1px 0px 15px 3px rgba(92, 86, 86, 0.3);\n  -webkit-box-shadow: 1px 0px 15px 3px rgba(92, 86, 86, 0.3);\n  -moz-box-shadow: 1px 0px 15px 3px rgba(92, 86, 86, 0.3);\n  align-self: center;\n  margin-bottom: 4%;\n}\n.date[data-v-1e36143e] {\n  border-top-left-radius: 1rem;\n  border-top-right-radius: 1rem;\n  background-color: var(--primary);\n}\n.date-text[data-v-1e36143e] {\n  font-size: 1.5rem;\n  margin: 1%;\n  color: white;\n  font-weight: 800;\n}\n.subject[data-v-1e36143e] {\n  margin-left: 1%;\n  margin-top: 1%;\n  font-weight: 800;\n  font-size: 1.3rem;\n}\n.description[data-v-1e36143e] {\n  margin: 1%;\n}\n@media (max-width: 576px) {\n.event[data-v-1e36143e] {\n    width: 90%;\n}\n.date-text[data-v-1e36143e] {\n    margin: 2%;\n    font-size: 1.4rem;\n}\n.subject[data-v-1e36143e] {\n    margin-left: 2%;\n    margin-top: 2%;\n    font-size: 1.2rem;\n}\n.description[data-v-1e36143e] {\n    margin: 2%;\n}\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Pages/events.vue?vue&type=style&index=0&id=2f656762&scoped=true&lang=css&":
 /*!*******************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Pages/events.vue?vue&type=style&index=0&id=2f656762&scoped=true&lang=css& ***!
@@ -6646,7 +6694,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#events[data-v-2f656762] {\n  width: 100%;\n}\n", ""]);
+exports.push([module.i, "#events[data-v-2f656762] {\n  height: 100%;\n  width: 100%;\n  background-color: var(--background-color);\n}\n#events-container[data-v-2f656762] {\n  margin-top: 2%;\n  display: flex;\n  position: relative;\n  flex-direction: column;\n  flex-wrap: wrap;\n  justify-content: flex-start;\n}\n.events-header[data-v-2f656762] {\n  padding: 2%;\n}\n@media (max-width: 576px) {\n.title[data-v-2f656762] {\n    display: none;\n}\n}\n\n", ""]);
 
 // exports
 
@@ -6684,7 +6732,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".group-card[data-v-4f2dce32] {\n  cursor: pointer;\n  background-color: var(--background-color);\n  width: 15vw;\n  height: 15vw;\n  border: #FFA88E solid 4px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: space-around;\n  border-radius: 1.5rem;\n  box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.5);\n  -webkit-box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.5);\n  -moz-box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.5);\n  transition: 0.2s ease;\n  margin: 2%;\n}\n.group-card[data-v-4f2dce32]:hover {\n  transform: scale(1.05);\n}\n.group-card-icon[data-v-4f2dce32] {\n  width: 50%;\n  height: 50%;\n  background-color: var(--primary);\n  color: white;\n  font-size: 3rem;\n  font-weight: 600;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  border-radius: 100%;\n}\n.group-card-name[data-v-4f2dce32] {\n  font-size: 1.5rem;\n  font-weight: 700;\n  color: var(--header-color);\n}\n@media (max-width: 576px) {\n.group-card[data-v-4f2dce32] {\n    width: 90vw;\n    height: 20vw;\n    flex-direction: row;\n    justify-content: flex-start;\n    box-shadow: 1px 0px 8px 3px rgba(92,86,86,0.3);\n    -webkit-box-shadow: 1px 0px 8px 3px rgba(92,86,86,0.3);\n    -moz-box-shadow: 1px 0px 8px 3px rgba(92,86,86,0.3);\n}\n.group-card-icon[data-v-4f2dce32] {\n    width: 16.66%;\n    height: 80%;\n    font-size: 2rem;\n    margin: 10px;\n}\n.group-card-name[data-v-4f2dce32] {\n    font-size: 1.3rem;\n}\n}\n", ""]);
+exports.push([module.i, ".group-card[data-v-4f2dce32] {\n  cursor: pointer;\n  background-color: var(--background-color);\n  width: 15vw;\n  height: 15vw;\n  border: #FFA88E solid 4px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: space-around;\n  border-radius: 1.5rem;\n  box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.3);\n  -webkit-box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.3);\n  -moz-box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.3);\n  transition: 0.2s ease;\n  margin: 2%;\n}\n.group-card[data-v-4f2dce32]:hover {\n  transform: scale(1.05);\n}\n.group-card-icon[data-v-4f2dce32] {\n  width: 50%;\n  height: 50%;\n  background-color: var(--primary);\n  color: white;\n  font-size: 3rem;\n  font-weight: 600;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  border-radius: 100%;\n}\n.group-card-name[data-v-4f2dce32] {\n  font-size: 1.5rem;\n  font-weight: 700;\n  color: var(--header-color);\n}\n@media (max-width: 576px) {\n.group-card[data-v-4f2dce32] {\n    width: 90vw;\n    height: 20vw;\n    flex-direction: row;\n    justify-content: flex-start;\n    box-shadow: 1px 0px 8px 3px rgba(92,86,86,0.3);\n    -webkit-box-shadow: 1px 0px 8px 3px rgba(92,86,86,0.3);\n    -moz-box-shadow: 1px 0px 8px 3px rgba(92,86,86,0.3);\n}\n.group-card-icon[data-v-4f2dce32] {\n    width: 16.66%;\n    height: 80%;\n    font-size: 2rem;\n    margin: 10px;\n}\n.group-card-name[data-v-4f2dce32] {\n    font-size: 1.3rem;\n}\n}\n", ""]);
 
 // exports
 
@@ -6779,7 +6827,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#navbar[data-v-31e7624e] {\n  padding: 14px 14px 14px 14px; /*evtl. beim ersten 24px wegen notch*/\n  display: none;\n  width: 100%;\n  height: 20vw;\n  z-index: 35;\n  background-color: var(--primary);\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n#logo[data-v-31e7624e] {\n  display: block;\n  flex-grow: 0;\n  width: 16%;\n  height: 100%;\n}\ndiv.title[data-v-31e7624e] {\n  color: white;\n  margin-left: 10px;\n  font-size: 1.3rem;\n}\n#burger[data-v-31e7624e] {\n  cursor: pointer;\n  margin-left: auto;\n  z-index: 30;\n}\n#burger span[data-v-31e7624e] {\n  position: relative;\n  display: block;\n  z-index: 5;\n  width: 30px;\n  height: 4px;\n  background: #ffffff;\n  transition: all 0.2s ease-in-out;\n  border-radius: 3px;\n}\n#burger span[data-v-31e7624e]:before, #burger span[data-v-31e7624e]:after {\n  position: absolute;\n  background: #ffffff;\n  content: \"\";\n  width: 30px;\n  height: 4px;\n  transition: all 0.2s ease-in-out;\n  border-radius: 3px;\n}\n#burger span[data-v-31e7624e]:before {\n  top: -8px;\n}\n#burger span[data-v-31e7624e]:after {\n  top: 8px;\n}\n#burger.active span[data-v-31e7624e] {\n  background: transparent;\n}\n#burger.active span[data-v-31e7624e]:before {\n  transform: rotate(45deg) translate(5px, 6px);\n  background: #ffffff;\n}\n#burger.active span[data-v-31e7624e]:after {\n  transform: rotate(-45deg) translate(5px, -6px);\n  background: #ffffff;\n}\n.fa-arrow-left[data-v-31e7624e] {\n  font-size: 2.2rem;\n  color: white;\n}\n.arrow[data-v-31e7624e] {\n  width: 16%;\n  text-align: center;\n}\n@media (max-width: 576px) {\n#navbar[data-v-31e7624e] {\n    display: flex;\n}\n}\n\n", ""]);
+exports.push([module.i, "#navbar[data-v-31e7624e] {\n  padding: 3% 3% 3% 3%; /*evtl. beim ersten 24px wegen notch*/\n  display: none;\n  width: 100%;\n  height: 20vw;\n  z-index: 35;\n  background-color: var(--primary);\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n#logo[data-v-31e7624e] {\n  display: block;\n  flex-grow: 0;\n  width: 16%;\n  height: 100%;\n}\ndiv.title[data-v-31e7624e] {\n  color: white;\n  margin-left: 10px;\n  font-size: 1.3rem;\n}\n#burger[data-v-31e7624e] {\n  margin-left: auto;\n  display: block;\n  padding: 10px;\n}\n#burger span[data-v-31e7624e] {\n  position: relative;\n  display: block;\n  z-index: 5;\n  width: 30px;\n  height: 4px;\n  background: #ffffff;\n  transition: all 0.2s ease-in-out;\n  border-radius: 3px;\n}\n#burger span[data-v-31e7624e]:before, #burger span[data-v-31e7624e]:after {\n  position: absolute;\n  background: #ffffff;\n  content: \"\";\n  width: 30px;\n  height: 4px;\n  transition: all 0.2s ease-in-out;\n  border-radius: 3px;\n}\n#burger span[data-v-31e7624e]:before {\n  top: -8px;\n}\n#burger span[data-v-31e7624e]:after {\n  top: 8px;\n}\n#burger.active span[data-v-31e7624e] {\n  background: transparent;\n}\n#burger.active span[data-v-31e7624e]:before {\n  transform: rotate(45deg) translate(5px, 6px);\n  background: #ffffff;\n}\n#burger.active span[data-v-31e7624e]:after {\n  transform: rotate(-45deg) translate(5px, -6px);\n  background: #ffffff;\n}\n.fa-arrow-left[data-v-31e7624e] {\n  font-size: 2.2rem;\n  color: white;\n}\n.arrow[data-v-31e7624e] {\n  width: 16%;\n  text-align: center;\n}\n@media (max-width: 576px) {\n#navbar[data-v-31e7624e] {\n    display: flex;\n}\n}\n\n", ""]);
 
 // exports
 
@@ -6798,7 +6846,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".logo[data-v-79cf1a5d] {\n  width: 100%;\n}\n#navigation[data-v-79cf1a5d] {\n  display: flex;\n  flex-direction: column;\n  align-content: flex-start;\n  justify-content: space-between;\n  z-index: 40;\n  width: 20vw;\n  height: 100%;\n  background-color: #FFA88E;\n}\n.navigation-item[data-v-79cf1a5d] {\n  padding: 5%;\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  color: white;\n  font-size: 1.2rem;\n  font-weight: 600;\n  margin-top: 1em;\n  margin-bottom: 1em;\n  background-color: #FFA88E;\n  transition: 0.2s ease;\n  margin: 0;\n}\n.greeting[data-v-79cf1a5d] {\n  font-size: 1.4rem;\n  font-weight: bold;\n  color: white;\n  margin-top: 5%;\n  margin-bottom: 5%;\n}\n.navigation-item i[data-v-79cf1a5d] {\n  width: 1.2rem;\n  font-size: 1.5rem;\n}\n.navigation-item[data-v-79cf1a5d]:hover {\n  background-color: #ff8f6e;\n}\n#top[data-v-79cf1a5d] {\n  display: flex;\n  flex-direction: column;\n  padding: 5%;\n}\n#top a[data-v-79cf1a5d] {\n  color: white;\n  text-decoration: underline;\n  font-size: 1rem;\n  font-weight: bold;\n  cursor: pointer;\n}\n.navigation-item-active[data-v-79cf1a5d] {\n  background-color: #ff8f6e;\n}\n#bottom[data-v-79cf1a5d] {\n  display: flex;\n  flex-direction: column;\n  padding: 5%;\n}\n#bottom a[data-v-79cf1a5d] {\n  margin-top: 5%;\n  color: white;\n  text-decoration: underline;\n  font-size: 1.2rem;\n  font-weight: bold;\n}\n#header[data-v-79cf1a5d] {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n}\n#burger[data-v-79cf1a5d] {\n  display: none;\n  cursor: pointer;\n  margin-left: auto;\n  z-index: 30;\n  align-self: center;\n}\n#burger span[data-v-79cf1a5d] {\n  position: relative;\n  display: block;\n  z-index: 5;\n  width: 30px;\n  height: 4px;\n  background: #ffffff;\n  transition: all 0.2s ease-in-out;\n  border-radius: 3px;\n}\n#burger span[data-v-79cf1a5d]:before, #burger span[data-v-79cf1a5d]:after {\n  position: absolute;\n  background: #ffffff;\n  content: \"\";\n  width: 30px;\n  height: 4px;\n  transition: all 0.2s ease-in-out;\n  border-radius: 3px;\n}\n#burger span[data-v-79cf1a5d]:before {\n  top: -8px;\n}\n#burger span[data-v-79cf1a5d]:after {\n  top: 8px;\n}\n#burger.active span[data-v-79cf1a5d] {\n  background: transparent;\n}\n#burger.active span[data-v-79cf1a5d]:before {\n  transform: rotate(45deg) translate(5px, 6px);\n  background: #ffffff;\n}\n#burger.active span[data-v-79cf1a5d]:after {\n  transform: rotate(-45deg) translate(5px, -6px);\n  background: #ffffff;\n}\n@media (max-width: 576px) {\n#navigation[data-v-79cf1a5d] {\n    position: absolute;\n    right: -80vw;\n    width: 80vw;\n    box-shadow: 1px 0px 15px 3px rgba(92, 86, 86, 0.5);\n    -webkit-box-shadow: 1px 0px 15px 3px rgba(92, 86, 86, 0.5);\n    -moz-box-shadow: 1px 0px 15px 3px rgba(92, 86, 86, 0.5);\n    transition: 0.3s ease;\n}\n#navigation.navigation-active[data-v-79cf1a5d] {\n    right: 0;\n    transition: 0.3s ease;\n}\n.logo[data-v-79cf1a5d] {\n    width: 70%;\n}\n.hide[data-v-79cf1a5d] {\n    display: none !important;\n}\n#burger[data-v-79cf1a5d] {\n    display: inline;\n}\n}\n\n", ""]);
+exports.push([module.i, ".logo[data-v-79cf1a5d] {\n  width: 100%;\n}\n#navigation[data-v-79cf1a5d] {\n  display: flex;\n  flex-direction: column;\n  align-content: flex-start;\n  justify-content: space-between;\n  z-index: 40;\n  width: 20vw;\n  height: 100%;\n  background-color: #FFA88E;\n}\n.navigation-item[data-v-79cf1a5d] {\n  padding: 5%;\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  color: white;\n  font-size: 1.2rem;\n  font-weight: 600;\n  margin-top: 1em;\n  margin-bottom: 1em;\n  background-color: #FFA88E;\n  transition: 0.2s ease;\n  margin: 0;\n}\n.greeting[data-v-79cf1a5d] {\n  font-size: 1.4rem;\n  font-weight: bold;\n  color: white;\n  margin-top: 5%;\n  margin-bottom: 5%;\n}\n.navigation-item i[data-v-79cf1a5d] {\n  width: 1.2rem;\n  font-size: 1.5rem;\n}\n.navigation-item[data-v-79cf1a5d]:hover {\n  background-color: #ff8f6e;\n}\n#top[data-v-79cf1a5d] {\n  display: flex;\n  flex-direction: column;\n  padding: 5%;\n  padding-right: 3%;\n}\n#top a[data-v-79cf1a5d] {\n  color: white;\n  text-decoration: underline;\n  font-size: 1rem;\n  font-weight: bold;\n  cursor: pointer;\n}\n.navigation-item-active[data-v-79cf1a5d] {\n  background-color: #ff8f6e;\n}\n#bottom[data-v-79cf1a5d] {\n  display: flex;\n  flex-direction: column;\n  padding: 5%;\n}\n#bottom a[data-v-79cf1a5d] {\n  margin-top: 5%;\n  color: white;\n  text-decoration: underline;\n  font-size: 1.2rem;\n  font-weight: bold;\n}\n#header[data-v-79cf1a5d] {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n}\n#burger[data-v-79cf1a5d] {\n  display: none;\n  cursor: pointer;\n  margin-left: auto;\n  align-self: center;\n  padding: 10px;\n}\n#burger span[data-v-79cf1a5d] {\n  position: relative;\n  display: block;\n  z-index: 5;\n  width: 30px;\n  height: 4px;\n  background: #ffffff;\n  transition: all 0.2s ease-in-out;\n  border-radius: 3px;\n}\n#burger span[data-v-79cf1a5d]:before, #burger span[data-v-79cf1a5d]:after {\n  position: absolute;\n  background: #ffffff;\n  content: \"\";\n  width: 30px;\n  height: 4px;\n  transition: all 0.2s ease-in-out;\n  border-radius: 3px;\n}\n#burger span[data-v-79cf1a5d]:before {\n  top: -8px;\n}\n#burger span[data-v-79cf1a5d]:after {\n  top: 8px;\n}\n#burger.active span[data-v-79cf1a5d] {\n  background: transparent;\n}\n#burger.active span[data-v-79cf1a5d]:before {\n  transform: rotate(45deg) translate(5px, 6px);\n  background: #ffffff;\n}\n#burger.active span[data-v-79cf1a5d]:after {\n  transform: rotate(-45deg) translate(5px, -6px);\n  background: #ffffff;\n}\n@media (max-width: 576px) {\n#navigation[data-v-79cf1a5d] {\n    position: absolute;\n    right: -80vw;\n    width: 80vw;\n    box-shadow: 1px 0px 15px 3px rgba(92, 86, 86, 0.5);\n    -webkit-box-shadow: 1px 0px 15px 3px rgba(92, 86, 86, 0.5);\n    -moz-box-shadow: 1px 0px 15px 3px rgba(92, 86, 86, 0.5);\n    transition: 0.3s ease;\n}\n#navigation.navigation-active[data-v-79cf1a5d] {\n    right: 0;\n    transition: 0.3s ease;\n}\n.logo[data-v-79cf1a5d] {\n    width: 70%;\n}\n.hide[data-v-79cf1a5d] {\n    display: none !important;\n}\n#burger[data-v-79cf1a5d] {\n    display: inline;\n}\n}\n\n", ""]);
 
 // exports
 
@@ -25937,6 +25985,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Pages/event.vue?vue&type=style&index=0&id=1e36143e&scoped=true&lang=css&":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Pages/event.vue?vue&type=style&index=0&id=1e36143e&scoped=true&lang=css& ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./event.vue?vue&type=style&index=0&id=1e36143e&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Pages/event.vue?vue&type=style&index=0&id=1e36143e&scoped=true&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Pages/events.vue?vue&type=style&index=0&id=2f656762&scoped=true&lang=css&":
 /*!***********************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Pages/events.vue?vue&type=style&index=0&id=2f656762&scoped=true&lang=css& ***!
@@ -33495,7 +33573,21 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _c("div", { staticClass: "event" }, [
+    _c("div", { staticClass: "date" }, [
+      _c("div", { staticClass: "date-text" }, [
+        _vm._v(_vm._s(_vm.event.date.toLocaleDateString("de")))
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "subject" }, [_vm._v(_vm._s(_vm.event.subject))]),
+    _vm._v(" "),
+    _c("div", { staticClass: "description" }, [
+      _vm._v(
+        "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor\n        invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.\n    "
+      )
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -33519,20 +33611,29 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { attrs: { id: "events" } },
-    _vm._l(_vm.events, function(event) {
-      return _c("div", [
-        _c("p", [_vm._v(_vm._s(event.subject))]),
-        _vm._v(" "),
-        _c("p", [_vm._v(_vm._s(event.date.toString()))])
-      ])
-    }),
-    0
-  )
+  return _c("div", { attrs: { id: "events" } }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c(
+      "div",
+      { attrs: { id: "events-container" } },
+      _vm._l(_vm.events, function(event) {
+        return _c("event", { attrs: { event: event } })
+      }),
+      1
+    )
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "events-header" }, [
+      _c("h1", { staticClass: "title" }, [_vm._v("Termine")])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -54378,7 +54479,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _event_vue_vue_type_template_id_1e36143e_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./event.vue?vue&type=template&id=1e36143e&scoped=true& */ "./resources/js/Pages/event.vue?vue&type=template&id=1e36143e&scoped=true&");
 /* harmony import */ var _event_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./event.vue?vue&type=script&lang=js& */ "./resources/js/Pages/event.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _event_vue_vue_type_style_index_0_id_1e36143e_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./event.vue?vue&type=style&index=0&id=1e36143e&scoped=true&lang=css& */ "./resources/js/Pages/event.vue?vue&type=style&index=0&id=1e36143e&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
 
 
 
@@ -54386,7 +54489,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
   _event_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _event_vue_vue_type_template_id_1e36143e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
   _event_vue_vue_type_template_id_1e36143e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
@@ -54415,6 +54518,22 @@ component.options.__file = "resources/js/Pages/event.vue"
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_event_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./event.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Pages/event.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_event_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/Pages/event.vue?vue&type=style&index=0&id=1e36143e&scoped=true&lang=css&":
+/*!***********************************************************************************************!*\
+  !*** ./resources/js/Pages/event.vue?vue&type=style&index=0&id=1e36143e&scoped=true&lang=css& ***!
+  \***********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_event_vue_vue_type_style_index_0_id_1e36143e_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./event.vue?vue&type=style&index=0&id=1e36143e&scoped=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Pages/event.vue?vue&type=style&index=0&id=1e36143e&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_event_vue_vue_type_style_index_0_id_1e36143e_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_event_vue_vue_type_style_index_0_id_1e36143e_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_event_vue_vue_type_style_index_0_id_1e36143e_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_event_vue_vue_type_style_index_0_id_1e36143e_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_event_vue_vue_type_style_index_0_id_1e36143e_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
@@ -55495,28 +55614,71 @@ function getAllMissedMessagesFromPubNub() {
   Object.keys(store.state.groups).forEach(function (group) {
     Object.keys(store.state.groups[group].channels).forEach(function (chat) {
       var channel = store.getters.getChannel(group, chat);
-      var messages = channel.messages;
-      var messageValues = Object.values(messages);
+      var messageValues = Object.values(channel.messages);
 
       if (messageValues.length > 0) {
         getMissedMessagesFromPubNub(group, chat, channel.uuid, messageValues[messageValues.length - 1].timetoken);
-        saveMessagesToLocalStorage(group, chat, channel.uuid);
       }
     });
   });
 }
 
-function getMissedMessagesFromPubNub(group, chat, channel, lastMessage) {
+var messages = [];
+
+function getMissedMessagesFromPubNub(group, chat, channel, endTimetoken, startTimetoken) {
   store.state.pubnub.fetchMessages({
     channels: [channel],
-    end: lastMessage,
+    start: startTimetoken,
+    end: endTimetoken,
     count: 25 // default/max is 25
 
   }, function (status, response) {
-    Object.values(response.channels)[0].forEach(function (message) {
+    var newMessages = Object.values(response.channels)[0];
+    messages = messages.concat(newMessages);
+    var currentTimetoken = newMessages[0].timetoken;
+
+    if (currentTimetoken !== endTimetoken) {
+      getMissedMessagesFromPubNub(group, chat, channel, endTimetoken, currentTimetoken);
+      return;
+    }
+
+    messages.sort(function (a, b) {
+      if (parseInt(a.timetoken) > parseInt(b.timetoken)) {
+        return 1;
+      }
+
+      if (parseInt(a.timetoken) < parseInt(b.timetoken)) {
+        return -1;
+      }
+
+      return 0;
+    });
+    messages.forEach(function (message) {
       vue__WEBPACK_IMPORTED_MODULE_0___default.a.set(store.state.groups[group].channels[chat].messages, message.timetoken, message);
     });
-  });
+    saveMessagesToLocalStorage(group, chat, channel);
+  }); // store.state.pubnub.fetchMessages(
+  //     {
+  //         channels: [channel],
+  //         start: startTimetoken,
+  //         end: endTimetoken,
+  //         count: 1 // default/max is 25
+  //     },
+  //     function (status, response) {
+  //         let messages = Object.values(response.channels)[0];
+  //         messages.forEach(message => {
+  //             Vue.set(store.state.groups[group].channels[chat].messages, message.timetoken, message);
+  //         });
+  //         console.log(messages)
+  //         console.log(messages[messages.length-1].timetoken);
+  //         console.log(endTimetoken);
+  //         let currentTimetoken = messages[messages.length-1].timetoken;
+  //         if (currentTimetoken !== endTimetoken) {
+  //             getMissedMessagesFromPubNub(group, chat, channel, endTimetoken, currentTimetoken)
+  //         }
+  //         saveMessagesToLocalStorage(group, chat, channel);
+  //     }
+  // )
 } //TODO aus der Datenbank holen
 
 

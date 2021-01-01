@@ -101,7 +101,6 @@ html.darkmode {
     height: 100vh;
 
     font-family: 'Montserrat', sans-serif;
-    overflow: hidden;
 }
 
 .headline {
@@ -112,7 +111,7 @@ html.darkmode {
 
 .title {
     color: #FFCB8E;
-    font-size: 1.8rem;
+    font-size: 3rem;
     font-weight: 700;
 }
 

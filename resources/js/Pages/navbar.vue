@@ -44,7 +44,7 @@ export default {
 <style scoped>
 
 #navbar {
-    padding: 14px 14px 14px 14px; /*evtl. beim ersten 24px wegen notch*/
+    padding: 3% 3% 3% 3%; /*evtl. beim ersten 24px wegen notch*/
     display: none;
     width: 100%;
     height: 20vw;
@@ -68,10 +68,11 @@ div.title {
     font-size: 1.3rem;
 }
 
+
 #burger {
-    cursor: pointer;
     margin-left: auto;
-    z-index: 30;
+    display: block;
+    padding: 10px;
 }
 
 #burger span {
