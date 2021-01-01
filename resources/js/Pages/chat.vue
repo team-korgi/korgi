@@ -190,9 +190,9 @@ export default {
     position: relative;
     display: flex;
     padding: 1% 2% 1% 2%;
-    box-shadow: 1px 0 15px 3px rgba(92, 86, 86, 0.75);
-    -webkit-box-shadow: 1px 0 15px 3px rgba(92, 86, 86, 0.75);
-    -moz-box-shadow: 1px 0 15px 3px rgba(92, 86, 86, 0.75);
+    box-shadow: 1px 0 15px 3px rgba(92, 86, 86, 0.3);
+    -webkit-box-shadow: 1px 0 15px 3px rgba(92, 86, 86, 0.3);
+    -moz-box-shadow: 1px 0 15px 3px rgba(92, 86, 86, 0.3);
     justify-content: space-between;
 }
 
