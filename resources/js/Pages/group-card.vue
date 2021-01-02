@@ -2,6 +2,7 @@
     <div class="group-card" @click="linkToGroup">
         <div class="group-card-icon">{{group.name.substring(0, 1)}}</div>
         <h1 class="group-card-name">{{group.name}}</h1>
+        <i class="fas fa-ellipsis-h group-card-menu"></i> <!-- Nur mal ein Versuch, denk nicht, dass wir das so machen können aber idk -->
     </div>
 </template>
 
@@ -60,12 +61,21 @@ export default {
     justify-content: center;
     align-items: center;
     border-radius: 100%;
+    order: 2;
 }
 
 .group-card-name {
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--header-color);
+    order: 3;
+}
+.group-card-menu {
+    display: none;
+    font-size: 1.5rem;
+    align-self: flex-end;
+    order: 1;
+    padding: 16px;
 }
 
 @media (max-width: 576px) {
@@ -82,13 +92,24 @@ export default {
 
     }
     .group-card-icon {
+        order: 0;
         width: 16.66%;
         height: 80%;
         font-size: 2rem;
         margin: 10px;
     }
     .group-card-name {
+        order: 0;
         font-size: 1.3rem;
+    }
+    .group-card-menu {
+        order: 0;
+        display: block;
+        margin-left: auto;
+        align-self: center;
+
+        color: var(--dark-grey);
+        padding: 12px;
     }
 }
 </style>

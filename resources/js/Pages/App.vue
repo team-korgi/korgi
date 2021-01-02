@@ -234,5 +234,12 @@ html.darkmode {
     #app {
         flex-direction: column;
     }
+
+    .btn i {
+        display: none;
+    }
+    .btn {
+        justify-content: center;
+    }
 }
 </style>
