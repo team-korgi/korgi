@@ -76,6 +76,7 @@ export default {
     align-self: flex-end;
     order: 1;
     padding: 16px;
+    color: var(--font-color);
 }
 
 @media (max-width: 576px) {
@@ -107,8 +108,6 @@ export default {
         display: block;
         margin-left: auto;
         align-self: center;
-
-        color: var(--dark-grey);
         padding: 12px;
     }
 }
