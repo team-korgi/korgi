@@ -15,16 +15,30 @@
             <div class="item">
                 <div class="subject">Benachrichtigungen</div>
                 <div class="content">
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-                    invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+                    <form id="messages">
+                        <label class="form-item-container">
+                            E-Mail Benachrichtigungen
+                            <input type="checkbox" name="email-msg" value="email-msg">
+                            <span class="checkbox"></span>
+                        </label>
+                        <label class="form-item-container">
+                            Push Benachrichtigungen
+                            <input type="checkbox" name="push-msg" value="push-msg">
+                            <span class="checkbox"></span>
+                        </label>
+                    </form>
                 </div>
             </div>
 
             <div class="item">
                 <div class="subject">Privatsphäre</div>
                 <div class="content">
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-                    invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+                    <div id="privacy">
+                        <span class="small-headline">Alle gesammelten Daten anfordern</span>
+                        <br>
+                        Chatnachrichten, Nutzerdaten, Verschickte Dateien, ...
+                    </div>
+                    <div class="btn primary-background">Daten anfordern</div>
                 </div>
             </div>
 
@@ -32,18 +46,14 @@
                 <div class="subject">Darstellung</div>
                 <div class="content">
                     <form id="presentation">
-<!--                        <div class="radio-container">-->
-                            <label class="radio-container">Heller Modus
-                                <input type="radio" @change="toggleDarkmode" name="Farbmodus" value="lightmode" checked>
-                                <span class="radio"></span>
-                            </label>
-<!--                        </div>-->
-<!--                        <div class="radio-container">-->
-                            <label class="radio-container">Dunkler Modus
-                                <input type="radio" @change="toggleDarkmode" name="Farbmodus" value="darkmode">
-                                <span class="radio"></span>
-                            </label>
-<!--                        </div>-->
+                        <label class="form-item-container">Heller Modus
+                            <input type="radio" @change="toggleDarkmode" name="Farbmodus" value="lightmode" checked>
+                            <span class="radio"></span>
+                        </label>
+                        <label class="form-item-container">Dunkler Modus
+                            <input type="radio" @change="toggleDarkmode" name="Farbmodus" value="darkmode">
+                            <span class="radio"></span>
+                        </label>
                     </form>
                 </div>
             </div>
@@ -100,7 +110,8 @@ export default {
 
 .content {
     margin: 2%;
-    color: var(--font-color)
+    color: var(--font-color);
+    font-size: 1rem;
 }
 
 .item {
@@ -118,7 +129,7 @@ export default {
     padding: 1%;
 }
 
-.radio-container {
+.form-item-container {
     margin-left: 4%;
     margin-bottom: 4%;
     display: block;
@@ -131,7 +142,7 @@ export default {
     user-select: none;
 }
 
-.radio-container input {
+.form-item-container input {
     opacity: 0;
     position: absolute;
     cursor: pointer;
@@ -146,12 +157,29 @@ export default {
     height: 20px;
     width: 20px;
     background-color: var(--white);
-    border: 2px solid var(--semi-dark-grey);
+    border: 2px solid var(--font-color);
     border-radius: 50%;
 }
 
-.radio-container input:checked ~ .radio {
+.checkbox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 30%;
+    height: 20px;
+    width: 20px;
     background-color: var(--white);
+    border: 2px solid var(--font-color);
+}
+
+.form-item-container input:checked ~ .radio {
+    background-color: var(--primary);
+    border: 2px solid var(--primary);
+}
+
+.form-item-container input:checked ~ .checkbox {
+    background-color: var(--primary);
+    border: 2px solid var(--primary);
 }
 
 .radio:after {
@@ -160,17 +188,54 @@ export default {
     display: none;
 }
 
-.radio-container input:checked ~ .radio:after {
+.checkbox:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.form-item-container input:checked ~ .radio:after {
     display: block;
 }
 
-.radio-container .radio:after {
+.form-item-container input:checked ~ .checkbox:after {
+    display: block;
+}
+
+.form-item-container .radio:after {
     top: 3px;
     left: 3px;
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background: var(--semi-dark-grey);
+    background: var(--white);
+}
+
+.form-item-container .checkbox:after {
+    left: 6px;
+    top: 3px;
+    width: 5px;
+    height: 10px;
+    border: solid var(--white);
+    border-width: 0 3px 3px 0;
+    border-radius: 1px;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.btn {
+    width: 40%;
+    justify-content: center;
+}
+
+#privacy {
+    margin-bottom: 4%;
+}
+
+.small-headline {
+    font-weight: bolder;
+    font-size: 1.1rem;
 }
 
 @media (max-width: 576px) {
