@@ -107,6 +107,7 @@ export default {
     width: 100%;
     height: 100%;
     background-color: var(--background-color-alternate);
+    overflow: auto;
 }
 
 .settings-header {
@@ -331,6 +332,23 @@ a {
 
     a {
         margin-right: 3%;
+    }
+}
+
+@media (min-width: 576px) {
+    #settings::-webkit-scrollbar {
+        margin-left: -1rem;
+        width: 1rem;
+    }
+
+    #settings::-webkit-scrollbar-track {
+        background: transparent;
+        border-radius: 0.5rem;
+    }
+
+    #settings::-webkit-scrollbar-thumb {
+        background-color: #FFA88E;
+        border-radius: 0.5rem;
     }
 }
 

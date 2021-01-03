@@ -76,7 +76,6 @@ export default {
     --mid-grey: #E1E1E1;
     --light-grey: #F3F3F3;
     --white: #ffffff;
-    overflow-x: hidden;
 }
 
 html {
@@ -85,7 +84,6 @@ html {
     --font-color: var(--black);
     --font-color-alternate: var(--white);
     --header-color: var(--dark-grey);
-    overflow-x: hidden;
 }
 
 html.darkmode {
@@ -94,7 +92,6 @@ html.darkmode {
     --font-color: var(--white);
     --font-color-alternate: var(--black);
     --header-color: var(--white);
-    overflow-x: hidden;
 }
 
 #app {

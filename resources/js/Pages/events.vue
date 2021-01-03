@@ -36,6 +36,7 @@ export default {
     height: 100%;
     width: 100%;
     background-color: var(--background-color-alternate);
+    overflow: auto;
 }
 
 #events-container {
@@ -54,6 +55,23 @@ export default {
 @media (max-width: 576px) {
     .title {
         display: none;
+    }
+}
+
+@media (min-width: 576px) {
+    #events::-webkit-scrollbar {
+        margin-left: -1rem;
+        width: 1rem;
+    }
+
+    #events::-webkit-scrollbar-track {
+        background: transparent;
+        border-radius: 0.5rem;
+    }
+
+    #events::-webkit-scrollbar-thumb {
+        background-color: #FFA88E;
+        border-radius: 0.5rem;
     }
 }
 
