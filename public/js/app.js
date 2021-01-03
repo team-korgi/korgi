@@ -6372,7 +6372,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "navigation",
@@ -6407,9 +6406,6 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    toggleDarkmode: function toggleDarkmode() {
-      this.$store.commit('toggleDarkmode');
-    },
     groupsIsCurrent: function groupsIsCurrent() {
       if (this.$route.fullPath.match("/gruppen.*")) {
         return "navigation-item-active";
@@ -6470,6 +6466,19 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Pages_navbar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Pages/navbar */ "./resources/js/Pages/navbar.vue");
+/* harmony import */ var _Jetstream_Label__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Jetstream/Label */ "./resources/js/Jetstream/Label.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -6512,9 +6521,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "settings",
   components: {
+    Label: _Jetstream_Label__WEBPACK_IMPORTED_MODULE_1__["default"],
     Navbar: _Pages_navbar__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   created: function created() {
@@ -6524,6 +6535,11 @@ __webpack_require__.r(__webpack_exports__);
     this.$store.commit("setShowArrow", {
       showArrow: false
     });
+  },
+  methods: {
+    toggleDarkmode: function toggleDarkmode() {
+      this.$store.commit('toggleDarkmode');
+    }
   }
 });
 
@@ -6542,7 +6558,7 @@ exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Mo
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap);", ""]);
 
 // module
-exports.push([module.i, "* {\n  box-sizing: border-box;\n  margin: 0;\n  padding: 0;\n  transition: all 0.2s ease;\n}\n:root {\n  --primary: #FFA88E;\n  --primary-darker: #ff8f6e;\n  --secondary-lighter: #FFDBB1;\n  --secondary: #FFCB8E;\n  --secondary-darker: #ffb561;\n  --warn: #FC6B6B;\n  --warn-darker: #ef5252;\n  --black: #000000;\n  --dark-grey: #2C2F33;\n  --semi-dark-grey: #505050;\n  --mid-grey: #E1E1E1;\n  --light-grey: #F3F3F3;\n  --white: #ffffff;\n  overflow-x: hidden;\n}\nhtml {\n  --background-color: var(--white);\n  --background-color-alternate: var(--light-grey);\n  --font-color: var(--black);\n  --font-color-alternate: var(--white);\n  --header-color: var(--dark-grey);\n  overflow-x: hidden;\n}\nhtml.darkmode {\n  --background-color: var(--semi-dark-grey);\n  --background-color-alternate: var(--dark-grey);\n  --font-color: var(--white);\n  --font-color-alternate: var(--black);\n  --header-color: var(--white);\n  overflow-x: hidden;\n}\n#app {\n  display: flex;\n  flex-direction: row;\n  width: 100%;\n  height: 100vh;\n  font-family: 'Montserrat', sans-serif;\n}\n.headline {\n  color: #707070;\n  font-size: 1.8rem;\n  font-weight: 700;\n}\n.title {\n  color: #FFCB8E;\n  font-size: 3rem;\n  font-weight: 700;\n}\n.round-btn {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  width: 3rem;\n  height: 3rem;\n  font-size: 1.5rem;\n  border-radius: 1.5rem;\n  outline: 0;\n}\n.round-btn.mini {\n  width: 1.5rem;\n  height: 1.5rem;\n  font-size: 0.75rem;\n}\n.btn {\n  width: 100%;\n  /*flex-grow: 1;*/\n  height: 3rem;\n  font-size: 1rem;\n  font-weight: 600;\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  border-radius: 1.5rem;\n  padding-left: 1.5rem;\n  padding-right: 1.5rem;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.btn i {\n  font-size: 1.5rem;\n}\n.input {\n  font-size: 1rem;\n  outline: 0;\n  border-radius: 1.5rem;\n  color: #707070;\n  font-weight: 600;\n  padding-left: 1.5rem;\n  padding-right: 1.5rem;\n  height: 3rem;\n  background-color: #E1E1E1;\n}\n.input::-moz-placeholder {\n  color: #707070;\n}\n.input:-ms-input-placeholder {\n  color: #707070;\n}\n.input::placeholder {\n  color: #707070;\n}\n.input.disabled {\n  cursor: default;\n  pointer-events: none;\n}\n.warn-background {\n  background-color: var(--warn);\n  transition: 0.2s ease;\n  cursor: pointer;\n  color: white;\n}\n.primary-background {\n  background-color: var(--primary);\n  transition: 0.2s ease;\n  cursor: pointer;\n  color: white;\n}\n.secondary-background {\n  background-color: var(--secondary);\n  transition: 0.2s ease;\n  cursor: pointer;\n  color: white;\n}\n.warn-background.disabled {\n  pointer-events: none;\n  cursor: default;\n  filter: saturate(0.3);\n}\n.primary-background.disabled {\n  pointer-events: none;\n  cursor: default;\n  filter: saturate(0.3);\n}\n.secondary-background.disabled {\n  pointer-events: none;\n  cursor: default;\n  filter: saturate(0.3);\n}\n.warn-background:hover {\n  background-color: var(--warn-darker);\n}\n.primary-background:hover {\n  background-color: var(--primary-darker);\n}\n.secondary-background:hover {\n  background-color: var(--secondary-darker);\n}\n@media (max-width: 576px) {\n#app {\n    flex-direction: column;\n}\n.btn i {\n    display: none;\n}\n.btn {\n    justify-content: center;\n}\n}\n", ""]);
+exports.push([module.i, "* {\n  box-sizing: border-box;\n  margin: 0;\n  padding: 0;\n  transition: all 0.15s ease;\n}\n:root {\n  --primary: #FFA88E;\n  --primary-darker: #ff8f6e;\n  --secondary-lighter: #FFDBB1;\n  --secondary: #FFCB8E;\n  --secondary-darker: #ffb561;\n  --warn: #FC6B6B;\n  --warn-darker: #ef5252;\n  --black: #000000;\n  --dark-grey: #2C2F33;\n  --semi-dark-grey: #505050;\n  --mid-grey: #E1E1E1;\n  --light-grey: #F3F3F3;\n  --white: #ffffff;\n  overflow-x: hidden;\n}\nhtml {\n  --background-color: var(--white);\n  --background-color-alternate: var(--light-grey);\n  --font-color: var(--black);\n  --font-color-alternate: var(--white);\n  --header-color: var(--dark-grey);\n  overflow-x: hidden;\n}\nhtml.darkmode {\n  --background-color: var(--semi-dark-grey);\n  --background-color-alternate: var(--dark-grey);\n  --font-color: var(--white);\n  --font-color-alternate: var(--black);\n  --header-color: var(--white);\n  overflow-x: hidden;\n}\n#app {\n  display: flex;\n  flex-direction: row;\n  width: 100%;\n  height: 100vh;\n  font-family: 'Montserrat', sans-serif;\n}\n.headline {\n  color: #707070;\n  font-size: 1.8rem;\n  font-weight: 700;\n}\n.title {\n  color: #FFCB8E;\n  font-size: 3rem;\n  font-weight: 700;\n}\n.round-btn {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  width: 3rem;\n  height: 3rem;\n  font-size: 1.5rem;\n  border-radius: 1.5rem;\n  outline: 0;\n}\n.round-btn.mini {\n  width: 1.5rem;\n  height: 1.5rem;\n  font-size: 0.75rem;\n}\n.btn {\n  width: 100%;\n  /*flex-grow: 1;*/\n  height: 3rem;\n  font-size: 1rem;\n  font-weight: 600;\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  border-radius: 1.5rem;\n  padding-left: 1.5rem;\n  padding-right: 1.5rem;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.btn i {\n  font-size: 1.5rem;\n}\n.input {\n  font-size: 1rem;\n  outline: 0;\n  border-radius: 1.5rem;\n  color: #707070;\n  font-weight: 600;\n  padding-left: 1.5rem;\n  padding-right: 1.5rem;\n  height: 3rem;\n  background-color: #E1E1E1;\n}\n.input::-moz-placeholder {\n  color: #707070;\n}\n.input:-ms-input-placeholder {\n  color: #707070;\n}\n.input::placeholder {\n  color: #707070;\n}\n.input.disabled {\n  cursor: default;\n  pointer-events: none;\n}\n.warn-background {\n  background-color: var(--warn);\n  transition: 0.2s ease;\n  cursor: pointer;\n  color: white;\n}\n.primary-background {\n  background-color: var(--primary);\n  transition: 0.2s ease;\n  cursor: pointer;\n  color: white;\n}\n.secondary-background {\n  background-color: var(--secondary);\n  transition: 0.2s ease;\n  cursor: pointer;\n  color: white;\n}\n.warn-background.disabled {\n  pointer-events: none;\n  cursor: default;\n  filter: saturate(0.3);\n}\n.primary-background.disabled {\n  pointer-events: none;\n  cursor: default;\n  filter: saturate(0.3);\n}\n.secondary-background.disabled {\n  pointer-events: none;\n  cursor: default;\n  filter: saturate(0.3);\n}\n.warn-background:hover {\n  background-color: var(--warn-darker);\n}\n.primary-background:hover {\n  background-color: var(--primary-darker);\n}\n.secondary-background:hover {\n  background-color: var(--secondary-darker);\n}\n@media (max-width: 576px) {\n#app {\n    flex-direction: column;\n}\n.btn i {\n    display: none;\n}\n.btn {\n    justify-content: center;\n}\n}\n", ""]);
 
 // exports
 
@@ -6922,7 +6938,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#settings[data-v-1fe6652c] {\n  width: 100%;\n  height: 100%;\n  background-color: var(--background-color-alternate);\n}\n.settings-header[data-v-1fe6652c] {\n  padding: 2%;\n}\n#item-container[data-v-1fe6652c] {\n  margin: auto;\n  display: flex;\n  position: relative;\n  flex-direction: row;\n  flex-wrap: wrap;\n  justify-content: space-around;\n  width: 80%;\n}\n.subject[data-v-1fe6652c] {\n  margin-left: 2%;\n  margin-top: 2%;\n  font-weight: 800;\n  font-size: 1.3rem;\n  color: var(--font-color)\n}\n.content[data-v-1fe6652c] {\n  margin: 2%;\n  color: var(--font-color)\n}\n.item[data-v-1fe6652c] {\n  display: flex;\n  flex-direction: column;\n  width: 45%;\n  border-radius: 1rem;\n  background-color: var(--background-color);\n  box-shadow: 1px 0px 8px 3px rgba(92, 86, 86, 0.1);\n  -webkit-box-shadow: 1px 0px 8px 3px rgba(92, 86, 86, 0.1);\n  -moz-box-shadow: 1px 0px 8px 3px rgba(92, 86, 86, 0.1);\n  margin-bottom: 6%;\n}\n@media (max-width: 576px) {\n.title[data-v-1fe6652c] {\n    display: none;\n}\n#item-container[data-v-1fe6652c] {\n    flex-direction: column;\n    width: 90%;\n}\n.item[data-v-1fe6652c] {\n    width: 100%;\n}\n}\n\n", ""]);
+exports.push([module.i, "#settings[data-v-1fe6652c] {\n  width: 100%;\n  height: 100%;\n  background-color: var(--background-color-alternate);\n}\n.settings-header[data-v-1fe6652c] {\n  padding: 2%;\n}\n#item-container[data-v-1fe6652c] {\n  margin: auto;\n  display: flex;\n  position: relative;\n  flex-direction: row;\n  flex-wrap: wrap;\n  justify-content: space-around;\n  width: 80%;\n}\n.subject[data-v-1fe6652c] {\n  margin: 2%;\n  font-weight: 800;\n  font-size: 1.3rem;\n  color: var(--font-color)\n}\n.content[data-v-1fe6652c] {\n  margin: 2%;\n  color: var(--font-color)\n}\n.item[data-v-1fe6652c] {\n  display: flex;\n  flex-direction: column;\n  width: 45%;\n  border-radius: 1rem;\n  background-color: var(--background-color);\n  box-shadow: 1px 0px 8px 3px rgba(92, 86, 86, 0.1);\n  -webkit-box-shadow: 1px 0px 8px 3px rgba(92, 86, 86, 0.1);\n  -moz-box-shadow: 1px 0px 8px 3px rgba(92, 86, 86, 0.1);\n  margin-bottom: 6%;\n  padding: 1%;\n}\n.radio-container[data-v-1fe6652c] {\n  margin-left: 4%;\n  margin-bottom: 4%;\n  display: block;\n  position: relative;\n  padding-left: 35px;\n  cursor: pointer;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n}\n.radio-container input[data-v-1fe6652c] {\n  opacity: 0;\n  position: absolute;\n  cursor: pointer;\n  height: 0;\n  width: 0;\n}\n.radio[data-v-1fe6652c] {\n  position: absolute;\n  top: 0;\n  left: 0;\n  height: 20px;\n  width: 20px;\n  background-color: var(--white);\n  border: 2px solid var(--semi-dark-grey);\n  border-radius: 50%;\n}\n.radio-container input:checked ~ .radio[data-v-1fe6652c] {\n  background-color: var(--white);\n}\n.radio[data-v-1fe6652c]:after {\n  content: \"\";\n  position: absolute;\n  display: none;\n}\n.radio-container input:checked ~ .radio[data-v-1fe6652c]:after {\n  display: block;\n}\n.radio-container .radio[data-v-1fe6652c]:after {\n  top: 3px;\n  left: 3px;\n  width: 10px;\n  height: 10px;\n  border-radius: 50%;\n  background: var(--semi-dark-grey);\n}\n@media (max-width: 576px) {\n.title[data-v-1fe6652c] {\n    display: none;\n}\n#item-container[data-v-1fe6652c] {\n    flex-direction: column;\n    width: 90%;\n}\n.item[data-v-1fe6652c] {\n    width: 100%;\n    padding: 2%;\n}\n}\n\n", ""]);
 
 // exports
 
@@ -34221,15 +34237,6 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "btn secondary-background",
-          on: { click: _vm.toggleDarkmode }
-        },
-        [_vm._v("Toggle Darkmode WIP")]
-      ),
-      _vm._v(" "),
       _vm._m(0)
     ]
   )
@@ -34308,58 +34315,99 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { attrs: { id: "settings" } }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { attrs: { id: "item-container" } }, [
+      _vm._m(1),
+      _vm._v(" "),
+      _vm._m(2),
+      _vm._v(" "),
+      _vm._m(3),
+      _vm._v(" "),
+      _c("div", { staticClass: "item" }, [
+        _c("div", { staticClass: "subject" }, [_vm._v("Darstellung")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "content" }, [
+          _c("form", { attrs: { id: "presentation" } }, [
+            _c("label", { staticClass: "radio-container" }, [
+              _vm._v("Heller Modus\n                                "),
+              _c("input", {
+                attrs: {
+                  type: "radio",
+                  name: "Farbmodus",
+                  value: "lightmode",
+                  checked: ""
+                },
+                on: { change: _vm.toggleDarkmode }
+              }),
+              _vm._v(" "),
+              _c("span", { staticClass: "radio" })
+            ]),
+            _vm._v(" "),
+            _c("label", { staticClass: "radio-container" }, [
+              _vm._v("Dunkler Modus\n                                "),
+              _c("input", {
+                attrs: { type: "radio", name: "Farbmodus", value: "darkmode" },
+                on: { change: _vm.toggleDarkmode }
+              }),
+              _vm._v(" "),
+              _c("span", { staticClass: "radio" })
+            ])
+          ])
+        ])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { attrs: { id: "settings" } }, [
-      _c("div", { staticClass: "settings-header" }, [
-        _c("h1", { staticClass: "title" }, [_vm._v("Einstellungen")])
-      ]),
+    return _c("div", { staticClass: "settings-header" }, [
+      _c("h1", { staticClass: "title" }, [_vm._v("Einstellungen")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "item" }, [
+      _c("div", { staticClass: "subject" }, [_vm._v("Benutzer")]),
       _vm._v(" "),
-      _c("div", { attrs: { id: "item-container" } }, [
-        _c("div", { staticClass: "item" }, [
-          _c("div", { staticClass: "subject" }, [_vm._v("Benutzer")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "content" }, [
-            _vm._v(
-              "\n                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor\n                invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.\n            "
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "item" }, [
-          _c("div", { staticClass: "subject" }, [_vm._v("Benachrichtigungen")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "content" }, [
-            _vm._v(
-              "\n                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor\n                invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.\n            "
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "item" }, [
-          _c("div", { staticClass: "subject" }, [_vm._v("Privatsphäre")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "content" }, [
-            _vm._v(
-              "\n                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor\n                invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.\n            "
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "item" }, [
-          _c("div", { staticClass: "subject" }, [_vm._v("Darstellung")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "content" }, [
-            _vm._v(
-              "\n                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor\n                invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.\n            "
-            )
-          ])
-        ])
+      _c("div", { staticClass: "content" }, [
+        _vm._v(
+          "\n                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor\n                    invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.\n                "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "item" }, [
+      _c("div", { staticClass: "subject" }, [_vm._v("Benachrichtigungen")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "content" }, [
+        _vm._v(
+          "\n                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor\n                    invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.\n                "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "item" }, [
+      _c("div", { staticClass: "subject" }, [_vm._v("Privatsphäre")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "content" }, [
+        _vm._v(
+          "\n                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor\n                    invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.\n                "
+        )
       ])
     ])
   }

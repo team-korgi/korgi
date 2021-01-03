@@ -56,7 +56,7 @@ export default {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    transition: all 0.2s ease;
+    transition: all 0.15s ease;
 }
 
 :root {

@@ -34,7 +34,6 @@
                 </div>
             </div>
         </div>
-        <div class="btn secondary-background" @click="toggleDarkmode">Toggle Darkmode WIP</div>
         <div id="bottom">
             <a>Impressum</a>
             <a>Datenschutzerklärung</a>
@@ -74,9 +73,6 @@ export default {
         }
     },
     methods: {
-        toggleDarkmode() {
-            this.$store.commit('toggleDarkmode');
-        },
         groupsIsCurrent() {
             if (this.$route.fullPath.match("/gruppen.*")) {
                 return "navigation-item-active";
