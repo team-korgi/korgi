@@ -117,7 +117,7 @@ export default {
     width: 20vw;
     height: 100%;
 
-    background-color: #FFA88E;
+    background-color: var(--primary);
 }
 
 .navigation-item {
