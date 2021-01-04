@@ -118,6 +118,7 @@ function getMissedMessagesFromPubNub(group, chat, channel, endTimetoken, startTi
             });
 
             saveMessagesToLocalStorage(group, chat, channel);
+            messages = [];
         }
     )
 

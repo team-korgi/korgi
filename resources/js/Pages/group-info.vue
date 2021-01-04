@@ -17,7 +17,7 @@ export default {
     },
     data() {
         return {
-            active: true
+            active: false
         }
     },
     created() {
