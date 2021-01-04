@@ -22,7 +22,7 @@
     <list default="true" id="c6b7b351-0dd0-44c1-b4e9-bbfaad6d7dff" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/Pages/settings.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/settings.vue" afterDir="false" />
     </list>
     <list id="67fc21eb-a500-4be4-9496-fb40bcb71bf2" name="Changes by Jaki" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -242,7 +242,8 @@
       <workItem from="1609423152347" duration="8299000" />
       <workItem from="1609594208992" duration="141000" />
       <workItem from="1609594359776" duration="170000" />
-      <workItem from="1609594712960" duration="856000" />
+      <workItem from="1609594712960" duration="2331000" />
+      <workItem from="1609773429653" duration="2808000" />
     </task>
     <servers />
   </component>

@@ -69,11 +69,11 @@
                 <div class="content">
                     <div id="presentation">
                         <label class="flex-item-container">Heller Modus
-                            <input type="radio" @change="toggleDarkmode" name="Farbmodus" value="lightmode" checked>
+                            <input type="radio" :checked="!darkmode" @change="toggleDarkmode" name="Farbmodus" value="lightmode">
                             <span class="radio"></span>
                         </label>
                         <label class="flex-item-container">Dunkler Modus
-                            <input type="radio" @change="toggleDarkmode" name="Farbmodus" value="darkmode">
+                            <input type="radio" :checked="darkmode" @change="toggleDarkmode" name="Farbmodus" value="darkmode">
                             <span class="radio"></span>
                         </label>
                     </div>
@@ -93,6 +93,12 @@ export default {
     created() {
         this.$store.commit("setCurrentPage", {page: "Einstellungen"});
         this.$store.commit("setShowArrow", {showArrow: false});
+
+    },
+    computed: {
+        darkmode: function() {
+            return this.$store.state.user.settings.darkmode
+        }
     },
     methods: {
         toggleDarkmode() {
