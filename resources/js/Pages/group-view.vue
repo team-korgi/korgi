@@ -1,6 +1,6 @@
 <template>
     <div id="group-view">
-        <dialog-window :bus="groupInputBus" title="Gruppe erstellen!" @submit="createGroup">
+        <dialog-window :bus="groupInputBus" title="Gruppe erstellen" @submit="createGroup">
             <dialog-content-create-group :bus="groupInputBus"/>
         </dialog-window>
 
@@ -52,6 +52,7 @@ export default {
     height: 100%;
     width: 100%;
     background-color: var(--background-color-alternate);
+    overflow: auto;
 }
 
 .group-view-header {
@@ -77,6 +78,23 @@ export default {
 
     .group-view-header {
         display: none;
+    }
+}
+
+@media (min-width: 576px) {
+    #group-view::-webkit-scrollbar {
+        margin-left: -1rem;
+        width: 1rem;
+    }
+
+    #group-view::-webkit-scrollbar-track {
+        background: transparent;
+        border-radius: 0.5rem;
+    }
+
+    #group-view::-webkit-scrollbar-thumb {
+        background-color: #FFA88E;
+        border-radius: 0.5rem;
     }
 }
 
