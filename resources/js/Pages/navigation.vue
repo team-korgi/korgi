@@ -249,7 +249,7 @@ export default {
         position: absolute;
         right: -80vw;
         width: 80vw;
-        height: 100%;
+        height: 100vh;
 
         box-shadow: 1px 0px 15px 3px rgba(92, 86, 86, 0.5);
         -webkit-box-shadow: 1px 0px 15px 3px rgba(92, 86, 86, 0.5);
