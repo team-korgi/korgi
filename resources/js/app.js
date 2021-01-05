@@ -123,9 +123,6 @@ function getMissedMessagesFromPubNub(group, chat, channel, endTimetoken, startTi
     )
 
 
-
-
-
     // store.state.pubnub.fetchMessages(
     //     {
     //         channels: [channel],
@@ -219,10 +216,31 @@ const store = new Vuex.Store({
             state.showArrow = payload.showArrow;
         },
         setCurrentPage(state, payload) {
-          state.currentPage = payload.page;
+            state.currentPage = payload.page;
         },
         toggleDarkmode(state) {
             state.user.settings.darkmode = !state.user.settings.darkmode;
+        },
+        addReadBy(state, payload) {
+            Vue.set(state.groups[payload.group].channels[payload.chat].messages[payload.messageTimetoken].message.readBy, payload.user, payload.time);
+            saveMessagesToLocalStorage()
+        },
+        addMessageAction(state, payload) {
+            state.pubnub.addMessageAction(
+                {
+                    channel: payload.message.channel,
+                    messageTimetoken: payload.message.timetoken,
+                    action: {
+                        type: 'readConfirm',
+                        value: JSON.stringify({
+                            user: state.user.username,
+                            time: new Date(),
+                            chat: payload.message.message.chat,
+                            group: payload.message.message.group
+                        }),
+                    }
+                }
+            );
         },
         publishMessage(state, payload) {
             state.pubnub.publish(
@@ -234,6 +252,23 @@ const store = new Vuex.Store({
                         'group': payload.group,
                         'chat': payload.chat,
                         'messageType': 'message'
+                    }
+                }
+            );
+        },
+        publishImportantMessage(state, payload) {
+            console.log(payload.subject);
+            state.pubnub.publish(
+                {
+                    channel: payload.channel,
+                    message: {
+                        'text': payload.message,
+                        'subject': payload.subject,
+                        'user': state.user,
+                        'group': payload.group,
+                        'chat': payload.chat,
+                        'readBy': {},
+                        'messageType': 'importantMessage'
                     }
                 }
             );
@@ -398,7 +433,27 @@ store.state.pubnub.addListener({
         store.commit('addMessage', {
             message: event
         });
-    }
+    },
+    messageAction: function (event) {
+        let data = JSON.parse(event.data.value);
+
+        store.commit("addReadBy", {
+            group: data.group,
+            chat: data.chat,
+            time: new Date(data.time),
+            user: data.user,
+            messageTimetoken: event.data.messageTimetoken
+        })
+
+        // TODO handle message action
+        // var channelName = ma.channel; // The channel to which the message was published
+        // var publisher = ma.publisher; //The Publisher
+        // var event = ma.message.event; // message action added or removed
+        // var type = ma.message.data.type; // message action type
+        // var value = ma.message.data.value; // message action value
+        // var messageTimetoken = ma.message.data.messageTimetoken; // The timetoken of the original message
+        // var actionTimetoken = ma.message.data.actionTimetoken; // The timetoken of the message action
+    },
 });
 
 store.state.pubnub.subscribe({

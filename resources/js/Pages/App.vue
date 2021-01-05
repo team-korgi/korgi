@@ -167,7 +167,23 @@ html.darkmode {
     background-color: #E1E1E1;
 }
 
+.textarea {
+    font-size: 1rem;
+    outline: 0;
+    border-radius: 1.5rem;
+    color: #707070;
+    font-weight: 600;
+
+    padding: 1.5rem;
+    background-color: #E1E1E1;
+    resize: none;
+}
+
 .input::placeholder {
+    color: #707070;
+}
+
+.textarea::placeholder {
     color: #707070;
 }
 
@@ -225,6 +241,28 @@ html.darkmode {
 
 .secondary-background:hover {
     background-color: var(--secondary-darker);
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+.flex-start {
+    justify-content: flex-start;
 }
 
 @media (max-width: 576px) {

@@ -1,6 +1,7 @@
 <template>
     <div class="chat-element">
         <message v-if="message.message.messageType === 'message' && message.message.chat === 'allgemein'" :message="message"/>
+        <important-message v-if="message.message.messageType === 'importantMessage'" :message="message"/>
         <less-important-message v-if="message.message.messageType === 'message' && message.message.chat === 'wichtig'" :message="message"/>
         <file v-if="message.message.messageType === 'file'" :message="message"/>
         <event-announcement v-if="message.message.messageType === 'eventAnnouncement'" :message="message"/>
@@ -12,10 +13,11 @@ import Message from "@/Pages/message";
 import File from "@/Pages/file";
 import EventAnnouncement from "@/Pages/event-announcement";
 import LessImportantMessage from "@/Pages/less-important-message";
+import ImportantMessage from "@/Pages/important-message";
 
 export default {
     name: "chat-element",
-    components: {LessImportantMessage, EventAnnouncement, File, Message},
+    components: {ImportantMessage, LessImportantMessage, EventAnnouncement, File, Message},
     props: {
         message: Object
     },

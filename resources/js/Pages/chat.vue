@@ -4,12 +4,18 @@
             <chat-element v-for="message in Object.values(messages)" :key="message.timestamp" :message="message"/>
         </div>
         <div id="input-group">
+
+            <!--Dialog Fenster-->
             <dialog-window :bus="fileInputBus" title="Datei senden!" @submit="publishFile">
                 <dialog-content-send-file :bus="fileInputBus"/>
             </dialog-window>
             <dialog-window :bus="eventAnnouncementBus" title="Termin bekannt geben" @submit="publishEventAnnouncement">
                 <dialog-content-event-announcement :bus="eventAnnouncementBus"/>
             </dialog-window>
+            <dialog-window :bus="importantMessageBus" title="Wichtige Nachricht senden" @submit="publishImportantMessage">
+                <dialog-content-important-message :bus="importantMessageBus"/>
+            </dialog-window>
+
             <transition name="fade">
                 <div v-show="openSpecialMessages" class="special-messages-container" @click="toggleSpecialMessages">
                     <div class="btn primary-background"><p>Umfrage starten</p><i class="far fa-calendar-alt"></i></div>
@@ -17,12 +23,13 @@
                         bekannt geben</p><i class="far fa-calendar-alt"></i></div>
                     <div class="btn primary-background" v-on:click="dateVotingBus.$emit('open')"><p>Terminumfrage
                         starten</p><i class="far fa-calendar-alt"></i></div>
-                    <div class="btn primary-background"><p>Wichtige Nachricht schreiben</p><i
+                    <div class="btn primary-background" v-on:click="importantMessageBus.$emit('open')"><p>Wichtige Nachricht schreiben</p><i
                         class="far fa-calendar-alt"/></div>
                     <div class="btn primary-background" v-on:click="fileInputBus.$emit('open')"><p>Wichtige Datei
                         senden</p><i class="fas fa-paperclip"/></div>
                 </div>
             </transition>
+
             <div class="round-btn warn-background" :class="hasAccess() ? '' : 'disabled'"
                  v-if="channel.name==='Allgemein'" :disabled="!hasAccess()" v-on:click="fileInputBus.$emit('open')">
                 <i class="fas fa-paperclip"/>
@@ -51,10 +58,13 @@ import DialogContentEventAnnouncement from "./dialog-content-event-announcement"
 import DatePicker from "@/Pages/date-picker";
 import ChatElement from "@/Pages/chat-element";
 import Navbar from "@/Pages/navbar";
+import DialogContentImportantMessage from "@/Pages/dialog-content-important-message";
 
 export default {
     name: "chat",
-    components: {Navbar, ChatElement, DatePicker, DialogWindow, DialogContentSendFile, DialogContentEventAnnouncement},
+    components: {
+        DialogContentImportantMessage,
+        Navbar, ChatElement, DatePicker, DialogWindow, DialogContentSendFile, DialogContentEventAnnouncement},
     props: {
         type: String,
         url: String
@@ -64,6 +74,7 @@ export default {
             message: "",
             fileInputBus: new Vue(),
             eventAnnouncementBus: new Vue(),
+            importantMessageBus: new Vue(),
             dateVotingBus: new Vue(),
             user: this.$store.getters.getUser,
             openSpecialMessages: false,
@@ -87,8 +98,8 @@ export default {
             }
         }
     },
-    created() {
-        setTimeout(this.scrollToBottom, 1)
+    mounted() {
+        this.scrollToBottom()
     },
     methods: {
         scrollToBottom() {
@@ -106,6 +117,18 @@ export default {
                 this.message = "";
                 this.scrollToBottom();
             }
+        },
+        publishImportantMessage(content) {
+            console.log("Publish Important Message in Chat")
+            // TODO Publish Important Message
+            this.$store.commit('publishImportantMessage', {
+                subject: content.subject,
+                message: content.text,
+                channel: this.channel.uuid,
+                chat: this.type,
+                group: this.url,
+            });
+            this.scrollToBottom();
         },
         publishFile(content) {
             // TODO Upload File

@@ -3,19 +3,28 @@
         <div class="sender" v-if="!isOwn">{{ message.message.user.username }}</div>
         <div class="subject">{{ message.message.subject }}</div>
         <div class="text">{{ message.message.text }}</div>
-        <div class="timetoken">{{
-                new Date(message.timetoken / 10000).toLocaleTimeString('de', {
-                    hour: "2-digit",
-                    minute: "2-digit"
-                })
-            }}
+        <div>{{ message.message.readBy}}</div>
+        <div class="row space-between">
+            <div class="row flex-start" v-show="!isOwn">
+                <p id="label">Gelesen</p>
+                <input class="checkbox" type="checkbox" @click="sendReadConfirmation">
+            </div>
+            <div class="timetoken">{{
+                    new Date(message.timetoken / 10000).toLocaleTimeString('de', {
+                        hour: "2-digit",
+                        minute: "2-digit"
+                    })
+                }}
+            </div>
         </div>
     </div>
 </template>
 
 <script>
+import Label from "@/Jetstream/Label";
 export default {
-    name: "less-important-message",
+    name: "important-message",
+    components: {Label},
     props: {
         message: Object
     },
@@ -29,6 +38,11 @@ export default {
             if (this.isOwn) {
                 return 'right';
             }
+        },
+        sendReadConfirmation() {
+            this.$store.commit("addMessageAction", {
+                message: this.message
+            })
         }
     }
 }
@@ -52,6 +66,11 @@ export default {
     font-size: 1.1rem;
     font-weight: bold;
     margin-bottom: 1%;
+}
+
+.subject {
+    color: var(--warn);
+    font-weight: bold;
 }
 
 .text {
