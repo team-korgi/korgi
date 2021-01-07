@@ -220,6 +220,7 @@ export default {
 }
 
 .special-messages-container {
+    background-color: var(--background-color);
     margin-bottom: 2%;
     padding: 1%;
     height: 19rem;
