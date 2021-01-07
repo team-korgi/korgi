@@ -23,14 +23,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c6b7b351-0dd0-44c1-b4e9-bbfaad6d7dff" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/js/Pages/dialog-content-important-message.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/Pages/important-message.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/Pages/dialog-content-important-message-info.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/chat-element.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/chat-element.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/Pages/chat.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/chat.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/less-important-message.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/less-important-message.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/Pages/dialog-window.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/dialog-window.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/Pages/important-message.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/important-message.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
     </list>
     <list id="67fc21eb-a500-4be4-9496-fb40bcb71bf2" name="Changes by Jaki" comment="" />
@@ -261,7 +259,8 @@
       <workItem from="1609594359776" duration="170000" />
       <workItem from="1609594712960" duration="2331000" />
       <workItem from="1609773429653" duration="12160000" />
-      <workItem from="1609880472384" duration="9403000" />
+      <workItem from="1609880472384" duration="10411000" />
+      <workItem from="1609944167674" duration="3908000" />
     </task>
     <servers />
   </component>

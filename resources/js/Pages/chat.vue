@@ -119,8 +119,6 @@ export default {
             }
         },
         publishImportantMessage(content) {
-            console.log("Publish Important Message in Chat")
-            // TODO Publish Important Message
             this.$store.commit('publishImportantMessage', {
                 subject: content.subject,
                 message: content.text,

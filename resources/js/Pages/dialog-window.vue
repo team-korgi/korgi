@@ -9,7 +9,7 @@
                         <p>Abbrechen</p>
                         <i class="fas fa-times"/>
                     </div>
-                    <div class="btn secondary-background" :class="isValid ? '' : 'disabled'" @click="submit">
+                    <div class="btn secondary-background" :class="isValid ? '' : 'disabled'" @click="submit" v-if="!infoOnly">
                         <p>Senden</p>
                         <i class="fas fa-paper-plane"/>
                     </div>
@@ -32,7 +32,8 @@ export default {
     },
     props: {
         title: String,
-        bus: Object
+        bus: Object,
+        infoOnly: Boolean
     },
     created() {
         this.bus.$on('open', this.open);

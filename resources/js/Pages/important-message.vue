@@ -1,15 +1,19 @@
 <template>
     <div class="message" v-bind:class="changeAlignment()">
+        <dialog-window :bus="bus" title="Nachrichteninfo" :info-only="true">
+            <dialog-content-important-message-info :message="message"/>
+        </dialog-window>
+
+
         <div class="sender" v-if="!isOwn">{{ message.message.user.username }}</div>
         <div class="subject">{{ message.message.subject }}</div>
         <div class="text">{{ message.message.text }}</div>
-        <div>{{ message.message.readBy}}</div>
+        <div class="btn primary-background" @click="bus.$emit('open')">Info</div>
         <div class="row space-between">
-            <label class="row flex-start checkbox-container" v-show="!isOwn">
-                Gelesen
-                <input type="checkbox" @click="sendReadConfirmation">
-                <span class="checkbox"></span>
-            </label>
+            <div class="row flex-start" v-if="!isOwn">
+                <p id="label">Gelesen</p>
+                <input class="checkbox" type="checkbox" @click="sendReadConfirmation">
+            </div>
             <div class="timetoken">{{
                     new Date(message.timetoken / 10000).toLocaleTimeString('de', {
                         hour: "2-digit",
@@ -23,11 +27,20 @@
 
 <script>
 import Label from "@/Jetstream/Label";
+import Vue from "vue";
+import DialogWindow from "@/Pages/dialog-window";
+import DialogContentImportantMessageInfo from "@/Pages/dialog-content-important-message-info";
+
 export default {
     name: "important-message",
-    components: {Label},
+    components: {DialogContentImportantMessageInfo, DialogWindow, Label},
     props: {
         message: Object
+    },
+    data() {
+        return {
+            bus: new Vue()
+        }
     },
     computed: {
         isOwn() {
@@ -52,8 +65,7 @@ export default {
 <style scoped>
 .message {
     width: 80%;
-    background-color: var(--message-color);
-    color: var(--font-color);
+    background-color: white;
     display: flex;
     flex-direction: column;
     align-items: start;

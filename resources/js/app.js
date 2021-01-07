@@ -66,6 +66,10 @@ function getMessagesFromLocalStorage(channel) {
 }
 
 function saveMessagesToLocalStorage(group, chat, channel) {
+    console.log("saveMessagesToLocalStorage")
+    console.log("group: " + group)
+    console.log("chat: " + chat)
+    console.log("channel: " + channel)
     localStorage.setItem(channel, JSON.stringify(store.getters.getChannel(group, chat).messages))
 }
 
@@ -113,6 +117,9 @@ function getMissedMessagesFromPubNub(group, chat, channel, endTimetoken, startTi
                 return 0;
             })
 
+            // Löscht die älteste Nachricht, da diese bereits im Local Storage gespeichert ist
+            messages.shift();
+
             messages.forEach(message => {
                 Vue.set(store.state.groups[group].channels[chat].messages, message.timetoken, message);
             });
@@ -121,30 +128,6 @@ function getMissedMessagesFromPubNub(group, chat, channel, endTimetoken, startTi
             messages = [];
         }
     )
-
-
-    // store.state.pubnub.fetchMessages(
-    //     {
-    //         channels: [channel],
-    //         start: startTimetoken,
-    //         end: endTimetoken,
-    //         count: 1 // default/max is 25
-    //     },
-    //     function (status, response) {
-    //         let messages = Object.values(response.channels)[0];
-    //         messages.forEach(message => {
-    //             Vue.set(store.state.groups[group].channels[chat].messages, message.timetoken, message);
-    //         });
-    //         console.log(messages)
-    //         console.log(messages[messages.length-1].timetoken);
-    //         console.log(endTimetoken);
-    //         let currentTimetoken = messages[messages.length-1].timetoken;
-    //         if (currentTimetoken !== endTimetoken) {
-    //             getMissedMessagesFromPubNub(group, chat, channel, endTimetoken, currentTimetoken)
-    //         }
-    //         saveMessagesToLocalStorage(group, chat, channel);
-    //     }
-    // )
 }
 
 //TODO aus der Datenbank holen
@@ -222,8 +205,11 @@ const store = new Vuex.Store({
             state.user.settings.darkmode = !state.user.settings.darkmode;
         },
         addReadBy(state, payload) {
-            Vue.set(state.groups[payload.group].channels[payload.chat].messages[payload.messageTimetoken].message.readBy, payload.user, payload.time);
-            saveMessagesToLocalStorage()
+            Vue.set(state.groups[payload.group].channels[payload.chat].messages[payload.messageTimetoken].message.readBy, payload.user.uuid, {
+                user: payload.user,
+                time: payload.time
+            });
+            saveMessagesToLocalStorage(payload.group, payload.chat, payload.channel)
         },
         addMessageAction(state, payload) {
             state.pubnub.addMessageAction(
@@ -233,10 +219,11 @@ const store = new Vuex.Store({
                     action: {
                         type: 'readConfirm',
                         value: JSON.stringify({
-                            user: state.user.username,
+                            user: state.user,
                             time: new Date(),
                             chat: payload.message.message.chat,
-                            group: payload.message.message.group
+                            group: payload.message.message.group,
+                            channel: payload.message.channel
                         }),
                     }
                 }
@@ -257,7 +244,6 @@ const store = new Vuex.Store({
             );
         },
         publishImportantMessage(state, payload) {
-            console.log(payload.subject);
             state.pubnub.publish(
                 {
                     channel: payload.channel,
@@ -440,7 +426,8 @@ store.state.pubnub.addListener({
         store.commit("addReadBy", {
             group: data.group,
             chat: data.chat,
-            time: new Date(data.time),
+            channel: data.channel,
+            time: data.time,
             user: data.user,
             messageTimetoken: event.data.messageTimetoken
         })
