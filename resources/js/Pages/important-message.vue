@@ -10,10 +10,11 @@
         <div class="text">{{ message.message.text }}</div>
         <div class="btn primary-background" @click="bus.$emit('open')">Info</div>
         <div class="row space-between">
-            <div class="row flex-start" v-if="!isOwn">
-                <p id="label">Gelesen</p>
-                <input class="checkbox" type="checkbox" @click="sendReadConfirmation">
-            </div>
+            <label class="row flex-start checkbox-container" v-if="!isOwn">
+                Gelesen
+                <input type="checkbox" @click="sendReadConfirmation">
+                <span class="checkbox"></span>
+            </label>
             <div class="timetoken">{{
                     new Date(message.timetoken / 10000).toLocaleTimeString('de', {
                         hour: "2-digit",
@@ -98,6 +99,10 @@ export default {
 
 .right {
     background-color: #FFDBB1;
+}
+
+.checkbox-container {
+    margin-top: 2%;
 }
 
 @media (max-width: 576px) {
