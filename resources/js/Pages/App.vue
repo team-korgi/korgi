@@ -76,6 +76,8 @@ export default {
     --mid-grey: #E1E1E1;
     --light-grey: #F3F3F3;
     --white: #ffffff;
+
+    --font-color-light: #707070;
 }
 
 html {
@@ -85,6 +87,9 @@ html {
     --font-color: var(--black);
     --font-color-alternate: var(--white);
     --header-color: var(--dark-grey);
+    --font-color-light: var(--font-color-light);
+    --message-color: var(--white);
+    --message-right-color: var(--secondary-lighter);
 }
 
 html.darkmode {
@@ -94,6 +99,9 @@ html.darkmode {
     --font-color: var(--white);
     --font-color-alternate: var(--black);
     --header-color: var(--white);
+    --font-color-light: var(--mid-grey);
+    --message-color: var(--semi-dark-grey);
+    --message-right-color: var(--primary-darker);
 }
 
 #app {
@@ -107,7 +115,7 @@ html.darkmode {
 }
 
 .headline {
-    color: #707070;
+    color: var(--font-color-light);
     font-size: 1.8rem;
     font-weight: 700;
 }
@@ -160,13 +168,17 @@ html.darkmode {
     font-size: 1rem;
     outline: 0;
     border-radius: 1.5rem;
-    color: #707070;
+    color: var(--font-color);
     font-weight: 600;
 
     padding-left: 1.5rem;
     padding-right: 1.5rem;
     height: 3rem;
-    background-color: #E1E1E1;
+    background-color: var(--background-color);
+}
+
+.dialog-window .input {
+    background-color: var(--background-color-alternate);
 }
 
 .textarea {

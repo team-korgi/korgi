@@ -127,7 +127,7 @@ export default {
 }
 
 .dialog-window {
-    background-color: white;
+    background-color: var(--background-color);
     width: 30vw;
     padding: 2.5%;
     border-radius: 3rem;

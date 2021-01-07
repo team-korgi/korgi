@@ -36,7 +36,8 @@ export default {
 <style scoped>
 .message {
     max-width: 80%;
-    background-color: white;
+    background-color: var(--message-color);
+    color: var(--font-color);
     display: flex;
     flex-direction: column;
     align-items: start;
@@ -58,13 +59,13 @@ export default {
 
 .timetoken {
     align-self: flex-end;
-    color: #707070;
+    color: var(--font-color-light);
     font-size: 0.8rem;
 }
 
 .right {
     align-self: flex-end;
-    background-color: #FFDBB1;
+    background-color: var(--message-right-color);
 }
 
 @media (max-width: 576px) {

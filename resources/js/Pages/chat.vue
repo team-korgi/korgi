@@ -170,7 +170,7 @@ export default {
 
 <style scoped>
 #chat {
-    background-color: #F3F3F3;
+    background-color: var(--background-color-alternate);
     flex-grow: 1;
     width: 100%;
     height: 100%;
@@ -221,7 +221,6 @@ export default {
 
 .special-messages-container {
     margin-bottom: 2%;
-    background-color: white;
     padding: 1%;
     height: 19rem;
     position: absolute;

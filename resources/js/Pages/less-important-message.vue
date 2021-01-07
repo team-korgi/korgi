@@ -37,7 +37,8 @@ export default {
 <style scoped>
 .message {
     width: 80%;
-    background-color: white;
+    background-color: var(--message-color);
+    color: var(--font-color);
     display: flex;
     flex-direction: column;
     align-items: start;

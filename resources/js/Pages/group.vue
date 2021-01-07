@@ -91,6 +91,7 @@ export default {
     -moz-box-shadow: 1px 0px 8px 3px rgba(92, 86, 86, 0.3);
     padding: 2% 2% 0 2%;
     z-index: 30;
+    background-color: var(--background-color);
 }
 
 .btn {
@@ -108,7 +109,7 @@ export default {
     width: 6em;
     text-align: center;
     font-size: 1.2rem;
-    color: #707070;
+    color: var(--font-color-light);
     font-weight: 600;
     transition: 0.2s ease;
 }
