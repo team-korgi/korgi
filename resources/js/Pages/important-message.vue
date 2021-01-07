@@ -5,10 +5,11 @@
         <div class="text">{{ message.message.text }}</div>
         <div>{{ message.message.readBy}}</div>
         <div class="row space-between">
-            <div class="row flex-start" v-show="!isOwn">
-                <p id="label">Gelesen</p>
-                <input class="checkbox" type="checkbox" @click="sendReadConfirmation">
-            </div>
+            <label class="row flex-start checkbox-container" v-show="!isOwn">
+                Gelesen
+                <input type="checkbox" @click="sendReadConfirmation">
+                <span class="checkbox"></span>
+            </label>
             <div class="timetoken">{{
                     new Date(message.timetoken / 10000).toLocaleTimeString('de', {
                         hour: "2-digit",

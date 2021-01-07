@@ -81,6 +81,7 @@ export default {
 html {
     --background-color: var(--white);
     --background-color-alternate: var(--light-grey);
+    --alt-input-border-color: var(--dark-grey);
     --font-color: var(--black);
     --font-color-alternate: var(--white);
     --header-color: var(--dark-grey);
@@ -89,6 +90,7 @@ html {
 html.darkmode {
     --background-color: var(--semi-dark-grey);
     --background-color-alternate: var(--dark-grey);
+    --alt-input-border-color: var(--mid-grey);
     --font-color: var(--white);
     --font-color-alternate: var(--black);
     --header-color: var(--white);
@@ -263,6 +265,117 @@ html.darkmode {
 
 .flex-start {
     justify-content: flex-start;
+}
+
+/*Checkbox*/
+.checkbox-container {
+    margin: 1%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-left: 35px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+}
+
+.checkbox-container input, .checkbox-container input {
+    opacity: 0;
+    position: absolute;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkbox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 30%;
+    height: 20px;
+    width: 20px;
+    background-color: var(--background-color);
+    border: 2px solid var(--font-color);
+}
+
+input:checked ~ .checkbox {
+    background-color: var(--primary);
+    border: 2px solid var(--primary);
+}
+
+.checkbox:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+input:checked ~ .checkbox:after {
+    display: block;
+}
+
+.checkbox:after {
+    left: 6px;
+    top: 3px;
+    width: 5px;
+    height: 10px;
+    border: solid var(--white);
+    border-width: 0 3px 3px 0;
+    border-radius: 1px;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+/*Radio*/
+.radio {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: var(--background-color);
+    border: 2px solid var(--font-color);
+    border-radius: 50%;
+}
+
+input:checked ~ .radio {
+    background-color: var(--primary);
+    border: 2px solid var(--primary);
+}
+
+.radio:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+input:checked ~ .radio:after {
+    display: block;
+}
+
+.radio:after {
+    top: 3px;
+    left: 3px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--white);
+}
+
+.alternate-input {
+    background-color: var(--background-color-alternate);
+    border: 2px solid var(--alt-input-border-color);
+    border-radius: 8px;
+    padding: 6px;
+    color: var(--font-color);
+}
+
+.alternate-input:focus {
+    outline: 0;
+    border: 2px solid var(--primary);
+    transition: 0.2s;
 }
 
 @media (max-width: 576px) {

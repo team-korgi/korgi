@@ -10,14 +10,14 @@
                     <div id="user">
                         <div class="flex-item-container">
                             <span class="small-headline">Name</span>
-                            <input class="settings-input" type="text" name="username" value="username" placeholder="Username" v-model="username">
+                            <input class="alternate-input" type="text" name="username" value="username" placeholder="Username" v-model="username">
                             <div class="round-btn primary-background">
                                 <i class="fas fa-edit"/>
                             </div>
                         </div>
                         <div class="flex-item-container">
                             <span class="small-headline">E-Mail</span>
-                            <input class="settings-input" type="email" name="email" value="email" placeholder="E-Mail" v-model="usermail">
+                            <input class="alternate-input" type="email" name="email" value="email" placeholder="E-Mail" v-model="usermail">
                             <div class="round-btn primary-background">
                                 <i class="fas fa-edit"/>
                             </div>
@@ -50,12 +50,12 @@
                 <div class="subject">Benachrichtigungen</div>
                 <div class="content">
                     <div id="messages">
-                        <label class="flex-item-container">
+                        <label class="checkbox-container">
                             E-Mail Benachrichtigungen
                             <input type="checkbox" name="email-msg" value="email-msg">
                             <span class="checkbox"></span>
                         </label>
-                        <label class="flex-item-container">
+                        <label class="checkbox-container">
                             Push Benachrichtigungen
                             <input type="checkbox" name="push-msg" value="push-msg">
                             <span class="checkbox"></span>
@@ -68,11 +68,11 @@
                 <div class="subject">Darstellung</div>
                 <div class="content">
                     <div id="presentation">
-                        <label class="flex-item-container">Heller Modus
+                        <label class="checkbox-container">Heller Modus
                             <input type="radio" :checked="!darkmode" @change="toggleDarkmode" name="Farbmodus" value="lightmode">
                             <span class="radio"></span>
                         </label>
-                        <label class="flex-item-container">Dunkler Modus
+                        <label class="checkbox-container">Dunkler Modus
                             <input type="radio" :checked="darkmode" @change="toggleDarkmode" name="Farbmodus" value="darkmode">
                             <span class="radio"></span>
                         </label>
@@ -120,16 +120,8 @@ export default {
     padding: 2%;
 }
 
-.settings-input {
-    background-color: var(--light-grey);
-    border: 2px solid var(--semi-dark-grey);
-    border-radius: 8px;
-    padding: 6px;
-    color: var(--black)
-}
-
-.settings-input:focus {
-    outline: 0;
+::placeholder {
+    color: var(--font-color)
 }
 
 #item-container {
@@ -184,8 +176,9 @@ export default {
     user-select: none;
 }
 
-#messages .flex-item-container, #presentation .flex-item-container {
-    cursor: pointer;
+.checkbox-container {
+    margin-left: 4%;
+    margin-bottom: 4%;
 }
 
 .link-container {
@@ -194,88 +187,6 @@ export default {
     display: flex;
     align-items: center;
     cursor: pointer;
-}
-
-#messages .flex-item-container input, #presentation .flex-item-container input {
-    opacity: 0;
-    position: absolute;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-}
-
-.radio {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 20px;
-    width: 20px;
-    background-color: var(--white);
-    border: 2px solid var(--font-color);
-    border-radius: 50%;
-}
-
-.checkbox {
-    position: absolute;
-    top: 0;
-    left: 0;
-    border-radius: 30%;
-    height: 20px;
-    width: 20px;
-    background-color: var(--white);
-    border: 2px solid var(--font-color);
-}
-
-.flex-item-container input:checked ~ .radio {
-    background-color: var(--primary);
-    border: 2px solid var(--primary);
-}
-
-.flex-item-container input:checked ~ .checkbox {
-    background-color: var(--primary);
-    border: 2px solid var(--primary);
-}
-
-.radio:after {
-    content: "";
-    position: absolute;
-    display: none;
-}
-
-.checkbox:after {
-    content: "";
-    position: absolute;
-    display: none;
-}
-
-.flex-item-container input:checked ~ .radio:after {
-    display: block;
-}
-
-.flex-item-container input:checked ~ .checkbox:after {
-    display: block;
-}
-
-.flex-item-container .radio:after {
-    top: 3px;
-    left: 3px;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: var(--white);
-}
-
-.flex-item-container .checkbox:after {
-    left: 6px;
-    top: 3px;
-    width: 5px;
-    height: 10px;
-    border: solid var(--white);
-    border-width: 0 3px 3px 0;
-    border-radius: 1px;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
 }
 
 .btn {
@@ -332,7 +243,7 @@ a {
         flex-basis: 100%;
     }
 
-    .settings-input {
+    .alternate-input {
         width: 70%;
     }
 
