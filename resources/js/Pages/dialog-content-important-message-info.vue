@@ -58,6 +58,7 @@ export default {
 .important-message-info {
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 .subject {
@@ -69,6 +70,7 @@ export default {
 
 .text {
     margin-bottom: 0.5rem;
+    word-break: break-word;
 }
 
 .read-by-container {

@@ -6996,7 +6996,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".important-message-info[data-v-70b6efbf] {\n  display: flex;\n  flex-direction: column;\n}\n.subject[data-v-70b6efbf] {\n  color: var(--warn);\n  font-weight: bold;\n  font-size: 1.1rem;\n  margin-bottom: 0.25rem;\n}\n.text[data-v-70b6efbf] {\n  margin-bottom: 0.5rem;\n}\n.read-by-container[data-v-70b6efbf] {\n  display: flex;\n  flex-direction: column;\n  height: 20vh;\n  overflow: auto;\n}\n.read-by-header[data-v-70b6efbf] {\n  font-size: 1.1rem;\n  font-weight: bold;\n}\n.entry[data-v-70b6efbf] {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n}\r\n", ""]);
+exports.push([module.i, ".important-message-info[data-v-70b6efbf] {\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n}\n.subject[data-v-70b6efbf] {\n  color: var(--warn);\n  font-weight: bold;\n  font-size: 1.1rem;\n  margin-bottom: 0.25rem;\n}\n.text[data-v-70b6efbf] {\n  margin-bottom: 0.5rem;\n  word-break: break-word;\n}\n.read-by-container[data-v-70b6efbf] {\n  display: flex;\n  flex-direction: column;\n  height: 20vh;\n  overflow: auto;\n}\n.read-by-header[data-v-70b6efbf] {\n  font-size: 1.1rem;\n  font-weight: bold;\n}\n.entry[data-v-70b6efbf] {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n}\n", ""]);
 
 // exports
 
