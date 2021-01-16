@@ -10,9 +10,9 @@
         <div class="text">{{ message.message.text }}</div>
         <div class="btn primary-background" @click="bus.$emit('open')">Info</div>
         <div class="row space-between">
-            <label class="row flex-start checkbox-container" v-if="!isOwn">
+            <label class="row flex-start checkbox-container" v-if="!isOwn" :class="{'disabled': Object.keys(message.message.readBy).includes($store.state.pubnub.getUUID())}">
                 Gelesen
-                <input type="checkbox" @click="sendReadConfirmation">
+                <input type="checkbox" @click="sendReadConfirmation" :checked="Object.keys(message.message.readBy).includes($store.state.pubnub.getUUID())">
                 <span class="checkbox"></span>
             </label>
             <div class="timetoken">{{
@@ -40,7 +40,7 @@ export default {
     },
     data() {
         return {
-            bus: new Vue()
+            bus: new Vue(),
         }
     },
     computed: {
@@ -55,9 +55,11 @@ export default {
             }
         },
         sendReadConfirmation() {
-            this.$store.commit("addMessageAction", {
-                message: this.message
-            })
+            if (!Object.keys(this.message.message.readBy).includes(this.$store.state.pubnub.getUUID())) {
+                this.$store.commit("addMessageAction", {
+                    message: this.message
+                })
+            }
         }
     }
 }
@@ -76,6 +78,10 @@ export default {
     margin: 0.5vh;
     border-radius: 1rem;
     align-self: center;
+}
+
+.disabled {
+    pointer-events: none;
 }
 
 .sender {

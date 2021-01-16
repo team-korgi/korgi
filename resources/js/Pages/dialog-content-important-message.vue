@@ -7,7 +7,7 @@
                placeholder="Betreff"
                @input="saveContent"
                @keypress.enter="bus.$emit('submit')">
-        <textarea id="important-message-text-input" placeholder="Text" v-model="text"  class="textarea" @keypress.enter="bus.$emit('submit')"/>
+        <textarea id="important-message-text-input" placeholder="Text" v-model="text" @input="saveContent" class="textarea" @keypress.enter="bus.$emit('submit')"/>
     </div>
 </template>
 
