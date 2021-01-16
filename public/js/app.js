@@ -7167,7 +7167,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#group-info[data-v-38fbf8f6] {\n  width: 0;\n  overflow: hidden;\n  z-index: 100;\n  background-color: var(--background-color);\n  box-shadow: 1px 0px 15px 3px rgba(92, 86, 86, 0.5);\n  -webkit-box-shadow: 1px 0px 15px 3px rgba(92, 86, 86, 0.5);\n  -moz-box-shadow: 1px 0px 15px 3px rgba(92, 86, 86, 0.5);\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  padding: 1% 0 1% 0;\n  transition: 0.2s ease;\n}\n#group-info.active[data-v-38fbf8f6] {\n  width: 20%;\n  padding: 1%;\n}\n#group-info-header[data-v-38fbf8f6] {\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  justify-content: space-between;\n}\n", ""]);
+exports.push([module.i, "#group-info[data-v-38fbf8f6] {\n  width: 0;\n  color: var(--font-color);\n  overflow: hidden;\n  z-index: 100;\n  background-color: var(--background-color);\n  box-shadow: 1px 0px 15px 3px rgba(92, 86, 86, 0.5);\n  -webkit-box-shadow: 1px 0px 15px 3px rgba(92, 86, 86, 0.5);\n  -moz-box-shadow: 1px 0px 15px 3px rgba(92, 86, 86, 0.5);\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  padding: 1% 0 1% 0;\n  transition: 0.2s ease;\n}\n#group-info.active[data-v-38fbf8f6] {\n  width: 20%;\n  padding: 1%;\n}\n#group-info-header[data-v-38fbf8f6] {\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  justify-content: space-between;\n}\n", ""]);
 
 // exports
 
@@ -7224,7 +7224,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".message[data-v-0a280d23] {\n  width: 80%;\n  background-color: white;\n  display: flex;\n  flex-direction: column;\n  align-items: start;\n  justify-content: space-between;\n  padding: 1vh;\n  margin: 0.5vh;\n  border-radius: 1rem;\n  align-self: center;\n}\n.sender[data-v-0a280d23] {\n  font-size: 1.1rem;\n  font-weight: bold;\n  margin-bottom: 0.5vh;\n}\n.subject[data-v-0a280d23] {\n  color: var(--warn);\n  font-weight: bold;\n}\n.text[data-v-0a280d23] {\n}\n.timetoken[data-v-0a280d23] {\n  align-self: flex-end;\n  color: #707070;\n  font-size: 0.8rem;\n}\n.right[data-v-0a280d23] {\n  background-color: #FFDBB1;\n}\n.checkbox-container[data-v-0a280d23] {\n  margin-top: 2vh;\n}\n@media (max-width: 576px) {\n.message[data-v-0a280d23] {\n    padding: 2.5%;\n}\n}\n", ""]);
+exports.push([module.i, ".message[data-v-0a280d23] {\n  width: 80%;\n  background-color: var(--message-color);\n  color: var(--font-color);\n  display: flex;\n  flex-direction: column;\n  align-items: start;\n  justify-content: space-between;\n  padding: 1vh;\n  margin: 0.5vh;\n  border-radius: 1rem;\n  align-self: center;\n}\n.sender[data-v-0a280d23] {\n  font-size: 1.1rem;\n  font-weight: bold;\n  margin-bottom: 0.5vh;\n}\n.subject[data-v-0a280d23] {\n  color: var(--warn);\n  font-weight: bold;\n}\n.text[data-v-0a280d23] {\n}\n.timetoken[data-v-0a280d23] {\n  align-self: flex-end;\n  color: #707070;\n  font-size: 0.8rem;\n}\n.right[data-v-0a280d23] {\n  background-color: #FFDBB1;\n}\n.checkbox-container[data-v-0a280d23] {\n  margin-top: 2vh;\n}\n@media (max-width: 576px) {\n.message[data-v-0a280d23] {\n    padding: 2.5%;\n}\n}\n", ""]);
 
 // exports
 

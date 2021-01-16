@@ -36,6 +36,7 @@ export default {
 <style scoped>
     #group-info {
         width: 0;
+        color: var(--font-color);
         overflow: hidden;
         z-index: 100;
         background-color: var(--background-color);
