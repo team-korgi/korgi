@@ -202,15 +202,15 @@ export default {
 }
 
 #message-input {
-    margin-left: 2%;
-    margin-right: 2%;
+    margin-left: 3vh;
+    margin-right: 3vh;
     flex-grow: 1;
 }
 
 #input-group {
     position: relative;
     display: flex;
-    padding: 1% 2% 1% 2%;
+    padding: 1.5vh 3vh 1.5vh 3vh;
     box-shadow: 1px 0 15px 3px rgba(92, 86, 86, 0.3);
     -webkit-box-shadow: 1px 0 15px 3px rgba(92, 86, 86, 0.3);
     -moz-box-shadow: 1px 0 15px 3px rgba(92, 86, 86, 0.3);
@@ -219,8 +219,8 @@ export default {
 
 .special-messages-container {
     background-color: var(--background-color);
-    margin-bottom: 2%;
-    padding: 1%;
+    margin-bottom: 2vh;
+    padding: 1vh;
     height: 19rem;
     position: absolute;
     bottom: 100%;
@@ -246,6 +246,8 @@ export default {
 @media (max-width: 576px) {
     #message-input {
         max-width: 68%; /*Irgendwie dumm, aber sonst funktioniert nix*/
+        margin-left: 0.5vh;
+        margin-right: 0.5vh;
     }
     #input-group {
         padding: 2% 2% 4% 2%; /*Unten mehr, damit bei Handys mit abgerundeten Ecken nix abgeschnitten wird*/

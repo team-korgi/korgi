@@ -281,7 +281,7 @@ html.darkmode {
 
 /*Checkbox*/
 .checkbox-container {
-    margin: 1%;
+    margin: 1vh;
     display: flex;
     align-items: center;
     position: relative;

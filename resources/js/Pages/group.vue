@@ -6,7 +6,7 @@
                     <div style="display:flex; flex-grow: 1; align-items: center">
                         <router-link to="/gruppen" class="round-btn secondary-background"><i class="fas fa-arrow-left"></i>
                         </router-link>
-                        <h1 style="margin-left: 2%" class="headline">{{ group.name }}</h1>
+                        <h1 style="margin-left: 3vh" class="headline">{{ group.name }}</h1>
                     </div>
                     <div class="btn primary-background" @click="toggleGroupInfo">Gruppeninfo</div>
                 </div>
@@ -89,7 +89,7 @@ export default {
     box-shadow: 1px 0px 8px 3px rgba(92, 86, 86, 0.3);
     -webkit-box-shadow: 1px 0px 8px 3px rgba(92, 86, 86, 0.3);
     -moz-box-shadow: 1px 0px 8px 3px rgba(92, 86, 86, 0.3);
-    padding: 2% 2% 0 2%;
+    padding: 2vh 2vh 0 2vh;
     z-index: 30;
     background-color: var(--background-color);
 }

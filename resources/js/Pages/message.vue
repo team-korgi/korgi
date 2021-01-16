@@ -42,15 +42,15 @@ export default {
     flex-direction: column;
     align-items: start;
     justify-content: space-between;
-    padding: 1%;
-    margin: 0.5%;
+    padding: 1vh;
+    margin: 0.5vh;
     border-radius: 1rem;
 }
 
 .sender {
     font-size: 1.1rem;
     font-weight: bold;
-    margin-bottom: 1%;
+    margin-bottom: 0.5vh;
 }
 
 .text {

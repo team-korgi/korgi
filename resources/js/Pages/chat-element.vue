@@ -31,8 +31,8 @@ export default {
     justify-content: space-between;
     align-items: flex-start;
     width: 100%;
-    padding-left: 10%;
-    padding-right: 10%;
+    padding-left: 10vh;
+    padding-right: 10vh;
 }
 
 @media (max-width: 576px) {
