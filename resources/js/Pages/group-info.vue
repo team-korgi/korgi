@@ -146,7 +146,7 @@ export default {
 }
 
 #group-info-invitation .btn {
-    width: 60%;
+    width: fit-content;
     justify-content: center;
 }
 

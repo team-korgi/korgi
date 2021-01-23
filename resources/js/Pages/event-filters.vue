@@ -1,0 +1,99 @@
+<template>
+    <div id="filters" :class="{'active': active}">
+        <div id="filters-header">
+            <div>Filter</div>
+            <div class="round-btn secondary-background" @click="toggleActive">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+        <div id="filters-date-picker">
+            <date-picker :multiple="true" @input="saveDate"/>
+        </div>
+        <label class="checkbox-container">
+            Vergangene Termine anzeigen
+            <input type="checkbox" name="push-msg" value="push-msg">
+            <span class="checkbox"></span>
+        </label>
+    </div>
+</template>
+
+<script>
+import DatePicker from "@/Pages/date-picker";
+
+export default {
+    name: "event-filters",
+    components: {DatePicker},
+    props: {
+        bus: Object
+    },
+    data() {
+        return {
+            active: false
+        }
+    },
+    created() {
+        this.bus.$on("toggleFilters", () => {
+            this.toggleActive()
+        })
+    },
+    methods: {
+        toggleActive() {
+            this.active = !this.active;
+        }
+    }
+}
+</script>
+
+<style scoped>
+
+#filters {
+    width: 0;
+    color: var(--font-color);
+    overflow: hidden;
+    z-index: 100;
+    background-color: var(--background-color);
+    box-shadow: 1px 0px 15px 3px var(--shadow-color);
+    -webkit-box-shadow: 1px 0px 15px 3px var(--shadow-color);
+    -moz-box-shadow: 1px 0px 15px 3px var(--shadow-color);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 1% 0 1% 0;
+
+    transition: 0.2s ease;
+}
+
+#filters.active {
+    width: 28%;
+    padding: 1%;
+}
+
+::placeholder {
+    color: var(--font-color)
+}
+
+#filters-header {
+    margin-top: 4vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.5rem;
+    font-weight: 900;
+    margin-bottom: 6vh;
+}
+
+#filters-date-picker {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+}
+
+.checkbox-container {
+    margin-top: 6vh;
+    white-space: nowrap;
+}
+
+</style>
