@@ -382,15 +382,15 @@ input:checked ~ .radio:after {
 
 .alternate-input {
     background-color: var(--background-color-alternate);
-    border: 2px solid var(--alt-input-border-color);
-    border-radius: 8px;
+    border: 3px solid var(--alt-input-border-color);
+    border-radius: 12px;
     padding: 6px;
     color: var(--font-color);
 }
 
 .alternate-input:focus {
     outline: 0;
-    border: 2px solid var(--primary);
+    border: 3px solid var(--primary);
     transition: 0.2s;
 }
 
