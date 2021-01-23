@@ -34695,10 +34695,6 @@ var render = function() {
         [
           _c("div", { staticClass: "section-header" }, [_vm._v("Mitglieder")]),
           _vm._v(" "),
-          _vm._l(_vm.members, function(member) {
-            return _c("div", { attrs: { group: member } })
-          }),
-          _vm._v(" "),
           _c("member"),
           _vm._v(" "),
           _c("member"),
@@ -34707,7 +34703,7 @@ var render = function() {
           _vm._v(" "),
           _vm._m(1)
         ],
-        2
+        1
       ),
       _vm._v(" "),
       _vm._m(2),

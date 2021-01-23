@@ -18,7 +18,7 @@
         </div>
         <div id="group-info-members">
             <div class="section-header">Mitglieder</div>
-            <div v-for="member in members" :group="member"/>
+<!--            <member v-for="member in members" :group="member"/>-->
             <member></member>
             <member></member>
             <member></member>
