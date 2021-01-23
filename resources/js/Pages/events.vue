@@ -53,10 +53,10 @@ export default {
     display: flex;
     flex-direction: row;
     width: 100%;
+    height: 100%;
 }
 
 #events-content {
-    height: 100%;
     width: 100%;
     background-color: var(--background-color-alternate);
     overflow: auto;

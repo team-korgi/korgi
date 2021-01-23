@@ -6,6 +6,7 @@
                 <i class="fas fa-times"></i>
             </div>
         </div>
+        <div class="section-header">Datum</div>
         <div id="filters-date-picker">
             <date-picker :multiple="true" @input="saveDate"/>
         </div>
@@ -14,6 +15,12 @@
             <input type="checkbox" name="push-msg" value="push-msg">
             <span class="checkbox"></span>
         </label>
+        <div class="section-header">Gruppe</div>
+        <select class="alternate-input">
+            <option>Alle</option>
+            <option>Schmetterlinge</option>
+            <option>Raupen</option>
+        </select>
     </div>
 </template>
 
@@ -81,7 +88,7 @@ export default {
     justify-content: space-between;
     font-size: 1.5rem;
     font-weight: 900;
-    margin-bottom: 6vh;
+    margin-bottom: 4vh;
 }
 
 #filters-date-picker {
@@ -89,6 +96,12 @@ export default {
     align-items: center;
     justify-content: center;
     white-space: nowrap;
+}
+
+.section-header {
+    font-weight: 900;
+    margin-top: 2.5vh;
+    margin-bottom: 1.2vh;
 }
 
 .checkbox-container {

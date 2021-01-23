@@ -394,6 +394,11 @@ input:checked ~ .radio:after {
     transition: 0.2s;
 }
 
+select option {
+    color: var(--font-color);
+    background-color: var(--background-color);
+}
+
 @media (max-width: 576px) {
     #app {
         flex-direction: column;
