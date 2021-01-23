@@ -27,9 +27,9 @@ export default {
     border-radius: 1rem;
     background-color: var(--background-color);
 
-    box-shadow: 1px 0px 15px 3px rgba(92, 86, 86, 0.3);
-    -webkit-box-shadow: 1px 0px 15px 3px rgba(92, 86, 86, 0.3);
-    -moz-box-shadow: 1px 0px 15px 3px rgba(92, 86, 86, 0.3);
+    box-shadow: 1px 0px 15px 3px var(--shadow-color);
+    -webkit-box-shadow: 1px 0px 15px 3px var(--shadow-color);
+    -moz-box-shadow: 1px 0px 15px 3px var(--shadow-color);
 
     align-self: center;
     margin-bottom: 4%;

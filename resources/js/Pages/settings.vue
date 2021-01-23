@@ -155,9 +155,9 @@ export default {
     border-radius: 1rem;
     background-color: var(--background-color);
 
-    box-shadow: 1px 0px 8px 3px rgba(92, 86, 86, 0.1);
-    -webkit-box-shadow: 1px 0px 8px 3px rgba(92, 86, 86, 0.1);
-    -moz-box-shadow: 1px 0px 8px 3px rgba(92, 86, 86, 0.1);
+    box-shadow: 1px 0px 8px 3px var(--shadow-color);
+    -webkit-box-shadow: 1px 0px 8px 3px var(--shadow-color);
+    -moz-box-shadow: 1px 0px 8px 3px var(--shadow-color);
 
     margin-bottom: 6%;
     padding: 1%;

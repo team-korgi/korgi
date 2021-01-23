@@ -211,9 +211,9 @@ export default {
     position: relative;
     display: flex;
     padding: 1.5vh 3vh 1.5vh 3vh;
-    box-shadow: 1px 0 15px 3px rgba(92, 86, 86, 0.3);
-    -webkit-box-shadow: 1px 0 15px 3px rgba(92, 86, 86, 0.3);
-    -moz-box-shadow: 1px 0 15px 3px rgba(92, 86, 86, 0.3);
+    box-shadow: 1px 0 15px 3px var(--shadow-color);
+    -webkit-box-shadow: 1px 0 15px 3px var(--shadow-color);
+    -moz-box-shadow: 1px 0 15px 3px var(--shadow-color);
     justify-content: space-between;
 }
 
@@ -225,9 +225,9 @@ export default {
     position: absolute;
     bottom: 100%;
     border-radius: 1rem;
-    box-shadow: 1px 0 15px 3px rgba(92, 86, 86, 0.75);
-    -webkit-box-shadow: 1px 0 15px 3px rgba(92, 86, 86, 0.75);
-    -moz-box-shadow: 1px 0 15px 3px rgba(92, 86, 86, 0.75);
+    box-shadow: 1px 0 15px 3px var(--shadow-color);
+    -webkit-box-shadow: 1px 0 15px 3px var(--shadow-color);
+    -moz-box-shadow: 1px 0 15px 3px var(--shadow-color);
     display: flex;
     flex-direction: column;
     align-items: center;
