@@ -60,12 +60,12 @@ export default {
 
 .timetoken {
     align-self: flex-end;
-    color: #707070;
+    color: var(--font-color-light);
     font-size: 0.8rem;
 }
 
 .right {
-    background-color: #FFDBB1;
+    background-color: var(--message-right-color);
 }
 
 @media (max-width: 576px) {

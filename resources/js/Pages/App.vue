@@ -91,6 +91,7 @@ html {
     --message-color: var(--white);
     --message-right-color: var(--secondary-lighter);
     --shadow-color: rgba(92, 86, 86, 0.3);
+    --subject-color: var(--warn);
 }
 
 html.darkmode {
@@ -104,6 +105,7 @@ html.darkmode {
     --message-color: var(--semi-dark-grey);
     --message-right-color: var(--primary-darker);
     --shadow-color: rgb(31, 31, 31);
+    --subject-color: var(--secondary);
 }
 
 #app {

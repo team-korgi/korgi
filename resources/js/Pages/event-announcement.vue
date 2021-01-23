@@ -65,19 +65,23 @@ export default {
 }
 
 .subject {
-    color: #ef5252;
+    color: var(--warn);
     font-size: 1.1rem;
     font-weight: bold;
 }
 
 .timetoken {
     align-self: flex-end;
-    color: #707070;
+    color: var(--font-color-light);
     font-size: 0.8rem;
 }
 
 .right {
-    background-color: #FFDBB1;
+    background-color: var(--message-right-color);
+}
+
+.right .subject {
+    color: var(--subject-color);
 }
 
 @media (max-width: 576px) {
