@@ -6147,6 +6147,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 
@@ -7270,7 +7273,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#filters[data-v-ccf045e2] {\n  width: 0;\n  color: var(--font-color);\n  overflow: hidden;\n  z-index: 100;\n  background-color: var(--background-color);\n  box-shadow: 1px 0px 15px 3px var(--shadow-color);\n  -webkit-box-shadow: 1px 0px 15px 3px var(--shadow-color);\n  -moz-box-shadow: 1px 0px 15px 3px var(--shadow-color);\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  padding: 1% 0 1% 0;\n  transition: 0.2s ease;\n}\n#filters.active[data-v-ccf045e2] {\n  width: 28%;\n  padding: 1%;\n}\n[data-v-ccf045e2]::-moz-placeholder {\n  color: var(--font-color)\n}\n[data-v-ccf045e2]:-ms-input-placeholder {\n  color: var(--font-color)\n}\n[data-v-ccf045e2]::placeholder {\n  color: var(--font-color)\n}\n#filters-header[data-v-ccf045e2] {\n  margin-top: 4vh;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  justify-content: space-between;\n  font-size: 1.5rem;\n  font-weight: 900;\n  margin-bottom: 4vh;\n}\n#filters-date-picker[data-v-ccf045e2] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  white-space: nowrap;\n}\n.section-header[data-v-ccf045e2] {\n  font-weight: 900;\n  margin-top: 2.5vh;\n  margin-bottom: 1.2vh;\n}\n.checkbox-container[data-v-ccf045e2] {\n  margin-top: 6vh;\n  white-space: nowrap;\n}\n\n", ""]);
+exports.push([module.i, "#filters[data-v-ccf045e2] {\n  width: 0;\n  height: 100%;\n  color: var(--font-color);\n  overflow: hidden;\n  z-index: 100;\n  background-color: var(--background-color);\n  box-shadow: 1px 0px 15px 3px var(--shadow-color);\n  -webkit-box-shadow: 1px 0px 15px 3px var(--shadow-color);\n  -moz-box-shadow: 1px 0px 15px 3px var(--shadow-color);\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  /*padding: 1% 0 1% 0;*/\n  transition: 0.2s ease;\n}\n#filters.active[data-v-ccf045e2] {\n  width: 28%;\n  padding: 2vh;\n}\n[data-v-ccf045e2]::-moz-placeholder {\n  color: var(--font-color)\n}\n[data-v-ccf045e2]:-ms-input-placeholder {\n  color: var(--font-color)\n}\n[data-v-ccf045e2]::placeholder {\n  color: var(--font-color)\n}\n#filters-header[data-v-ccf045e2] {\n  margin-top: 4vh;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  justify-content: space-between;\n  font-size: 1.5rem;\n  font-weight: 900;\n  margin-bottom: 4vh;\n}\n#filters-date-picker[data-v-ccf045e2] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  white-space: nowrap;\n}\n.section-header[data-v-ccf045e2] {\n  font-weight: 900;\n  margin-top: 2.5vh;\n  margin-bottom: 1.2vh;\n}\n.checkbox-container[data-v-ccf045e2] {\n  margin-top: 6vh;\n  white-space: nowrap;\n}\n@media (max-width: 576px) {\n#filters-header[data-v-ccf045e2] {\n    margin-top: 1vh;\n}\n#filters.active[data-v-ccf045e2] {\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    padding: 2vh;\n}\n#filters[data-v-ccf045e2] {\n    position: absolute;\n}\n}\n\n", ""]);
 
 // exports
 
@@ -7289,7 +7292,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".event[data-v-1e36143e] {\n  display: flex;\n  flex-direction: column;\n  width: 60%;\n  border-radius: 1rem;\n  background-color: var(--background-color);\n  box-shadow: 1px 0px 15px 3px var(--shadow-color);\n  -webkit-box-shadow: 1px 0px 15px 3px var(--shadow-color);\n  -moz-box-shadow: 1px 0px 15px 3px var(--shadow-color);\n  align-self: center;\n  margin-bottom: 4%;\n}\n.date[data-v-1e36143e] {\n  border-top-left-radius: 1rem;\n  border-top-right-radius: 1rem;\n  background-color: var(--primary);\n}\n.date-text[data-v-1e36143e] {\n  font-size: 1.5rem;\n  margin: 1% 2% 1% 2%;\n  color: white;\n  font-weight: 800;\n}\n.subject[data-v-1e36143e] {\n  margin-left: 2%;\n  margin-top: 2%;\n  font-weight: 800;\n  font-size: 1.3rem;\n  color: var(--font-color)\n}\n.description[data-v-1e36143e] {\n  margin: 2%;\n  color: var(--font-color)\n}\n@media (max-width: 576px) {\n.event[data-v-1e36143e] {\n    width: 90%;\n}\n.date-text[data-v-1e36143e] {\n    margin: 2% 3% 2% 3%;\n    font-size: 1.4rem;\n}\n.subject[data-v-1e36143e] {\n    margin-left: 3%;\n    margin-top: 3%;\n    font-size: 1.2rem;\n}\n.description[data-v-1e36143e] {\n    margin: 3%;\n}\n}\n", ""]);
+exports.push([module.i, ".event[data-v-1e36143e] {\n  display: flex;\n  flex-direction: column;\n  width: 60%;\n  border-radius: 1rem;\n  background-color: var(--background-color);\n  box-shadow: 1px 0px 15px 3px var(--shadow-color);\n  -webkit-box-shadow: 1px 0px 15px 3px var(--shadow-color);\n  -moz-box-shadow: 1px 0px 15px 3px var(--shadow-color);\n  align-self: center;\n  margin-bottom: 1vh;\n  margin-top: 2vh;\n}\n.date[data-v-1e36143e] {\n  border-top-left-radius: 1rem;\n  border-top-right-radius: 1rem;\n  background-color: var(--primary);\n}\n.date-text[data-v-1e36143e] {\n  font-size: 1.5rem;\n  margin: 1vh 1.8vh 1vh 1.8vh;\n  color: white;\n  font-weight: 800;\n}\n.subject[data-v-1e36143e] {\n  margin-left: 1.8vh;\n  margin-top: 1.8vh;\n  font-weight: 800;\n  font-size: 1.3rem;\n  color: var(--font-color)\n}\n.description[data-v-1e36143e] {\n  margin: 1.8vh;\n  color: var(--font-color)\n}\n@media (max-width: 576px) {\n.event[data-v-1e36143e] {\n    width: 90%;\n}\n.date-text[data-v-1e36143e] {\n    margin: 2vh 3vh 2vh 3vh;\n    font-size: 1.4rem;\n}\n.subject[data-v-1e36143e] {\n    margin-left: 3vh;\n    margin-top: 3vh;\n    font-size: 1.2rem;\n}\n.description[data-v-1e36143e] {\n    margin: 3vh;\n}\n}\n", ""]);
 
 // exports
 
@@ -7308,7 +7311,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#events[data-v-2f656762] {\n  display: flex;\n  flex-direction: row;\n  width: 100%;\n  height: 100%;\n}\n#events-content[data-v-2f656762] {\n  width: 100%;\n  background-color: var(--background-color-alternate);\n  overflow: auto;\n}\n#events-container[data-v-2f656762] {\n  margin-top: 2%;\n  display: flex;\n  position: relative;\n  flex-direction: column;\n  flex-wrap: wrap;\n  justify-content: flex-start;\n}\n.events-header[data-v-2f656762] {\n  padding: 4vh;\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n}\n.btn[data-v-2f656762] {\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n}\n@media (max-width: 576px) {\n.title[data-v-2f656762] {\n    display: none;\n}\n}\n@media (min-width: 576px) {\n#events-content[data-v-2f656762]::-webkit-scrollbar {\n    margin-left: -1rem;\n    width: 1rem;\n}\n#events-content[data-v-2f656762]::-webkit-scrollbar-track {\n    background: transparent;\n    border-radius: 0.5rem;\n}\n#events-content[data-v-2f656762]::-webkit-scrollbar-thumb {\n    background-color: #FFA88E;\n    border-radius: 0.5rem;\n}\n}\n\n", ""]);
+exports.push([module.i, "#events[data-v-2f656762] {\n  display: flex;\n  flex-direction: row;\n  width: 100%;\n  height: 100%;\n}\n#events-content[data-v-2f656762] {\n  width: 100%;\n  background-color: var(--background-color-alternate);\n  overflow: auto;\n}\n#events-container[data-v-2f656762] {\n  margin-top: 2vh;\n  display: flex;\n  position: relative;\n  flex-direction: column;\n  flex-wrap: wrap;\n  justify-content: flex-start;\n}\n.events-header[data-v-2f656762] {\n  padding: 4vh;\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n}\n.btn[data-v-2f656762] {\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n}\n#filters-btn-mobile[data-v-2f656762] {\n  display: none;\n  position: fixed;\n  bottom: 4vh;\n  left: 4vh;\n  box-shadow: 1px 0px 8px 3px var(--shadow-color);\n  -webkit-box-shadow: 1px 0px 8px 3px var(--shadow-color);\n  -moz-box-shadow: 1px 0px 8px 3px var(--shadow-color);\n}\n@media (max-width: 576px) {\n.title[data-v-2f656762] {\n    display: none;\n}\n.events-header[data-v-2f656762] {\n    display: none;\n}\n#filters-btn-mobile[data-v-2f656762] {\n    display: flex;\n}\n#events-container[data-v-2f656762] {\n    margin-top: 0;\n}\n}\n@media (min-width: 576px) {\n#events-content[data-v-2f656762]::-webkit-scrollbar {\n    margin-left: -1rem;\n    width: 1rem;\n}\n#events-content[data-v-2f656762]::-webkit-scrollbar-track {\n    background: transparent;\n    border-radius: 0.5rem;\n}\n#events-content[data-v-2f656762]::-webkit-scrollbar-thumb {\n    background-color: #FFA88E;\n    border-radius: 0.5rem;\n}\n}\n\n", ""]);
 
 // exports
 
@@ -34788,6 +34791,16 @@ var render = function() {
             return _c("event", { attrs: { event: event } })
           }),
           1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "round-btn primary-background",
+            attrs: { id: "filters-btn-mobile" },
+            on: { click: _vm.toggleFilters }
+          },
+          [_c("i", { staticClass: "fas fa-sliders-h" })]
         )
       ]),
       _vm._v(" "),

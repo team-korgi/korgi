@@ -12,6 +12,9 @@
             <div id="events-container">
                 <event v-for="event in events" :event="event"/>
             </div>
+            <div class="round-btn primary-background" id="filters-btn-mobile" @click="toggleFilters">
+                <i class="fas fa-sliders-h"></i>
+            </div>
         </div>
         <event-filters :bus="bus"/>
     </div>
@@ -63,7 +66,7 @@ export default {
 }
 
 #events-container {
-    margin-top: 2%;
+    margin-top: 2vh;
     display: flex;
     position: relative;
     flex-direction: column;
@@ -83,9 +86,28 @@ export default {
     width: fit-content;
 }
 
+#filters-btn-mobile {
+    display: none;
+    position: fixed;
+    bottom: 4vh;
+    left: 4vh;
+    box-shadow: 1px 0px 8px 3px var(--shadow-color);
+    -webkit-box-shadow: 1px 0px 8px 3px var(--shadow-color);
+    -moz-box-shadow: 1px 0px 8px 3px var(--shadow-color);
+}
+
 @media (max-width: 576px) {
     .title {
         display: none;
+    }
+    .events-header {
+        display: none;
+    }
+    #filters-btn-mobile {
+        display: flex;
+    }
+    #events-container {
+        margin-top: 0;
     }
 }
 

@@ -55,6 +55,7 @@ export default {
 
 #filters {
     width: 0;
+    height: 100%;
     color: var(--font-color);
     overflow: hidden;
     z-index: 100;
@@ -66,14 +67,14 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    padding: 1% 0 1% 0;
+    /*padding: 1% 0 1% 0;*/
 
     transition: 0.2s ease;
 }
 
 #filters.active {
     width: 28%;
-    padding: 1%;
+    padding: 2vh;
 }
 
 ::placeholder {
@@ -107,6 +108,21 @@ export default {
 .checkbox-container {
     margin-top: 6vh;
     white-space: nowrap;
+}
+
+@media (max-width: 576px) {
+    #filters-header {
+        margin-top: 1vh;
+    }
+    #filters.active {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        padding: 2vh;
+    }
+    #filters {
+        position: absolute;
+    }
 }
 
 </style>
