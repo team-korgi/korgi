@@ -122,6 +122,9 @@ export default {
     }
     #filters {
         position: absolute;
+        width: 100%;
+        height: 0;
+        box-shadow: none;
     }
 }
 

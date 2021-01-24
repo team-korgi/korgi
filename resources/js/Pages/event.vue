@@ -66,16 +66,16 @@ export default {
         width: 90%;
     }
     .date-text {
-        margin: 2vh 3vh 2vh 3vh;
+        margin: 1.5vh 2vh 1.5vh 2vh;
         font-size: 1.4rem;
     }
     .subject {
-        margin-left: 3vh;
-        margin-top: 3vh;
+        margin-left: 2vh;
+        margin-top: 2vh;
         font-size: 1.2rem;
     }
     .description {
-        margin: 3vh;
+        margin: 2vh;
     }
 }
 </style>
