@@ -72,12 +72,13 @@ export default {
     color: var(--font-color);
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: flex-start;
     justify-content: space-between;
     padding: 1vh;
     margin: 0.5vh;
     border-radius: 1rem;
     align-self: center;
+
 }
 
 .disabled {

@@ -21,7 +21,7 @@
 
 <script>
 export default {
-    name: "new-dialog",
+    name: "dialog-window",
     data() {
         return {
             isOpen: undefined,

@@ -8,7 +8,7 @@
             <h1 class="title">Termine</h1>
         </div>
         <div id="events-container">
-            <event v-for="event in events" :event="event"/>
+            <event v-for="event in events" :key="event.time" :event="event"/>
         </div>
     </div>
 </template>

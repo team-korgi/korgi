@@ -43,7 +43,7 @@ export default {
     background-color: white;
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: flex-start;
     justify-content: space-between;
     padding: 1%;
     margin: 0.5%;

@@ -15,10 +15,13 @@
             <dialog-window :bus="importantMessageBus" title="Wichtige Nachricht senden" @submit="publishImportantMessage">
                 <dialog-content-important-message :bus="importantMessageBus"/>
             </dialog-window>
+            <dialog-window :bus="eventPollBus" title="Umfrage starten" @submit="publishPoll">
+                <dialog-content-poll :bus="eventPollBus"/>
+            </dialog-window>
 
             <transition name="fade">
                 <div v-show="openSpecialMessages" class="special-messages-container" @click="toggleSpecialMessages">
-                    <div class="btn primary-background"><p>Umfrage starten</p><i class="far fa-calendar-alt"></i></div>
+                    <div class="btn primary-background" v-on:click="eventPollBus.$emit('open')"><p>Umfrage starten</p><i class="far fa-calendar-alt"></i></div>
                     <div class="btn primary-background" v-on:click="eventAnnouncementBus.$emit('open')"><p>Termin
                         bekannt geben</p><i class="far fa-calendar-alt"></i></div>
                     <div class="btn primary-background" v-on:click="dateVotingBus.$emit('open')"><p>Terminumfrage
@@ -59,10 +62,12 @@ import DatePicker from "@/Pages/date-picker";
 import ChatElement from "@/Pages/chat-element";
 import Navbar from "@/Pages/navbar";
 import DialogContentImportantMessage from "@/Pages/dialog-content-important-message";
+import DialogContentPoll from "@/Pages/dialog-content-poll";
 
 export default {
     name: "chat",
     components: {
+        DialogContentPoll,
         DialogContentImportantMessage,
         Navbar, ChatElement, DatePicker, DialogWindow, DialogContentSendFile, DialogContentEventAnnouncement},
     props: {
@@ -76,6 +81,7 @@ export default {
             eventAnnouncementBus: new Vue(),
             importantMessageBus: new Vue(),
             dateVotingBus: new Vue(),
+            eventPollBus: new Vue(),
             user: this.$store.getters.getUser,
             openSpecialMessages: false,
             hasAdminPermissions: this.$store.getters.getGroup(this.url).hasAdminPermissions
@@ -151,6 +157,9 @@ export default {
                 date: eventAnnouncement.date
             })
             this.scrollToBottom();
+        },
+        publishPoll(content) {
+            console.log(content)
         },
         hasAccess() {
             if (this.channel.name === 'Wichtig') {
