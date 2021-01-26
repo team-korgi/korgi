@@ -40,20 +40,21 @@ export default {
 <style scoped>
 .file-element {
     max-width: 80%;
-    background-color: white;
+    background-color: var(--message-color);
+    color: var(--font-color);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
-    padding: 1%;
-    margin: 0.5%;
+    padding: 1vh;
+    margin: 0.5vh;
     border-radius: 1rem;
 }
 
 .right {
     text-align: right;
     align-self: flex-end;
-    background-color: #FFDBB1;
+    background-color: var(--message-right-color);
 }
 
 .file-container {
@@ -77,12 +78,12 @@ i {
 .sender {
     font-size: 1.1rem;
     font-weight: bold;
-    margin-bottom: 1%;
+    margin-bottom: 0.5vh;
 }
 
 .timetoken {
     align-self: flex-end;
-    color: #707070;
+    color: var(--font-color-light);
     font-size: 0.8rem;
 }
 

@@ -26,9 +26,9 @@ export default {
     justify-content: center;
     border-radius: 1.5rem;
 
-    box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.5);
-    -webkit-box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.5);
-    -moz-box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.5);
+    box-shadow: 1px 0px 15px 3px var(--shadow-color);
+    -webkit-box-shadow: 1px 0px 15px 3px var(--shadow-color);
+    -moz-box-shadow: 1px 0px 15px 3px var(--shadow-color);
 
     transition: 0.2s ease;
 
@@ -63,9 +63,9 @@ h1 {
         justify-content: flex-start;
         border: #FFCB8E dashed 4px;
 
-        box-shadow: 1px 0px 8px 3px rgba(92,86,86,0.3);
-        -webkit-box-shadow: 1px 0px 8px 3px rgba(92,86,86,0.3);
-        -moz-box-shadow: 1px 0px 8px 3px rgba(92,86,86,0.3);
+        box-shadow: 1px 0px 8px 3px var(--shadow-color);
+        -webkit-box-shadow: 1px 0px 8px 3px var(--shadow-color);
+        -moz-box-shadow: 1px 0px 8px 3px var(--shadow-color);
     }
     .new-group-card-icon {
         width: 17%;

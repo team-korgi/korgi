@@ -90,6 +90,8 @@ html {
     --font-color-light: var(--font-color-light);
     --message-color: var(--white);
     --message-right-color: var(--secondary-lighter);
+    --shadow-color: rgba(92, 86, 86, 0.3);
+    --subject-color: var(--warn);
 }
 
 html.darkmode {
@@ -102,6 +104,8 @@ html.darkmode {
     --font-color-light: var(--mid-grey);
     --message-color: var(--semi-dark-grey);
     --message-right-color: var(--primary-darker);
+    --shadow-color: rgb(31, 31, 31);
+    --subject-color: var(--secondary);
 }
 
 #app {
@@ -378,16 +382,21 @@ input:checked ~ .radio:after {
 
 .alternate-input {
     background-color: var(--background-color-alternate);
-    border: 2px solid var(--alt-input-border-color);
-    border-radius: 8px;
+    border: 3px solid var(--alt-input-border-color);
+    border-radius: 12px;
     padding: 6px;
     color: var(--font-color);
 }
 
 .alternate-input:focus {
     outline: 0;
-    border: 2px solid var(--primary);
+    border: 3px solid var(--primary);
     transition: 0.2s;
+}
+
+select option {
+    color: var(--font-color);
+    background-color: var(--background-color);
 }
 
 @media (max-width: 576px) {

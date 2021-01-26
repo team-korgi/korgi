@@ -86,9 +86,9 @@ export default {
 #group-header {
     display: flex;
     flex-direction: column;
-    box-shadow: 1px 0px 8px 3px rgba(92, 86, 86, 0.3);
-    -webkit-box-shadow: 1px 0px 8px 3px rgba(92, 86, 86, 0.3);
-    -moz-box-shadow: 1px 0px 8px 3px rgba(92, 86, 86, 0.3);
+    box-shadow: 1px 0px 8px 3px var(--shadow-color);
+    -webkit-box-shadow: 1px 0px 8px 3px var(--shadow-color);
+    -moz-box-shadow: 1px 0px 8px 3px var(--shadow-color);
     padding: 2vh 2vh 0 2vh;
     z-index: 30;
     background-color: var(--background-color);

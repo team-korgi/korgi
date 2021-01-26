@@ -35,9 +35,9 @@ export default {
     justify-content: space-around;
     border-radius: 1.5rem;
 
-    box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.3);
-    -webkit-box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.3);
-    -moz-box-shadow: 1px 0px 15px 3px rgba(92,86,86,0.3);
+    box-shadow: 1px 0px 15px 3px var(--shadow-color);
+    -webkit-box-shadow: 1px 0px 15px 3px var(--shadow-color);
+    -moz-box-shadow: 1px 0px 15px 3px var(--shadow-color);
 
     transition: 0.2s ease;
 
@@ -86,9 +86,9 @@ export default {
         flex-direction: row;
         justify-content: flex-start;
 
-        box-shadow: 1px 0px 8px 3px rgba(92,86,86,0.1);
-        -webkit-box-shadow: 1px 0px 8px 3px rgba(92,86,86,0.1);
-        -moz-box-shadow: 1px 0px 8px 3px rgba(92,86,86,0.1);
+        box-shadow: 1px 0px 8px 3px var(--shadow-color);
+        -webkit-box-shadow: 1px 0px 8px 3px var(--shadow-color);
+        -moz-box-shadow: 1px 0px 8px 3px var(--shadow-color);
         border: #FFA88E solid 4px;
 
     }

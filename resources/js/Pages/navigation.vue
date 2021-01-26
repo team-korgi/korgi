@@ -112,7 +112,7 @@ export default {
     flex-direction: column;
     align-content: flex-start;
     justify-content: space-between;
-    z-index: 40;
+    z-index: 120;
 
     width: 20vw;
     height: 100%;
@@ -251,9 +251,9 @@ export default {
         width: 80vw;
         height: 100vh;
 
-        box-shadow: 1px 0px 15px 3px rgba(92, 86, 86, 0.5);
-        -webkit-box-shadow: 1px 0px 15px 3px rgba(92, 86, 86, 0.5);
-        -moz-box-shadow: 1px 0px 15px 3px rgba(92, 86, 86, 0.5);
+        box-shadow: 1px 0px 15px 3px var(--shadow-color);
+        -webkit-box-shadow: 1px 0px 15px 3px var(--shadow-color);
+        -moz-box-shadow: 1px 0px 15px 3px var(--shadow-color);
         transition: 0.3s ease;
     }
 
