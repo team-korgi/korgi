@@ -211,20 +211,49 @@ const store = new Vuex.Store({
             });
             saveMessagesToLocalStorage(payload.group, payload.chat, payload.channel)
         },
-        addMessageAction(state, payload) {
-            state.pubnub.addMessageAction(
+
+        // TODO veröffentlichen einer allgemeinen Message Action
+        publishMessageAction(state, payload) {
+            state.pubnub.addMessageAction({
+                channel: payload.message.channel,
+                messageTimetoken: payload.message.timetoken,
+            })
+        },
+
+        // TODO Rename
+        // addMessageAction(state, payload) {
+        //     state.pubnub.addMessageAction(
+        //         {
+        //             channel: payload.message.channel,
+        //             messageTimetoken: payload.message.timetoken,
+        //             action: {
+        //                 type: 'readConfirm',
+        //                 value: JSON.stringify({
+        //                     user: state.user,
+        //                     time: new Date(),
+        //                     chat: payload.message.message.chat,
+        //                     group: payload.message.message.group,
+        //                     channel: payload.message.channel
+        //                 }),
+        //             }
+        //         }
+        //     );
+        // },
+        publishPoll(state, payload) {
+            console.log(payload)
+            state.pubnub.publish(
                 {
-                    channel: payload.message.channel,
-                    messageTimetoken: payload.message.timetoken,
-                    action: {
-                        type: 'readConfirm',
-                        value: JSON.stringify({
-                            user: state.user,
-                            time: new Date(),
-                            chat: payload.message.message.chat,
-                            group: payload.message.message.group,
-                            channel: payload.message.channel
-                        }),
+                    channel: payload.channel,
+                    message: {
+                        'subject': payload.subject,
+                        'user': state.user,
+                        'group': payload.group,
+                        'chat': payload.chat,
+                        'allowMultiple': payload.allowMultiple,
+                        'answers': payload.answers,
+                        'results': payload.results,
+                        'answeredBy': [],
+                        'messageType': 'poll'
                     }
                 }
             );

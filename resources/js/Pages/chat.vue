@@ -159,7 +159,16 @@ export default {
             this.scrollToBottom();
         },
         publishPoll(content) {
-            console.log(content)
+            this.$store.commit('publishPoll', {
+                subject: content.subject,
+                channel: this.channel.uuid,
+                chat: this.type,
+                group: this.url,
+                allowMultiple: content.allowMultiple,
+                answers: content.answers,
+                results: content.results
+            });
+            this.scrollToBottom();
         },
         hasAccess() {
             if (this.channel.name === 'Wichtig') {

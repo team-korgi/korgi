@@ -21,7 +21,8 @@ export default {
         return {
             allowMultiple: [],
             subject: "",
-            answers: {1: ""}
+            answers: {1: ""},
+            results: {1: 0}
         };
     },
     props: {
@@ -33,18 +34,21 @@ export default {
                 this.bus.$emit('validate', {
                     subject: this.subject,
                     answers: this.answers,
+                    results: this.results,
                     allowMultiple: !!this.allowMultiple.length
                 });
             } else {
                 this.bus.$emit('validate', {
                     subject: this.subject,
                     answers: undefined,
+                    results: undefined,
                     allowMultiple: !!this.allowMultiple.length
                 });
             }
         },
         addAnswer() {
             Vue.set(this.answers, Object.keys(this.answers).length+1, "");
+            Vue.set(this.results, Object.keys(this.answers).length, 0);
             this.saveContent();
         }
     }

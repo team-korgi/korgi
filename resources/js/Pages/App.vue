@@ -27,7 +27,6 @@ export default {
         }
     },
     created() {
-        console.log(this.bus + "bla")
     },
     computed: {
         darkmode: function() {

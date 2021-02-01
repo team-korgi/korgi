@@ -5,6 +5,7 @@
         <less-important-message v-if="message.message.messageType === 'message' && message.message.chat === 'wichtig'" :message="message"/>
         <file v-if="message.message.messageType === 'file'" :message="message"/>
         <event-announcement v-if="message.message.messageType === 'eventAnnouncement'" :message="message"/>
+        <poll v-if="message.message.messageType === 'poll'" :message="message"/>
     </div>
 </template>
 
@@ -14,10 +15,11 @@ import File from "@/Pages/file";
 import EventAnnouncement from "@/Pages/event-announcement";
 import LessImportantMessage from "@/Pages/less-important-message";
 import ImportantMessage from "@/Pages/important-message";
+import Poll from "@/Pages/poll";
 
 export default {
     name: "chat-element",
-    components: {ImportantMessage, LessImportantMessage, EventAnnouncement, File, Message},
+    components: {Poll, ImportantMessage, LessImportantMessage, EventAnnouncement, File, Message},
     props: {
         message: Object
     },
