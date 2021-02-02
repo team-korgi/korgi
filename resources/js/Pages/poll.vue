@@ -1,14 +1,9 @@
 <template>
-    <div class="message" v-bind:class="changeAlignment()">
+    <div class="message" :class="{own : isOwn}">
         <div class="sender" v-if="!isOwn">{{ message.message.user.username }}</div>
         <div class="subject">{{ message.message.subject }}</div>
         <div class="poll">
-            <div class="answer" :class="{answered: isAnswered}" v-for="answerKey in Object.keys(message.message.answers)" @click="addResult(answerKey)" :style="{
-                background: 'linear-gradient(to right, var(--primary) ' + getPercentage(answerKey) + '%, var(--background-color) ' + 0 + ')'
-            }">
-                {{message.message.answers[answerKey]}}
-                <p v-if="isAnswered">{{getPercentage(answerKey)}}%</p>
-            </div>
+            <poll-answer v-for="answerKey in Object.keys(message.message.answers)" :answerKey="answerKey" :message="message" @click="addResult(answerKey)"/>
         </div>
         <div class="timetoken">
             {{
@@ -23,10 +18,12 @@
 
 <script>
 import Vue from 'vue';
+import PollAnswer from "@/Pages/poll-answer";
 
 export default {
 
     name: "poll",
+    components: {PollAnswer},
     props: {
         message: Object
     },
@@ -34,27 +31,16 @@ export default {
         isOwn() {
             return this.message.publisher === this.$store.state.pubnub.getUUID()
         },
-        totalAnswers() {
-            return Object.values(this.message.message.results).reduce((a, b) => {
-                return a + b;
-            });
-        },
-        isAnswered() {
-            return this.message.message.answeredBy.includes(this.$store.state.user.uuid);
-        }
     },
     methods: {
-        changeAlignment() {
-            if (this.isOwn) {
-                return 'right';
-            }
-        },
-        getPercentage(answerKey) {
-            return Math.round((this.message.message.results[answerKey] / this.totalAnswers) * 100);
-        },
         addResult(answerKey) {
-            Vue.set(this.message.message.results, answerKey, this.message.message.results[answerKey] ? this.message.message.results[answerKey]+1 : 1)
-            this.message.message.answeredBy.push(this.$store.state.user.uuid);
+            console.log("Add result")
+            this.$store.commit('publishMessageAction', {
+                type: 'poll',
+                message: this.message,
+                answerKey: answerKey
+            })
+            // Vue.set(this.message.message.results, this.$store.state.user.uuid, answerKey);
         }
     }
 }
@@ -88,39 +74,15 @@ export default {
     font-size: 0.8rem;
 }
 
-.right {
+.own {
     background-color: var(--message-right-color);
 }
+
+
 
 .poll {
     width: 100%;
     transition: 0.2s ease;
-}
-
-.answer {
-    background-color: var(--background-color);
-    height: 2.5rem;
-    width: 100%;
-    border: 2px solid var(--primary);
-    margin-bottom: 0.25rem;
-    margin-top: 0.25rem;
-    border-radius: 12px;
-    padding-left: 12px;
-    padding-right: 12px;
-    font-weight: 600;
-    cursor: pointer;
-    user-select: none;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-
-    transition: 0.2s ease;
-}
-
-.answer:hover {
-    border-color: var(--primary-darker);
-    background-color: var(--background-color-alternate);
 }
 
 @media (max-width: 576px) {

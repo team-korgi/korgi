@@ -204,12 +204,17 @@ const store = new Vuex.Store({
         toggleDarkmode(state) {
             state.user.settings.darkmode = !state.user.settings.darkmode;
         },
-        addReadBy(state, payload) {
-            Vue.set(state.groups[payload.group].channels[payload.chat].messages[payload.messageTimetoken].message.readBy, payload.user.uuid, {
-                user: payload.user,
-                time: payload.time
-            });
-            saveMessagesToLocalStorage(payload.group, payload.chat, payload.channel)
+        // addReadBy(state, payload) {
+        //     Vue.set(state.groups[payload.group].channels[payload.chat].messages[payload.messageTimetoken].message.readBy, payload.user.uuid, {
+        //         user: payload.user,
+        //         time: payload.time
+        //     });
+        //     saveMessagesToLocalStorage(payload.group, payload.chat, payload.channel)
+        // },
+
+        addPollMessageAction(state, payload) {
+            Vue.set(state.groups[payload.group].channels[payload.chat].messages[payload.messageTimetoken].message.results, payload.user.uuid, payload.answerKey);
+            saveMessagesToLocalStorage(payload.group, payload.chat, payload.channel);
         },
 
         // TODO veröffentlichen einer allgemeinen Message Action
@@ -217,6 +222,16 @@ const store = new Vuex.Store({
             state.pubnub.addMessageAction({
                 channel: payload.message.channel,
                 messageTimetoken: payload.message.timetoken,
+                action: {
+                    type: payload.type,
+                    value: JSON.stringify({
+                        user: state.user,
+                        chat: payload.message.message.chat,
+                        group: payload.message.message.group,
+                        channel: payload.message.channel,
+                        answerKey: payload.answerKey
+                    })
+                }
             })
         },
 
@@ -251,8 +266,7 @@ const store = new Vuex.Store({
                         'chat': payload.chat,
                         'allowMultiple': payload.allowMultiple,
                         'answers': payload.answers,
-                        'results': payload.results,
-                        'answeredBy': [],
+                        'results': {},
                         'messageType': 'poll'
                     }
                 }
@@ -450,16 +464,32 @@ store.state.pubnub.addListener({
         });
     },
     messageAction: function (event) {
-        let data = JSON.parse(event.data.value);
+        let value = JSON.parse(event.data.value);
 
-        store.commit("addReadBy", {
-            group: data.group,
-            chat: data.chat,
-            channel: data.channel,
-            time: data.time,
-            user: data.user,
-            messageTimetoken: event.data.messageTimetoken
-        })
+        switch(event.data.type) {
+            case 'poll':
+                store.commit('addPollMessageAction', {
+                    group: value.group,
+                    chat: value.chat,
+                    channel: value.channel,
+                    user: value.user,
+                    messageTimetoken: event.data.messageTimetoken,
+
+                    // Poll specific
+                    answerKey: value.answerKey
+                })
+                break;
+        }
+
+
+        // store.commit("addReadBy", {
+        //     group: data.group,
+        //     chat: data.chat,
+        //     channel: data.channel,
+        //     time: data.time,
+        //     user: data.user,
+        //     messageTimetoken: event.data.messageTimetoken
+        // })
 
         // TODO handle message action
         // var channelName = ma.channel; // The channel to which the message was published

@@ -34,14 +34,12 @@ export default {
                 this.bus.$emit('validate', {
                     subject: this.subject,
                     answers: this.answers,
-                    results: this.results,
                     allowMultiple: !!this.allowMultiple.length
                 });
             } else {
                 this.bus.$emit('validate', {
                     subject: this.subject,
                     answers: undefined,
-                    results: undefined,
                     allowMultiple: !!this.allowMultiple.length
                 });
             }

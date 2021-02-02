@@ -5462,8 +5462,7 @@ __webpack_require__.r(__webpack_exports__);
         chat: this.type,
         group: this.url,
         allowMultiple: content.allowMultiple,
-        answers: content.answers,
-        results: content.results
+        answers: content.answers
       });
       this.scrollToBottom();
     },
@@ -5921,14 +5920,12 @@ __webpack_require__.r(__webpack_exports__);
         this.bus.$emit('validate', {
           subject: this.subject,
           answers: this.answers,
-          results: this.results,
           allowMultiple: !!this.allowMultiple.length
         });
       } else {
         this.bus.$emit('validate', {
           subject: this.subject,
           answers: undefined,
-          results: undefined,
           allowMultiple: !!this.allowMultiple.length
         });
       }
@@ -7021,6 +7018,64 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Pages/poll-answer.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Pages/poll-answer.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "poll-answer",
+  props: {
+    answerKey: String,
+    message: Object
+  },
+  computed: {
+    totalAnswers: function totalAnswers() {
+      return Object.keys(this.message.message.results).length;
+    },
+    isAnswered: function isAnswered() {
+      return Object.keys(this.message.message.results).includes(this.$store.state.user.uuid);
+    },
+    isSelected: function isSelected() {
+      return Object.keys(this.message.message.results).includes(this.$store.state.user.uuid) ? this.message.message.results[this.$store.state.user.uuid] === this.answerKey : false;
+    },
+    percentage: function percentage() {
+      var _this = this;
+
+      return Math.round(Object.values(this.message.message.results).filter(function (value) {
+        return value === _this.answerKey;
+      }).length / this.totalAnswers * 100);
+    },
+    cssVars: function cssVars() {
+      return this.isSelected ? {
+        '--percentage': this.percentage + '%',
+        '--fill-color': 'var(--primary-darker)'
+      } : {
+        '--percentage': this.percentage + '%',
+        '--fill-color': 'var(--primary)'
+      };
+    },
+    isOwn: function isOwn() {
+      return this.message.publisher === this.$store.state.pubnub.getUUID();
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Pages/poll.vue?vue&type=script&lang=js&":
 /*!**********************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Pages/poll.vue?vue&type=script&lang=js& ***!
@@ -7032,11 +7087,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
-//
-//
-//
-//
-//
+/* harmony import */ var _Pages_poll_answer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Pages/poll-answer */ "./resources/js/Pages/poll-answer.vue");
 //
 //
 //
@@ -7056,36 +7107,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "poll",
+  components: {
+    PollAnswer: _Pages_poll_answer__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
   props: {
     message: Object
   },
   computed: {
     isOwn: function isOwn() {
       return this.message.publisher === this.$store.state.pubnub.getUUID();
-    },
-    totalAnswers: function totalAnswers() {
-      return Object.values(this.message.message.results).reduce(function (a, b) {
-        return a + b;
-      });
-    },
-    isAnswered: function isAnswered() {
-      return this.message.message.answeredBy.includes(this.$store.state.user.uuid);
     }
   },
   methods: {
-    changeAlignment: function changeAlignment() {
-      if (this.isOwn) {
-        return 'right';
-      }
-    },
-    getPercentage: function getPercentage(answerKey) {
-      return Math.round(this.message.message.results[answerKey] / this.totalAnswers * 100);
-    },
     addResult: function addResult(answerKey) {
-      vue__WEBPACK_IMPORTED_MODULE_0___default.a.set(this.message.message.results, answerKey, this.message.message.results[answerKey] ? this.message.message.results[answerKey] + 1 : 1);
-      this.message.message.answeredBy.push(this.$store.state.user.uuid);
+      console.log("Add result");
+      this.$store.commit('publishMessageAction', {
+        type: 'poll',
+        message: this.message,
+        answerKey: answerKey
+      }); // Vue.set(this.message.message.results, this.$store.state.user.uuid, answerKey);
     }
   }
 });
@@ -7231,7 +7274,7 @@ exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Mo
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap);", ""]);
 
 // module
-exports.push([module.i, "* {\n  box-sizing: border-box;\n  margin: 0;\n  padding: 0;\n  transition: all 0.15s ease;\n}\n:root {\n  --primary: #FFA88E;\n  --primary-darker: #ff8f6e;\n  --secondary-lighter: #FFDBB1;\n  --secondary: #FFCB8E;\n  --secondary-darker: #ffb561;\n  --warn: #FC6B6B;\n  --warn-darker: #ef5252;\n  --black: #000000;\n  --dark-grey: #2C2F33;\n  --semi-dark-grey: #505050;\n  --mid-grey: #E1E1E1;\n  --light-grey: #F3F3F3;\n  --white: #ffffff;\n  --font-color-light: #707070;\n}\nhtml {\n  --background-color: var(--white);\n  --background-color-alternate: var(--light-grey);\n  --alt-input-border-color: var(--dark-grey);\n  --font-color: var(--black);\n  --font-color-alternate: var(--white);\n  --header-color: var(--dark-grey);\n  --font-color-light: var(--font-color-light);\n  --message-color: var(--white);\n  --message-right-color: var(--secondary-lighter);\n  --shadow-color: rgba(92, 86, 86, 0.3);\n  --subject-color: var(--warn);\n}\nhtml.darkmode {\n  --background-color: var(--semi-dark-grey);\n  --background-color-alternate: var(--dark-grey);\n  --alt-input-border-color: var(--mid-grey);\n  --font-color: var(--white);\n  --font-color-alternate: var(--black);\n  --header-color: var(--white);\n  --font-color-light: var(--mid-grey);\n  --message-color: var(--semi-dark-grey);\n  --message-right-color: var(--primary-darker);\n  --shadow-color: rgb(31, 31, 31);\n  --subject-color: var(--secondary);\n}\n#app {\n  display: flex;\n  flex-direction: row;\n  width: 100%;\n  height: 100vh;\n  font-family: 'Montserrat', sans-serif;\n}\n.headline {\n  color: var(--font-color-light);\n  font-size: 1.8rem;\n  font-weight: 700;\n}\n.title {\n  color: #FFCB8E;\n  font-size: 3rem;\n  font-weight: 700;\n}\n.round-btn {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  width: 3rem;\n  height: 3rem;\n  font-size: 1.5rem;\n  border-radius: 1.5rem;\n  outline: 0;\n}\n.round-btn.mini {\n  width: 1.5rem;\n  height: 1.5rem;\n  font-size: 0.75rem;\n}\n.btn {\n  width: 100%;\n  /*flex-grow: 1;*/\n  height: 3rem;\n  font-size: 1rem;\n  font-weight: 600;\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  border-radius: 1.5rem;\n  padding-left: 1.5rem;\n  padding-right: 1.5rem;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.btn i {\n  font-size: 1.5rem;\n}\n.input {\n  font-size: 1rem;\n  outline: 0;\n  border-radius: 1.5rem;\n  color: var(--font-color);\n  font-weight: 600;\n  padding-left: 1.5rem;\n  padding-right: 1.5rem;\n  height: 3rem;\n  background-color: var(--background-color);\n}\n.dialog-window .input {\n  background-color: var(--background-color-alternate);\n}\n.textarea {\n  font-size: 1rem;\n  outline: 0;\n  border-radius: 1.5rem;\n  color: #707070;\n  font-weight: 600;\n  padding: 1.5rem;\n  background-color: #E1E1E1;\n  resize: none;\n}\n.input::-moz-placeholder {\n  color: #707070;\n}\n.input:-ms-input-placeholder {\n  color: #707070;\n}\n.input::placeholder {\n  color: #707070;\n}\n.textarea::-moz-placeholder {\n  color: #707070;\n}\n.textarea:-ms-input-placeholder {\n  color: #707070;\n}\n.textarea::placeholder {\n  color: #707070;\n}\n.input.disabled {\n  cursor: default;\n  pointer-events: none;\n}\n.warn-background {\n  background-color: var(--warn);\n  transition: 0.2s ease;\n  cursor: pointer;\n  color: white;\n}\n.primary-background {\n  background-color: var(--primary);\n  transition: 0.2s ease;\n  cursor: pointer;\n  color: white;\n}\n.secondary-background {\n  background-color: var(--secondary);\n  transition: 0.2s ease;\n  cursor: pointer;\n  color: white;\n}\n.warn-background.disabled {\n  pointer-events: none;\n  cursor: default;\n  filter: saturate(0.3);\n}\n.primary-background.disabled {\n  pointer-events: none;\n  cursor: default;\n  filter: saturate(0.3);\n}\n.secondary-background.disabled {\n  pointer-events: none;\n  cursor: default;\n  filter: saturate(0.3);\n}\n.warn-background:hover {\n  background-color: var(--warn-darker);\n}\n.primary-background:hover {\n  background-color: var(--primary-darker);\n}\n.secondary-background:hover {\n  background-color: var(--secondary-darker);\n}\n.row {\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  width: 100%;\n}\n.col {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  height: 100%;\n}\n.space-between {\n  justify-content: space-between;\n}\n.flex-start {\n  justify-content: flex-start;\n}\n\n/*Checkbox*/\n.checkbox-container {\n  margin: 1vh;\n  display: flex;\n  align-items: center;\n  position: relative;\n  padding-left: 35px;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  cursor: pointer;\n}\n.checkbox-container input, .checkbox-container input {\n  opacity: 0;\n  position: absolute;\n  cursor: pointer;\n  height: 0;\n  width: 0;\n}\n.checkbox {\n  position: absolute;\n  top: 0;\n  left: 0;\n  border-radius: 30%;\n  height: 20px;\n  width: 20px;\n  background-color: var(--background-color);\n  border: 2px solid var(--font-color);\n}\ninput:checked ~ .checkbox {\n  background-color: var(--primary);\n  border: 2px solid var(--primary);\n}\n.checkbox:after {\n  content: \"\";\n  position: absolute;\n  display: none;\n}\ninput:checked ~ .checkbox:after {\n  display: block;\n}\n.checkbox:after {\n  left: 6px;\n  top: 3px;\n  width: 5px;\n  height: 10px;\n  border: solid var(--white);\n  border-width: 0 3px 3px 0;\n  border-radius: 1px;\n  transform: rotate(45deg);\n}\n\n/*Radio*/\n.radio {\n  position: absolute;\n  top: 0;\n  left: 0;\n  height: 20px;\n  width: 20px;\n  background-color: var(--background-color);\n  border: 2px solid var(--font-color);\n  border-radius: 50%;\n}\ninput:checked ~ .radio {\n  background-color: var(--primary);\n  border: 2px solid var(--primary);\n}\n.radio:after {\n  content: \"\";\n  position: absolute;\n  display: none;\n}\ninput:checked ~ .radio:after {\n  display: block;\n}\n.radio:after {\n  top: 3px;\n  left: 3px;\n  width: 10px;\n  height: 10px;\n  border-radius: 50%;\n  background: var(--white);\n}\n.alternate-input {\n  background-color: var(--background-color-alternate);\n  border: 3px solid var(--alt-input-border-color);\n  border-radius: 12px;\n  padding: 6px;\n  color: var(--font-color);\n}\n.alternate-input:focus {\n  outline: 0;\n  border: 3px solid var(--primary);\n  transition: 0.2s;\n}\nselect option {\n  color: var(--font-color);\n  background-color: var(--background-color);\n}\n@media (max-width: 576px) {\n#app {\n    flex-direction: column;\n}\n.btn i {\n    display: none;\n}\n.btn {\n    justify-content: center;\n}\n}\n", ""]);
+exports.push([module.i, "* {\n  box-sizing: border-box;\n  margin: 0;\n  padding: 0;\n  transition: all 0.15s ease;\n}\n:root {\n  --primary: #FFA88E;\n  --primary-darker: #ff8f6e;\n  --secondary-lighter: #FFDBB1;\n  --secondary: #FFCB8E;\n  --secondary-darker: #ffb561;\n  --warn: #FC6B6B;\n  --warn-darker: #ef5252;\n  --black: #000000;\n  --dark-grey: #2C2F33;\n  --semi-dark-grey: #505050;\n  --mid-grey: #E1E1E1;\n  --light-grey: #F3F3F3;\n  --white: #ffffff;\n  --font-color-light: #707070;\n}\nhtml {\n  --background-color: var(--white);\n  --background-color-alternate: var(--light-grey);\n  --alt-input-border-color: var(--dark-grey);\n  --font-color: var(--black);\n  --font-color-alternate: var(--white);\n  --header-color: var(--dark-grey);\n  --font-color-light: var(--font-color-light);\n  --message-color: var(--white);\n  --message-right-color: var(--secondary-lighter);\n  --shadow-color: rgba(92, 86, 86, 0.3);\n  --subject-color: var(--warn);\n}\nhtml.darkmode {\n  --background-color: var(--semi-dark-grey);\n  --background-color-alternate: var(--dark-grey);\n  --alt-input-border-color: var(--mid-grey);\n  --font-color: var(--white);\n  --font-color-alternate: var(--black);\n  --header-color: var(--white);\n  --font-color-light: var(--mid-grey);\n  --message-color: var(--semi-dark-grey);\n  --message-right-color: var(--primary-darker);\n  --shadow-color: rgb(31, 31, 31);\n  --subject-color: var(--secondary);\n}\n#app {\n  display: flex;\n  flex-direction: row;\n  width: 100%;\n  height: 100vh;\n  font-family: 'Montserrat', sans-serif;\n}\n.headline {\n  color: var(--font-color-light);\n  font-size: 1.8rem;\n  font-weight: 700;\n}\n.title {\n  color: #FFCB8E;\n  font-size: 3rem;\n  font-weight: 700;\n}\n.round-btn {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  width: 3rem;\n  height: 3rem;\n  font-size: 1.5rem;\n  border-radius: 1.5rem;\n  outline: 0;\n}\n.round-btn.mini {\n  width: 1.5rem;\n  height: 1.5rem;\n  font-size: 0.75rem;\n}\n.btn {\n  width: 100%;\n  /*flex-grow: 1;*/\n  height: 3rem;\n  font-size: 1rem;\n  font-weight: 600;\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  border-radius: 1.5rem;\n  padding-left: 1.5rem;\n  padding-right: 1.5rem;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.btn i {\n  font-size: 1.5rem;\n}\n.input {\n  font-size: 1rem;\n  outline: 0;\n  border-radius: 1.5rem;\n  color: var(--font-color);\n  font-weight: 600;\n  padding-left: 1.5rem;\n  padding-right: 1.5rem;\n  height: 3rem;\n  background-color: var(--background-color);\n}\n.dialog-window .input {\n  background-color: var(--background-color-alternate);\n}\n.textarea {\n  font-size: 1rem;\n  outline: 0;\n  border-radius: 1.5rem;\n  color: #707070;\n  font-weight: 600;\n  padding: 1.5rem;\n  background-color: #E1E1E1;\n  resize: none;\n}\n.input::-moz-placeholder {\n  color: #707070;\n}\n.input:-ms-input-placeholder {\n  color: #707070;\n}\n.input::placeholder {\n  color: #707070;\n}\n.textarea::-moz-placeholder {\n  color: #707070;\n}\n.textarea:-ms-input-placeholder {\n  color: #707070;\n}\n.textarea::placeholder {\n  color: #707070;\n}\n.input.disabled {\n  cursor: default;\n  pointer-events: none;\n}\n.warn-background {\n  background-color: var(--warn);\n  transition: 0.2s ease;\n  cursor: pointer;\n  color: white;\n}\n.primary-background {\n  background-color: var(--primary);\n  transition: 0.2s ease;\n  cursor: pointer;\n  color: white;\n}\n.secondary-background {\n  background-color: var(--secondary);\n  transition: 0.2s ease;\n  cursor: pointer;\n  color: white;\n}\n.warn-background.disabled {\n  pointer-events: none;\n  cursor: default;\n  filter: saturate(0.3);\n}\n.primary-background.disabled {\n  pointer-events: none;\n  cursor: default;\n  filter: saturate(0.3);\n}\n.secondary-background.disabled {\n  pointer-events: none;\n  cursor: default;\n  filter: saturate(0.3);\n}\n.warn-background:hover {\n  background-color: var(--warn-darker);\n}\n.primary-background:hover {\n  background-color: var(--primary-darker);\n}\n.secondary-background:hover {\n  background-color: var(--secondary-darker);\n}\n.row {\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  width: 100%;\n}\n.col {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  height: 100%;\n}\n.space-between {\n  justify-content: space-between;\n}\n.flex-start {\n  justify-content: flex-start;\n}\n\n/*Checkbox*/\n.checkbox-container {\n  margin: 1vh;\n  display: flex;\n  align-items: center;\n  position: relative;\n  padding-left: 35px;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  cursor: pointer;\n}\n.checkbox-container input, .checkbox-container input {\n  opacity: 0;\n  position: absolute;\n  cursor: pointer;\n  height: 0;\n  width: 0;\n}\n.checkbox {\n  position: absolute;\n  top: 0;\n  left: 0;\n  border-radius: 30%;\n  height: 20px;\n  width: 20px;\n  background-color: var(--background-color);\n  border: 2px solid var(--font-color);\n}\ninput:checked ~ .checkbox {\n  background-color: var(--primary);\n  border: 2px solid var(--primary);\n}\n.checkbox:after {\n  content: \"\";\n  position: absolute;\n  display: none;\n}\ninput:checked ~ .checkbox:after {\n  display: block;\n}\n.checkbox:after {\n  left: 6px;\n  top: 3px;\n  width: 5px;\n  height: 10px;\n  border: solid var(--white);\n  border-width: 0 3px 3px 0;\n  border-radius: 1px;\n  transform: rotate(45deg);\n}\n\n/*Radio*/\n.radio {\n  position: absolute;\n  top: 0;\n  left: 0;\n  height: 20px;\n  width: 20px;\n  background-color: var(--background-color);\n  border: 2px solid var(--font-color);\n  border-radius: 50%;\n}\ninput:checked ~ .radio {\n  background-color: var(--primary);\n  border: 2px solid var(--primary);\n}\n.radio:after {\n  content: \"\";\n  position: absolute;\n  display: none;\n}\ninput:checked ~ .radio:after {\n  display: block;\n}\n.radio:after {\n  top: 3px;\n  left: 3px;\n  width: 10px;\n  height: 10px;\n  border-radius: 50%;\n  background: var(--white);\n}\n.alternate-input {\n  background-color: var(--background-color-alternate);\n  border: 3px solid var(--alt-input-border-color);\n  border-radius: 12px;\n  padding: 6px;\n  color: var(--font-color);\n}\n.alternate-input:focus {\n  outline: 0;\n  border: 3px solid var(--primary);\n  transition: 0.2s;\n}\nselect option {\n  color: var(--font-color);\n  background-color: var(--background-color);\n}\n\n/* Vue Transitions */\n.fade-enter-active, .fade-leave-active {\n  transition: opacity .2s ease;\n}\n.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */\n{\n  opacity: 0;\n}\n@media (max-width: 576px) {\n#app {\n    flex-direction: column;\n}\n.btn i {\n    display: none;\n}\n.btn {\n    justify-content: center;\n}\n}\n", ""]);
 
 // exports
 
@@ -7269,7 +7312,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#chat[data-v-4d9d8b3e] {\n  background-color: var(--background-color-alternate);\n  flex-grow: 1;\n  width: 100%;\n  height: 100%;\n  display: flex;\n  flex-direction: column;\n  overflow: hidden;\n}\n#messages[data-v-4d9d8b3e] {\n  height: 100%;\n  display: flex;\n  flex-direction: column;\n  flex-grow: 1;\n  padding: 2%;\n  overflow-y: auto;\n}\n#messages[data-v-4d9d8b3e]::-webkit-scrollbar {\n  margin-left: -1rem;\n  width: 1rem;\n}\n#messages[data-v-4d9d8b3e]::-webkit-scrollbar-track {\n  background: transparent;\n  border-radius: 0.5rem;\n}\n#messages[data-v-4d9d8b3e]::-webkit-scrollbar-thumb {\n  background-color: #FFA88E;\n  border-radius: 0.5rem;\n}\n#message-input[data-v-4d9d8b3e] {\n  margin-left: 3vh;\n  margin-right: 3vh;\n  flex-grow: 1;\n}\n#input-group[data-v-4d9d8b3e] {\n  position: relative;\n  display: flex;\n  padding: 1.5vh 3vh 1.5vh 3vh;\n  box-shadow: 1px 0 15px 3px var(--shadow-color);\n  -webkit-box-shadow: 1px 0 15px 3px var(--shadow-color);\n  -moz-box-shadow: 1px 0 15px 3px var(--shadow-color);\n  justify-content: space-between;\n}\n.special-messages-container[data-v-4d9d8b3e] {\n  background-color: var(--background-color);\n  margin-bottom: 2vh;\n  padding: 1vh;\n  height: 19rem;\n  position: absolute;\n  bottom: 100%;\n  border-radius: 1rem;\n  box-shadow: 1px 0 15px 3px var(--shadow-color);\n  -webkit-box-shadow: 1px 0 15px 3px var(--shadow-color);\n  -moz-box-shadow: 1px 0 15px 3px var(--shadow-color);\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: space-between;\n}\n.fade-enter-active[data-v-4d9d8b3e], .fade-leave-active[data-v-4d9d8b3e] {\n  transition: opacity .2s ease;\n}\n.fade-enter[data-v-4d9d8b3e], .fade-leave-to[data-v-4d9d8b3e] /* .fade-leave-active below version 2.1.8 */\n{\n  opacity: 0;\n}\n@media (max-width: 576px) {\n#message-input[data-v-4d9d8b3e] {\n    max-width: 68%; /*Irgendwie dumm, aber sonst funktioniert nix*/\n    margin-left: 0.5vh;\n    margin-right: 0.5vh;\n}\n#input-group[data-v-4d9d8b3e] {\n    padding: 2% 2% 4% 2%; /*Unten mehr, damit bei Handys mit abgerundeten Ecken nix abgeschnitten wird*/\n}\n#messages[data-v-4d9d8b3e]::-webkit-scrollbar {\n    width: 0.5rem;\n}\n.special-messages-container[data-v-4d9d8b3e] {\n    padding: 4%;\n}\n}\n\n", ""]);
+exports.push([module.i, "#chat[data-v-4d9d8b3e] {\n  background-color: var(--background-color-alternate);\n  flex-grow: 1;\n  width: 100%;\n  height: 100%;\n  display: flex;\n  flex-direction: column;\n  overflow: hidden;\n}\n#messages[data-v-4d9d8b3e] {\n  height: 100%;\n  display: flex;\n  flex-direction: column;\n  flex-grow: 1;\n  padding: 2%;\n  overflow-y: auto;\n}\n#messages[data-v-4d9d8b3e]::-webkit-scrollbar {\n  margin-left: -1rem;\n  width: 1rem;\n}\n#messages[data-v-4d9d8b3e]::-webkit-scrollbar-track {\n  background: transparent;\n  border-radius: 0.5rem;\n}\n#messages[data-v-4d9d8b3e]::-webkit-scrollbar-thumb {\n  background-color: #FFA88E;\n  border-radius: 0.5rem;\n}\n#message-input[data-v-4d9d8b3e] {\n  margin-left: 3vh;\n  margin-right: 3vh;\n  flex-grow: 1;\n}\n#input-group[data-v-4d9d8b3e] {\n  position: relative;\n  display: flex;\n  padding: 1.5vh 3vh 1.5vh 3vh;\n  box-shadow: 1px 0 15px 3px var(--shadow-color);\n  -webkit-box-shadow: 1px 0 15px 3px var(--shadow-color);\n  -moz-box-shadow: 1px 0 15px 3px var(--shadow-color);\n  justify-content: space-between;\n}\n.special-messages-container[data-v-4d9d8b3e] {\n  background-color: var(--background-color);\n  margin-bottom: 2vh;\n  padding: 1vh;\n  height: 19rem;\n  position: absolute;\n  bottom: 100%;\n  border-radius: 1rem;\n  box-shadow: 1px 0 15px 3px var(--shadow-color);\n  -webkit-box-shadow: 1px 0 15px 3px var(--shadow-color);\n  -moz-box-shadow: 1px 0 15px 3px var(--shadow-color);\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: space-between;\n}\n@media (max-width: 576px) {\n#message-input[data-v-4d9d8b3e] {\n    max-width: 68%; /*Irgendwie dumm, aber sonst funktioniert nix*/\n    margin-left: 0.5vh;\n    margin-right: 0.5vh;\n}\n#input-group[data-v-4d9d8b3e] {\n    padding: 2% 2% 4% 2%; /*Unten mehr, damit bei Handys mit abgerundeten Ecken nix abgeschnitten wird*/\n}\n#messages[data-v-4d9d8b3e]::-webkit-scrollbar {\n    width: 0.5rem;\n}\n.special-messages-container[data-v-4d9d8b3e] {\n    padding: 4%;\n}\n}\n\n", ""]);
 
 // exports
 
@@ -7713,6 +7756,25 @@ exports.push([module.i, ".new-group-card[data-v-bbc12f98] {\n  cursor: pointer;\
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Pages/poll-answer.vue?vue&type=style&index=0&id=08b72893&scoped=true&lang=css&":
+/*!************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Pages/poll-answer.vue?vue&type=style&index=0&id=08b72893&scoped=true&lang=css& ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".right .answer[data-v-08b72893] {\n  background-color: var(--background-color);\n}\n.message .answer[data-v-08b72893] {\n  height: 2.5rem;\n  width: 100%;\n  border: 2px solid var(--fill-color);\n  margin-bottom: 0.25rem;\n  margin-top: 0.25rem;\n  border-radius: 12px;\n  padding-left: 12px;\n  padding-right: 12px;\n  font-weight: 600;\n  cursor: pointer;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  justify-content: space-between;\n  transition: 0.2s ease;\n}\n.answer.answered[data-v-08b72893] {\n  cursor: default;\n  pointer-events: none;\n  background: linear-gradient(to right, var(--fill-color) var(--percentage), var(--background-color) 0);\n}\n.own .answer[data-v-08b72893] {\n  background: linear-gradient(to right, var(--fill-color) var(--percentage), var(--background-color) 0);\n}\n.answer[data-v-08b72893]:hover {\n  border-color: var(--primary-darker);\n  background-color: var(--background-color-alternate);\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Pages/poll.vue?vue&type=style&index=0&id=b77e9970&scoped=true&lang=css&":
 /*!*****************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Pages/poll.vue?vue&type=style&index=0&id=b77e9970&scoped=true&lang=css& ***!
@@ -7725,7 +7787,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".message[data-v-b77e9970] {\n  width: 80%;\n  background-color: var(--message-color);\n  color: var(--font-color);\n  display: flex;\n  flex-direction: column;\n  align-items: start;\n  justify-content: space-between;\n  padding: 1vh;\n  margin: 0.5vh;\n  border-radius: 1rem;\n  align-self: center;\n}\n.sender[data-v-b77e9970] {\n  font-size: 1.1rem;\n  font-weight: bold;\n  margin-bottom: 0.5vh;\n}\n.timetoken[data-v-b77e9970] {\n  align-self: flex-end;\n  color: var(--font-color-light);\n  font-size: 0.8rem;\n}\n.right[data-v-b77e9970] {\n  background-color: var(--message-right-color);\n}\n.poll[data-v-b77e9970] {\n  width: 100%;\n  transition: 0.2s ease;\n}\n.answer[data-v-b77e9970] {\n  background-color: var(--background-color);\n  height: 2.5rem;\n  width: 100%;\n  border: 2px solid var(--primary);\n  margin-bottom: 0.25rem;\n  margin-top: 0.25rem;\n  border-radius: 12px;\n  padding-left: 12px;\n  padding-right: 12px;\n  font-weight: 600;\n  cursor: pointer;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  justify-content: space-between;\n  transition: 0.2s ease;\n}\n.answer[data-v-b77e9970]:hover {\n  border-color: var(--primary-darker);\n  background-color: var(--background-color-alternate);\n}\n@media (max-width: 576px) {\n.message[data-v-b77e9970] {\n    padding: 2.5%;\n}\n}\n", ""]);
+exports.push([module.i, ".message[data-v-b77e9970] {\n  width: 80%;\n  background-color: var(--message-color);\n  color: var(--font-color);\n  display: flex;\n  flex-direction: column;\n  align-items: start;\n  justify-content: space-between;\n  padding: 1vh;\n  margin: 0.5vh;\n  border-radius: 1rem;\n  align-self: center;\n}\n.sender[data-v-b77e9970] {\n  font-size: 1.1rem;\n  font-weight: bold;\n  margin-bottom: 0.5vh;\n}\n.timetoken[data-v-b77e9970] {\n  align-self: flex-end;\n  color: var(--font-color-light);\n  font-size: 0.8rem;\n}\n.own[data-v-b77e9970] {\n  background-color: var(--message-right-color);\n}\n.poll[data-v-b77e9970] {\n  width: 100%;\n  transition: 0.2s ease;\n}\n@media (max-width: 576px) {\n.message[data-v-b77e9970] {\n    padding: 2.5%;\n}\n}\n", ""]);
 
 // exports
 
@@ -27355,6 +27417,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Pages/poll-answer.vue?vue&type=style&index=0&id=08b72893&scoped=true&lang=css&":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Pages/poll-answer.vue?vue&type=style&index=0&id=08b72893&scoped=true&lang=css& ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./poll-answer.vue?vue&type=style&index=0&id=08b72893&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Pages/poll-answer.vue?vue&type=style&index=0&id=08b72893&scoped=true&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Pages/poll.vue?vue&type=style&index=0&id=b77e9970&scoped=true&lang=css&":
 /*!*********************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Pages/poll.vue?vue&type=style&index=0&id=b77e9970&scoped=true&lang=css& ***!
@@ -36132,6 +36224,52 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Pages/poll-answer.vue?vue&type=template&id=08b72893&scoped=true&":
+/*!*********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Pages/poll-answer.vue?vue&type=template&id=08b72893&scoped=true& ***!
+  \*********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "answer",
+      class: { answered: _vm.isAnswered, selected: _vm.isSelected },
+      style: _vm.cssVars,
+      on: {
+        click: function($event) {
+          return _vm.$emit("click")
+        }
+      }
+    },
+    [
+      _c("p", [_vm._v(_vm._s(_vm.message.message.answers[_vm.answerKey]))]),
+      _vm._v(" "),
+      _c("transition", { attrs: { name: "fade", mode: "out-in" } }, [
+        _vm.isAnswered || _vm.isOwn
+          ? _c("p", [_vm._v(_vm._s(_vm.percentage || 0) + "%")])
+          : _vm._e()
+      ])
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Pages/poll.vue?vue&type=template&id=b77e9970&scoped=true&":
 /*!**************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Pages/poll.vue?vue&type=template&id=b77e9970&scoped=true& ***!
@@ -36147,7 +36285,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "message", class: _vm.changeAlignment() }, [
+  return _c("div", { staticClass: "message", class: { own: _vm.isOwn } }, [
     !_vm.isOwn
       ? _c("div", { staticClass: "sender" }, [
           _vm._v(_vm._s(_vm.message.message.user.username))
@@ -36162,38 +36300,16 @@ var render = function() {
       "div",
       { staticClass: "poll" },
       _vm._l(Object.keys(_vm.message.message.answers), function(answerKey) {
-        return _c(
-          "div",
-          {
-            staticClass: "answer",
-            class: { answered: _vm.isAnswered },
-            style: {
-              background:
-                "linear-gradient(to right, var(--primary) " +
-                _vm.getPercentage(answerKey) +
-                "%, var(--background-color) " +
-                0 +
-                ")"
-            },
-            on: {
-              click: function($event) {
-                return _vm.addResult(answerKey)
-              }
+        return _c("poll-answer", {
+          attrs: { answerKey: answerKey, message: _vm.message },
+          on: {
+            click: function($event) {
+              return _vm.addResult(answerKey)
             }
-          },
-          [
-            _vm._v(
-              "\n            " +
-                _vm._s(_vm.message.message.answers[answerKey]) +
-                "\n            "
-            ),
-            _vm.isAnswered
-              ? _c("p", [_vm._v(_vm._s(_vm.getPercentage(answerKey)) + "%")])
-              : _vm._e()
-          ]
-        )
+          }
+        })
       }),
-      0
+      1
     ),
     _vm._v(" "),
     _c("div", { staticClass: "timetoken" }, [
@@ -54615,6 +54731,8 @@ var map = {
 	"./new-group-card": "./resources/js/Pages/new-group-card.vue",
 	"./new-group-card.vue": "./resources/js/Pages/new-group-card.vue",
 	"./poll": "./resources/js/Pages/poll.vue",
+	"./poll-answer": "./resources/js/Pages/poll-answer.vue",
+	"./poll-answer.vue": "./resources/js/Pages/poll-answer.vue",
 	"./poll.vue": "./resources/js/Pages/poll.vue",
 	"./settings": "./resources/js/Pages/settings.vue",
 	"./settings.vue": "./resources/js/Pages/settings.vue"
@@ -58284,6 +58402,93 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/Pages/poll-answer.vue":
+/*!********************************************!*\
+  !*** ./resources/js/Pages/poll-answer.vue ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _poll_answer_vue_vue_type_template_id_08b72893_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./poll-answer.vue?vue&type=template&id=08b72893&scoped=true& */ "./resources/js/Pages/poll-answer.vue?vue&type=template&id=08b72893&scoped=true&");
+/* harmony import */ var _poll_answer_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./poll-answer.vue?vue&type=script&lang=js& */ "./resources/js/Pages/poll-answer.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _poll_answer_vue_vue_type_style_index_0_id_08b72893_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./poll-answer.vue?vue&type=style&index=0&id=08b72893&scoped=true&lang=css& */ "./resources/js/Pages/poll-answer.vue?vue&type=style&index=0&id=08b72893&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _poll_answer_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _poll_answer_vue_vue_type_template_id_08b72893_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _poll_answer_vue_vue_type_template_id_08b72893_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "08b72893",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/Pages/poll-answer.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/Pages/poll-answer.vue?vue&type=script&lang=js&":
+/*!*********************************************************************!*\
+  !*** ./resources/js/Pages/poll-answer.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_poll_answer_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./poll-answer.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Pages/poll-answer.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_poll_answer_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/Pages/poll-answer.vue?vue&type=style&index=0&id=08b72893&scoped=true&lang=css&":
+/*!*****************************************************************************************************!*\
+  !*** ./resources/js/Pages/poll-answer.vue?vue&type=style&index=0&id=08b72893&scoped=true&lang=css& ***!
+  \*****************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_poll_answer_vue_vue_type_style_index_0_id_08b72893_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./poll-answer.vue?vue&type=style&index=0&id=08b72893&scoped=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Pages/poll-answer.vue?vue&type=style&index=0&id=08b72893&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_poll_answer_vue_vue_type_style_index_0_id_08b72893_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_poll_answer_vue_vue_type_style_index_0_id_08b72893_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_poll_answer_vue_vue_type_style_index_0_id_08b72893_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_poll_answer_vue_vue_type_style_index_0_id_08b72893_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_poll_answer_vue_vue_type_style_index_0_id_08b72893_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/Pages/poll-answer.vue?vue&type=template&id=08b72893&scoped=true&":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/Pages/poll-answer.vue?vue&type=template&id=08b72893&scoped=true& ***!
+  \***************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_poll_answer_vue_vue_type_template_id_08b72893_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./poll-answer.vue?vue&type=template&id=08b72893&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Pages/poll-answer.vue?vue&type=template&id=08b72893&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_poll_answer_vue_vue_type_template_id_08b72893_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_poll_answer_vue_vue_type_template_id_08b72893_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/Pages/poll.vue":
 /*!*************************************!*\
   !*** ./resources/js/Pages/poll.vue ***!
@@ -58687,18 +58892,32 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
     toggleDarkmode: function toggleDarkmode(state) {
       state.user.settings.darkmode = !state.user.settings.darkmode;
     },
-    addReadBy: function addReadBy(state, payload) {
-      vue__WEBPACK_IMPORTED_MODULE_0___default.a.set(state.groups[payload.group].channels[payload.chat].messages[payload.messageTimetoken].message.readBy, payload.user.uuid, {
-        user: payload.user,
-        time: payload.time
-      });
+    // addReadBy(state, payload) {
+    //     Vue.set(state.groups[payload.group].channels[payload.chat].messages[payload.messageTimetoken].message.readBy, payload.user.uuid, {
+    //         user: payload.user,
+    //         time: payload.time
+    //     });
+    //     saveMessagesToLocalStorage(payload.group, payload.chat, payload.channel)
+    // },
+    addPollMessageAction: function addPollMessageAction(state, payload) {
+      vue__WEBPACK_IMPORTED_MODULE_0___default.a.set(state.groups[payload.group].channels[payload.chat].messages[payload.messageTimetoken].message.results, payload.user.uuid, payload.answerKey);
       saveMessagesToLocalStorage(payload.group, payload.chat, payload.channel);
     },
     // TODO veröffentlichen einer allgemeinen Message Action
     publishMessageAction: function publishMessageAction(state, payload) {
       state.pubnub.addMessageAction({
         channel: payload.message.channel,
-        messageTimetoken: payload.message.timetoken
+        messageTimetoken: payload.message.timetoken,
+        action: {
+          type: payload.type,
+          value: JSON.stringify({
+            user: state.user,
+            chat: payload.message.message.chat,
+            group: payload.message.message.group,
+            channel: payload.message.channel,
+            answerKey: payload.answerKey
+          })
+        }
       });
     },
     // TODO Rename
@@ -58731,8 +58950,7 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
           'chat': payload.chat,
           'allowMultiple': payload.allowMultiple,
           'answers': payload.answers,
-          'results': payload.results,
-          'answeredBy': [],
+          'results': {},
           'messageType': 'poll'
         }
       });
@@ -58916,15 +59134,29 @@ store.state.pubnub.addListener({
     });
   },
   messageAction: function messageAction(event) {
-    var data = JSON.parse(event.data.value);
-    store.commit("addReadBy", {
-      group: data.group,
-      chat: data.chat,
-      channel: data.channel,
-      time: data.time,
-      user: data.user,
-      messageTimetoken: event.data.messageTimetoken
-    }); // TODO handle message action
+    var value = JSON.parse(event.data.value);
+
+    switch (event.data.type) {
+      case 'poll':
+        store.commit('addPollMessageAction', {
+          group: value.group,
+          chat: value.chat,
+          channel: value.channel,
+          user: value.user,
+          messageTimetoken: event.data.messageTimetoken,
+          // Poll specific
+          answerKey: value.answerKey
+        });
+        break;
+    } // store.commit("addReadBy", {
+    //     group: data.group,
+    //     chat: data.chat,
+    //     channel: data.channel,
+    //     time: data.time,
+    //     user: data.user,
+    //     messageTimetoken: event.data.messageTimetoken
+    // })
+    // TODO handle message action
     // var channelName = ma.channel; // The channel to which the message was published
     // var publisher = ma.publisher; //The Publisher
     // var event = ma.message.event; // message action added or removed
@@ -58932,6 +59164,7 @@ store.state.pubnub.addListener({
     // var value = ma.message.data.value; // message action value
     // var messageTimetoken = ma.message.data.messageTimetoken; // The timetoken of the original message
     // var actionTimetoken = ma.message.data.actionTimetoken; // The timetoken of the message action
+
   }
 });
 store.state.pubnub.subscribe({

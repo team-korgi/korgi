@@ -23,13 +23,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c6b7b351-0dd0-44c1-b4e9-bbfaad6d7dff" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/js/Pages/poll.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/Pages/poll-answer.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/Pages/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/chat-element.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/chat-element.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/Pages/chat.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/chat.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/Pages/dialog-content-poll.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/dialog-content-poll.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/Pages/poll.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/poll.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
     </list>
     <list id="67fc21eb-a500-4be4-9496-fb40bcb71bf2" name="Changes by Jaki" comment="" />
@@ -277,7 +277,9 @@
       <workItem from="1611259383196" duration="278000" />
       <workItem from="1611502295980" duration="63000" />
       <workItem from="1611654017895" duration="1044000" />
-      <workItem from="1612186479662" duration="11176000" />
+      <workItem from="1612186479662" duration="11834000" />
+      <workItem from="1612204907463" duration="640000" />
+      <workItem from="1612274509059" duration="6793000" />
     </task>
     <servers />
   </component>

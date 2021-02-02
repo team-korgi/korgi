@@ -165,8 +165,7 @@ export default {
                 chat: this.type,
                 group: this.url,
                 allowMultiple: content.allowMultiple,
-                answers: content.answers,
-                results: content.results
+                answers: content.answers
             });
             this.scrollToBottom();
         },
@@ -252,14 +251,7 @@ export default {
     justify-content: space-between;
 }
 
-.fade-enter-active, .fade-leave-active {
-    transition: opacity .2s ease;
-}
 
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */
-{
-    opacity: 0;
-}
 
 @media (max-width: 576px) {
     #message-input {
