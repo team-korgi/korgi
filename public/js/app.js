@@ -7038,6 +7038,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "poll-answer",
+  data: function data() {
+    return {
+      delayedPercentage: 0
+    };
+  },
   props: {
     answerKey: String,
     message: Object
@@ -7061,15 +7066,53 @@ __webpack_require__.r(__webpack_exports__);
     },
     cssVars: function cssVars() {
       return this.isSelected ? {
-        '--percentage': this.percentage + '%',
+        '--percentage': this.delayedPercentage + '%',
         '--fill-color': 'var(--primary-darker)'
       } : {
-        '--percentage': this.percentage + '%',
+        '--percentage': this.delayedPercentage + '%',
         '--fill-color': 'var(--primary)'
       };
     },
     isOwn: function isOwn() {
       return this.message.publisher === this.$store.state.pubnub.getUUID();
+    }
+  },
+  watch: {
+    percentage: function percentage() {
+      if (this.isAnswered || this.isOwn) {
+        this.updateDelayedPercentage();
+      }
+    },
+    isAnswered: function isAnswered() {
+      if (this.percentage === 100) {
+        this.updateDelayedPercentage();
+      }
+    }
+  },
+  methods: {
+    updateDelayedPercentage: function updateDelayedPercentage() {
+      var _this2 = this;
+
+      var percentagePlaceholder = Math.round(Object.values(this.message.message.results).filter(function (value) {
+        return value === _this2.answerKey;
+      }).length / this.totalAnswers * 100);
+      var delay = 200 / Math.abs(percentagePlaceholder - this.delayedPercentage);
+      this.matchDelayedPercentage(percentagePlaceholder, delay);
+    },
+    matchDelayedPercentage: function matchDelayedPercentage(percentage, delay) {
+      var _this3 = this;
+
+      if (this.delayedPercentage + 1 <= percentage) {
+        this.delayedPercentage++;
+        setTimeout(function () {
+          _this3.matchDelayedPercentage(percentage, delay);
+        }, delay);
+      } else if (this.delayedPercentage - 1 >= percentage) {
+        this.delayedPercentage--;
+        setTimeout(function () {
+          _this3.matchDelayedPercentage(percentage, delay);
+        }, delay);
+      }
     }
   }
 });
@@ -36256,7 +36299,7 @@ var render = function() {
       _vm._v(" "),
       _c("transition", { attrs: { name: "fade", mode: "out-in" } }, [
         _vm.isAnswered || _vm.isOwn
-          ? _c("p", [_vm._v(_vm._s(_vm.percentage || 0) + "%")])
+          ? _c("p", [_vm._v(_vm._s(_vm.delayedPercentage || 0) + "%")])
           : _vm._e()
       ])
     ],

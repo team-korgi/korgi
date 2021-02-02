@@ -2,7 +2,7 @@
     <div class="answer" :style="cssVars"  :class="{answered: isAnswered, selected: isSelected}" @click="$emit('click')">
         <p>{{message.message.answers[answerKey]}}</p>
         <transition name="fade" mode="out-in">
-            <p v-if="isAnswered || isOwn">{{percentage || 0}}%</p>
+            <p v-if="isAnswered || isOwn">{{delayedPercentage || 0}}%</p>
         </transition>
     </div>
 </template>
@@ -10,6 +10,11 @@
 <script>
 export default {
     name: "poll-answer",
+    data() {
+        return {
+            delayedPercentage: 0,
+        }
+    },
     props: {
         answerKey: String,
         message: Object
@@ -28,11 +33,44 @@ export default {
             return Math.round((Object.values(this.message.message.results).filter(value => value === this.answerKey).length / this.totalAnswers) * 100);
         },
         cssVars () {
-            return this.isSelected ? {'--percentage': this.percentage + '%', '--fill-color': 'var(--primary-darker)'} : {'--percentage': this.percentage + '%', '--fill-color': 'var(--primary)'}
+            return this.isSelected ? {'--percentage': this.delayedPercentage + '%', '--fill-color': 'var(--primary-darker)'} : {'--percentage': this.delayedPercentage + '%', '--fill-color': 'var(--primary)'}
         },
         isOwn() {
             return this.message.publisher === this.$store.state.pubnub.getUUID()
         },
+    },
+    watch: {
+        percentage() {
+            if (this.isAnswered || this.isOwn) {
+                this.updateDelayedPercentage();
+            }
+        },
+        isAnswered() {
+            if (this.percentage === 100) {
+                this.updateDelayedPercentage();
+            }
+        }
+    },
+    methods: {
+        updateDelayedPercentage() {
+            let percentagePlaceholder = Math.round((Object.values(this.message.message.results).filter(value => value === this.answerKey).length / this.totalAnswers) * 100);
+            let delay = 200 / Math.abs(percentagePlaceholder-this.delayedPercentage);
+
+            this.matchDelayedPercentage(percentagePlaceholder, delay);
+        },
+        matchDelayedPercentage(percentage, delay) {
+            if (this.delayedPercentage + 1 <= percentage) {
+                this.delayedPercentage++;
+                setTimeout(() => {
+                    this.matchDelayedPercentage(percentage, delay)
+                }, delay);
+            } else if (this.delayedPercentage - 1 >= percentage) {
+                this.delayedPercentage--;
+                setTimeout(() => {
+                    this.matchDelayedPercentage(percentage, delay)
+                }, delay);
+            }
+        }
     }
 }
 </script>
