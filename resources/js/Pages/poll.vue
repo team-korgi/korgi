@@ -17,7 +17,6 @@
 </template>
 
 <script>
-import Vue from 'vue';
 import PollAnswer from "@/Pages/poll-answer";
 
 export default {
