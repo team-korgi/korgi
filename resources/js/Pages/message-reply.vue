@@ -1,14 +1,14 @@
 <template>
-    <div class="file-element" v-bind:class="changeAlignment()">
+    <div class="message" :class="{own : isOwn}">
         <div class="message-header">
             <div class="sender">{{ message.message.user.username }}</div>
             <i class="fas fa-reply" @click="$emit('open')"></i>
         </div>
-        <p class="text">{{message.message.text}}</p>
-        <div class="file-container primary-background">
-            <i class="file-icon far fa-file-pdf"></i>
-            <p class="text">{{message.message.fileName}}</p>
+        <div class="reply" @click="scrollToMessage">
+            <div class="reply-sender">{{replyMessage.message.user.username}}</div>
+            <div class="reply-text">{{replyMessage.message.text}}</div>
         </div>
+        <div class="text">{{ message.message.text }}</div>
         <div class="timetoken">{{
                 new Date(message.timetoken / 10000).toLocaleTimeString('de', {
                     hour: "2-digit",
@@ -21,9 +21,14 @@
 
 <script>
 export default {
-    name: "file",
+    name: "message-reply",
     props: {
         message: Object
+    },
+    data() {
+        return {
+            replyMessage: this.$store.getters.getChannel(this.message.message.group, this.message.message.chat).messages[this.message.message.messageTimetoken]
+        }
     },
     computed: {
         isOwn() {
@@ -31,52 +36,28 @@ export default {
         }
     },
     methods: {
-        changeAlignment() {
-            if (this.isOwn) {
-                return 'right';
-            }
+        scrollToMessage() {
+            document.getElementById(this.replyMessage.timetoken).scrollIntoView({
+                behavior: "smooth"
+            });
         }
     }
 }
 </script>
 
 <style scoped>
-.file-element {
+.message {
     max-width: 80%;
     min-width: 30%;
     background-color: var(--message-color);
     color: var(--font-color);
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: start;
     justify-content: space-between;
     padding: 1vh;
     margin: 0.5vh;
     border-radius: 1rem;
-}
-
-.right {
-    text-align: right;
-    align-self: flex-end;
-    background-color: var(--message-right-color);
-}
-
-.file-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    border-radius: 1rem;
-    margin-top: 0.4rem;
-    margin-bottom: 0.2rem;
-    padding: 1rem;
-}
-
-.file-icon {
-    font-size: 2rem;
-    color: #ef5252;
-    margin-right: 1rem;
-    text-align: center;
 }
 
 .sender {
@@ -85,14 +66,19 @@ export default {
     margin-bottom: 0.5vh;
 }
 
+.text {
+    word-break: break-word;
+}
+
 .timetoken {
     align-self: flex-end;
     color: var(--font-color-light);
     font-size: 0.8rem;
 }
 
-.text {
-    word-break: break-word;
+.own {
+    align-self: flex-end;
+    background-color: var(--message-right-color);
 }
 
 .message-header {
@@ -100,6 +86,25 @@ export default {
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.reply {
+    width: 100%;
+    background-color: var(--background-color-alternate);
+    padding: 1vh;
+    border-radius: 1rem;
+    margin-bottom: 0.5vh;
+    cursor: pointer;
+}
+
+.reply-sender {
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-bottom: 0.5vh;
+}
+
+.reply-text {
+    font-size: 0.8rem;
 }
 
 .fa-reply {
@@ -112,7 +117,7 @@ export default {
 }
 
 @media (max-width: 576px) {
-    .file-element {
+    .message {
         padding: 2.5%;
     }
 }

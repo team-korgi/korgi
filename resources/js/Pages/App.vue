@@ -80,6 +80,8 @@ export default {
 }
 
 html {
+    scroll-behavior: smooth;
+
     --background-color: var(--white);
     --background-color-alternate: var(--light-grey);
     --alt-input-border-color: var(--dark-grey);

@@ -1,6 +1,9 @@
 <template>
     <div class="message" v-bind:class="changeAlignment()">
-        <div class="sender" v-if="!isOwn">{{ message.message.user.username }}</div>
+        <div class="message-header">
+            <div class="sender">{{ message.message.user.username }}</div>
+            <i class="fas fa-reply" @click="$emit('open')"></i>
+        </div>
         <div class="text">{{ message.message.text }}</div>
         <div class="timetoken">{{
                 new Date(message.timetoken / 10000).toLocaleTimeString('de', {
@@ -36,6 +39,7 @@ export default {
 <style scoped>
 .message {
     max-width: 80%;
+    min-width: 30%;
     background-color: var(--message-color);
     color: var(--font-color);
     display: flex;
@@ -66,6 +70,22 @@ export default {
 .right {
     align-self: flex-end;
     background-color: var(--message-right-color);
+}
+
+.message-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.fa-reply {
+    color: var(--header-color);
+    cursor: pointer;
+}
+
+.fa-reply:hover {
+    color: var(--primary);
 }
 
 @media (max-width: 576px) {

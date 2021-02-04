@@ -51,6 +51,11 @@ export default {
             }
         }
     },
+    mounted() {
+        if (this.isAnswered) {
+            this.delayedPercentage = this.percentage;
+        }
+    },
     methods: {
         updateDelayedPercentage() {
             let percentagePlaceholder = Math.round((Object.values(this.message.message.results).filter(value => value === this.answerKey).length / this.totalAnswers) * 100);

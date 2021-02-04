@@ -187,7 +187,7 @@ const store = new Vuex.Store({
             username: getUsername(),
             uuid: getUUID(),
             settings: {
-                darkmode: false
+                darkmode: true
             }
         },
         groups: getGroups(),
@@ -255,7 +255,6 @@ const store = new Vuex.Store({
         //     );
         // },
         publishPoll(state, payload) {
-            console.log(payload)
             state.pubnub.publish(
                 {
                     channel: payload.channel,
@@ -268,6 +267,21 @@ const store = new Vuex.Store({
                         'answers': payload.answers,
                         'results': {},
                         'messageType': 'poll'
+                    }
+                }
+            );
+        },
+        publishReply(state, payload) {
+            state.pubnub.publish(
+                {
+                    channel: payload.channel,
+                    message: {
+                        'text': payload.message,
+                        'user': state.user,
+                        'group': payload.group,
+                        'chat': payload.chat,
+                        'messageTimetoken': payload.messageTimetoken,
+                        'messageType': 'reply'
                     }
                 }
             );
