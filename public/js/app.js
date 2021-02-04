@@ -3453,7 +3453,13 @@ __webpack_require__.r(__webpack_exports__);
       bus: new vue__WEBPACK_IMPORTED_MODULE_3___default.a()
     };
   },
-  created: function created() {},
+  created: function created() {
+    var root = document.documentElement;
+
+    if (this.darkmode) {
+      root.classList.add('darkmode');
+    }
+  },
   computed: {
     darkmode: function darkmode() {
       return this.$store.state.user.settings.darkmode;
@@ -6650,6 +6656,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
@@ -7452,7 +7460,7 @@ __webpack_require__.r(__webpack_exports__);
 
 exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
 // imports
-exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Montserrat&display=swap);", ""]);
+exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap);", ""]);
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap);", ""]);
 
 // module
@@ -7817,7 +7825,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#group[data-v-d2be0174] {\n  display: flex;\n  flex-direction: row;\n  width: 100%;\n}\n#group-content[data-v-d2be0174] {\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n}\n#group-header[data-v-d2be0174] {\n  display: flex;\n  flex-direction: column;\n  box-shadow: 1px 0px 8px 3px var(--shadow-color);\n  -webkit-box-shadow: 1px 0px 8px 3px var(--shadow-color);\n  -moz-box-shadow: 1px 0px 8px 3px var(--shadow-color);\n  padding: 2vh 2vh 0 2vh;\n  z-index: 30;\n  background-color: var(--background-color);\n}\n.btn[data-v-d2be0174] {\n  flex-grow: 0 !important;\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n}\n#chat-selection[data-v-d2be0174] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n}\n.chat-link[data-v-d2be0174] {\n  width: 6em;\n  text-align: center;\n  font-size: 1.2rem;\n  color: var(--font-color-light);\n  font-weight: 600;\n  transition: 0.2s ease;\n}\n.row[data-v-d2be0174] {\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  justify-content: space-between;\n}\n.chat-link[data-v-d2be0174]:hover {\n  color: #FFA88E;\n}\n.chat-link[data-v-d2be0174]::after {\n  content: '';\n  width: 0;\n  height: 4px;\n  display: block;\n  background-color: #FFA88E;\n  transition: 0.2s ease;\n}\n.chat-link.left[data-v-d2be0174]::after {\n  margin-left: 100%;\n}\n.chat-link.right[data-v-d2be0174]::after {\n  margin-left: 0;\n}\n.chat-link-current[data-v-d2be0174] {\n  color: #FFA88E;\n}\n.chat-link-current.left[data-v-d2be0174]::after {\n  width: 100%;\n  margin-left: 0;\n}\n.chat-link-current.right[data-v-d2be0174]::after {\n  width: 100%;\n  margin-left: 0;\n}\n@media (max-width: 576px) {\n.row[data-v-d2be0174] {\n    display: none;\n}\n#group[data-v-d2be0174] {\n    height: calc(100vh - 20vw);\n}\n}\r\n\r\n", ""]);
+exports.push([module.i, "#group[data-v-d2be0174] {\n  display: flex;\n  flex-direction: row;\n  width: 100%;\n}\n#group-content[data-v-d2be0174] {\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n}\n#group-header[data-v-d2be0174] {\n  display: flex;\n  flex-direction: column;\n  box-shadow: 1px 0px 8px 3px var(--shadow-color);\n  -webkit-box-shadow: 1px 0px 8px 3px var(--shadow-color);\n  -moz-box-shadow: 1px 0px 8px 3px var(--shadow-color);\n  padding: 2vh 2vh 0 2vh;\n  z-index: 30;\n  background-color: var(--background-color);\n}\n.btn[data-v-d2be0174] {\n  flex-grow: 0 !important;\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n}\n#chat-selection[data-v-d2be0174] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n}\n.chat-link[data-v-d2be0174] {\n  width: 6em;\n  text-align: center;\n  font-size: 1.2rem;\n  color: var(--font-color-light);\n  font-weight: 600;\n  transition: 0.2s ease;\n}\n.row[data-v-d2be0174] {\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  justify-content: space-between;\n}\n.chat-link[data-v-d2be0174]:hover {\n  color: #FFA88E;\n}\n.chat-link[data-v-d2be0174]::after {\n  content: '';\n  width: 0;\n  height: 4px;\n  display: block;\n  background-color: #FFA88E;\n  transition: 0.2s ease;\n}\n.chat-link.left[data-v-d2be0174]::after {\n  margin-left: 100%;\n}\n.chat-link.right[data-v-d2be0174]::after {\n  margin-left: 0;\n}\n.chat-link-current[data-v-d2be0174] {\n  color: #FFA88E;\n}\n.chat-link-current.left[data-v-d2be0174]::after {\n  width: 100%;\n  margin-left: 0;\n}\n.chat-link-current.right[data-v-d2be0174]::after {\n  width: 100%;\n  margin-left: 0;\n}\n@media (max-width: 576px) {\n.row[data-v-d2be0174] {\n    display: none;\n}\n#group[data-v-d2be0174] {\n    height: calc(100vh - 20vw);\n}\n}\n\n", ""]);
 
 // exports
 
@@ -7912,7 +7920,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".message[data-v-5006550e] {\n  max-width: 80%;\n  min-width: 30%;\n  background-color: var(--message-color);\n  color: var(--font-color);\n  display: flex;\n  flex-direction: column;\n  align-items: start;\n  justify-content: space-between;\n  padding: 1vh;\n  margin: 0.5vh;\n  border-radius: 1rem;\n}\n.sender[data-v-5006550e] {\n  font-size: 1.1rem;\n  font-weight: bold;\n  margin-bottom: 0.5vh;\n}\n.text[data-v-5006550e] {\n  word-break: break-word;\n}\n.timetoken[data-v-5006550e] {\n  align-self: flex-end;\n  color: var(--font-color-light);\n  font-size: 0.8rem;\n}\n.right[data-v-5006550e] {\n  align-self: flex-end;\n  background-color: var(--message-right-color);\n}\n.message-header[data-v-5006550e] {\n  width: 100%;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n.fa-reply[data-v-5006550e] {\n  color: var(--header-color);\n  cursor: pointer;\n}\n.fa-reply[data-v-5006550e]:hover {\n  color: var(--primary);\n}\n@media (max-width: 576px) {\n.message[data-v-5006550e] {\n    padding: 2.5%;\n}\n}\n\n", ""]);
+exports.push([module.i, ".message[data-v-5006550e] {\n  max-width: 80%;\n  min-width: 30%;\n  background-color: var(--message-color);\n  color: var(--font-color);\n  display: flex;\n  flex-direction: column;\n  align-items: start;\n  justify-content: space-between;\n  padding: 1vh;\n  margin: 0.5vh;\n  border-radius: 1rem;\n}\n.sender[data-v-5006550e] {\n  font-size: 1.1rem;\n  font-weight: bold;\n  margin-bottom: 0.5vh;\n}\n.text[data-v-5006550e] {\n  word-break: break-word;\n  font-weight: 500;\n}\n.timetoken[data-v-5006550e] {\n  align-self: flex-end;\n  color: var(--font-color-light);\n  font-size: 0.8rem;\n}\n.right[data-v-5006550e] {\n  align-self: flex-end;\n  background-color: var(--message-right-color);\n}\n.message-header[data-v-5006550e] {\n  width: 100%;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n.fa-reply[data-v-5006550e] {\n  color: var(--header-color);\n  cursor: pointer;\n}\n.fa-reply[data-v-5006550e]:hover {\n  color: var(--primary);\n}\n@media (max-width: 576px) {\n.message[data-v-5006550e] {\n    padding: 2.5%;\n}\n}\n\n", ""]);
 
 // exports
 
@@ -36088,7 +36096,7 @@ var render = function() {
             )
           ]),
           _vm._v(" "),
-          _c("router-view")
+          _c("transition", { attrs: { name: "fade" } }, [_c("router-view")], 1)
         ],
         1
       ),

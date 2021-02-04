@@ -21,7 +21,9 @@
                     </router-link>
                 </div>
             </div>
-            <router-view/>
+            <transition name="fade">
+                <router-view/>
+            </transition>
         </div>
         <group-info :bus="bus"/>
     </div>

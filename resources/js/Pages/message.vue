@@ -59,6 +59,7 @@ export default {
 
 .text {
     word-break: break-word;
+    font-weight: 500;
 }
 
 .timetoken {

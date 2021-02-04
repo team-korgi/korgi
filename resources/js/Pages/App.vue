@@ -27,6 +27,10 @@ export default {
         }
     },
     created() {
+        let root = document.documentElement;
+        if (this.darkmode) {
+            root.classList.add('darkmode');
+        }
     },
     computed: {
         darkmode: function() {
@@ -48,7 +52,7 @@ export default {
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap');
 
 * {
