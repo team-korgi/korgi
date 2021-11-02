@@ -6,7 +6,7 @@
 
 ## About Korgi
 
-Korgi is an application focused on providing a means of better communication for kindergartens. 
+Korgi is an application focused on providing a means of better communication for kindergardens. 
 
 Our team decided to create this app because we all noticed the lack of technological advancement inside of the management of kindergartens, which can lead to lackluster coordination between parents and the employees and may or may not result in unnecessary cost for either party.
 - Group management:
